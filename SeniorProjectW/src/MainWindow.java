@@ -43,6 +43,8 @@ import java.awt.Scrollbar;
 import java.awt.ScrollPane;
 import javax.swing.JTree;
 import java.awt.Panel;
+import java.awt.TextArea;
+import javax.swing.JTextPane;
 
 public class MainWindow {
 	String ClassType[]= {"ClassificationYard", "InterchangeYard", "IndustrysupportYard"};
@@ -101,6 +103,106 @@ public class MainWindow {
 			{"Noting","Noting","Noting","Noting","Noting"},
 			{"Noting","Noting","Noting","Noting","Noting"}};
 	DefaultTableModel modelStation = new DefaultTableModel(dataStation,columnNameStation);
+	String[] columnNameGeneral = {"Line name","Line Acro","Number of station","Number of cars"};
+	String[][] dataGeneral = {{"Noting","Noting","Noting","Noting"},
+			{"Noting","Noting","Noting","Noting"},
+			{"Noting","Noting","Noting","Noting"},
+			{"Noting","Noting","Noting","Noting"},
+			{"Noting","Noting","Noting","Noting"},
+			{"Noting","Noting","Noting","Noting"},
+			{"Noting","Noting","Noting","Noting"},
+			{"Noting","Noting","Noting","Noting"},
+			{"Noting","Noting","Noting","Noting"},
+			{"Noting","Noting","Noting","Noting"},
+			{"Noting","Noting","Noting","Noting"},
+			{"Noting","Noting","Noting","Noting"},
+			{"Noting","Noting","Noting","Noting"},
+			{"Noting","Noting","Noting","Noting"},
+			{"Noting","Noting","Noting","Noting"},
+			{"Noting","Noting","Noting","Noting"},
+			{"Noting","Noting","Noting","Noting"},
+			{"Noting","Noting","Noting","Noting"},
+			{"Noting","Noting","Noting","Noting"},
+			{"Noting","Noting","Noting","Noting"},
+			{"Noting","Noting","Noting","Noting"},
+			{"Noting","Noting","Noting","Noting"},
+			{"Noting","Noting","Noting","Noting"}};
+	DefaultTableModel modelGeneral = new DefaultTableModel(dataGeneral,columnNameGeneral);
+	String Instruction  = "7.7 Writing Instructions\r\n"
+			+ "One of the most common and important uses of technical writing is to provide instructions, those step-by-step explanations of how to assemble, operate, repair, or do routine maintenance on something. Although they may seems intuitive and simple to write, instructions are some of the worst-written documents you can find. Most of us have probably had many infuriating experiences with badly written instructions. This chapter will show you what professionals consider the best techniques in providing instructions.\r\n"
+			+ "\r\n"
+			+ "An effective set of instruction requires the following:\r\n"
+			+ "\r\n"
+			+ "Clear, precise, and simple writing\r\n"
+			+ "A thorough understanding of the procedure in all its technical detail\r\n"
+			+ "The ability to put yourself in the place of the reader, the person trying to use your instructions\r\n"
+			+ "The ability to visualize the procedure in detail and to capture that awareness on paper\r\n"
+			+ "Willingness to test your instructions on the kind of person you wrote them for.\r\n"
+			+ "Preliminary Steps\r\n"
+			+ "At the beginning of a project to write a set of instructions, it is important to determine the structure or characteristics of the particular procedure you are going to write about. Here are some steps to follow:\r\n"
+			+ "\r\n"
+			+ "1. Do a careful audience and task analysis\r\n"
+			+ "Early in the process, define the audience and situation of your instructions. Remember that defining an audience means defining the level of familiarity your readers have with the topic.\r\n"
+			+ "\r\n"
+			+ "2. Determine the number of tasks\r\n"
+			+ "How many tasks are there in the procedure you are writing about? Let’s use the term procedure to refer to the whole set of activities your instructions are intended to discuss. A task is a semi-independent group of actions within the procedure: for example, setting the clock on a microwave oven is one task in the big overall procedure of operating a microwave oven.\r\n"
+			+ "\r\n"
+			+ "A simple procedure like changing the oil in a car contains only one task; there are no semi-independent groupings of activities. A more complex procedure like using a microwave oven contains several semi-independent tasks:  setting the clock; setting the power level; using the timer; cleaning and maintaining the microwave, among others.\r\n"
+			+ "\r\n"
+			+ "Some instructions have only a single task, but have many steps within that single task. For example, imagine a set of instructions for assembling a kids’ swing set. In my own experience, there were more than a 130 steps! That can be a bit daunting. A good approach is to group similar and related steps into phases, and start renumbering the steps at each new phase. A phase then is a group of similar steps within a single-task procedure. In the swing-set example, setting up the frame would be a phase; anchoring the thing in the ground would be another; assembling the box swing would be still another.\r\n"
+			+ "\r\n"
+			+ "3.  Determine the best approach to the step-by-step discussion\r\n"
+			+ "For most instructions, you can focus on tasks, or you can focus on tools (or features of tools).  In a task approach (also known as task orientation) to instructions on using a phone-answering service, you’d have these sections:\r\n"
+			+ "\r\n"
+			+ "Recording your greeting\r\n"
+			+ "Playing back your messages\r\n"
+			+ "Saving your messages\r\n"
+			+ "Forwarding your messages\r\n"
+			+ "Deleting your messages, and so on\r\n"
+			+ "These are tasks—the typical things we’d want to do with the machine.\r\n"
+			+ "\r\n"
+			+ "On the other hand, in a tools approach to instructions on using a photocopier, there likely would be sections on how to use specific features:\r\n"
+			+ "\r\n"
+			+ "Copy button\r\n"
+			+ "Cancel button\r\n"
+			+ "Enlarge/reduce button\r\n"
+			+ "Collate/staple button\r\n"
+			+ "Copy-size button, and so on\r\n"
+			+ "If you designed a set of instructions on this plan, you’d write steps for using each button or feature of the photocopier. Instructions using this tools approach are hard to make work. Sometimes, the name of the button doesn’t quite match the task it is associated with; sometimes you have to use more than just the one button to accomplish the task. Still, there can be times when the tools/feature approach may be preferable.\r\n"
+			+ "\r\n"
+			+ "4.  Design groupings of tasks\r\n"
+			+ "Listing tasks may not be all that you need to do. There may be so many tasks that you must group them so that readers can find individual ones more easily. For example, the following are common task groupings in instructions:\r\n"
+			+ "\r\n"
+			+ "Unpacking and setup tasks\r\n"
+			+ "Installing and customizing tasks\r\n"
+			+ "Basic operating tasks\r\n"
+			+ "Routine maintenance tasks\r\n"
+			+ "Troubleshooting tasks.Introduction:  plan the introduction to your instructions carefully. It might include any of the following (but not necessarily in this order):\r\n"
+			+ "\r\n"
+			+ "Indicate the specific tasks or procedure to be explained as well as the scope (what will and will not be covered)\r\n"
+			+ "Indicate what the audience needs in terms of knowledge and background to understand the instructions\r\n"
+			+ "Give a general idea of the procedure and what it accomplishes\r\n"
+			+ "Indicate the conditions when these instructions should (or should not) be used\r\n"
+			+ "Give an overview of the contents of the instructions.\r\n"
+			+ "General warning, caution, danger notices:  instructions often must alert readers to the possibility of ruining their equipment, screwing up the procedure, and hurting themselves. Also, instructions must often emphasize key points or exceptions. For these situations, you use special notices—note, warning, caution, and danger notices. Notice how these special notices are used in the example instructions listed above.\r\n"
+			+ "\r\n"
+			+ "Technical background or theory:  at the beginning of certain kinds of instructions (after the introduction), you may need a discussion of background related to the procedure. For certain instructions, this background is critical—otherwise, the steps in the procedure make no sense. For example, you may have had some experience with those software applets in which you define your own colors by nudging red, green, and blue slider bars around. To really understand what you’re doing, you need to have some background on color. Similarly, you can imagine that, for certain instructions using cameras, some theory might be needed as well.\r\n"
+			+ "\r\n"
+			+ "Equipment and supplies:  notice that most instructions include a list of the things you need to gather before you start the procedure. This includes equipment, the tools you use in the procedure (such as mixing bowls, spoons, bread pans, hammers, drills, and saws) and supplies, the things that are consumed in the procedure (such as wood, paint, oil, flour, and nails). In instructions, these typically are listed either in a simple vertical list or in a two-column list. Use the two-column list if you need to add some specifications to some or all of the items—for example, brand names, sizes, amounts, types, model numbers, and so on.\r\n"
+			+ "\r\n"
+			+ "Discussion of the steps:  when you get to the actual writing of the steps, there are several things to keep in mind: (1) the structure and format of those steps, (2) supplementary information that might be needed, and (3) the point of view and general writing style.\r\n"
+			+ "\r\n"
+			+ "Structure and format:  normally, we imagine a set of instructions as being formatted as vertical numbered lists. And most are in fact. Normally, you format your actual step-by-step instructions this way. There are some variations, however, as well as some other considerations:\r\n"
+			+ "\r\n"
+			+ "Fixed-order steps are steps that must be performed in the order presented. For example, if you are changing the oil in a car, draining the oil is a step that must come before putting the new oil. These are numbered lists (usually, vertical numbered lists).\r\n"
+			+ "Variable-order steps are steps that can be performed in practically any order. Good examples are those troubleshooting guides that tell you to check this, check that where you are trying to fix something. You can do these kinds of steps in practically any order. With this type, the bulleted list is the appropriate format.\r\n"
+			+ "Alternate steps are those in which two or more ways to accomplish the same thing are presented. Alternate steps are also used when various conditions might exist. Use bulleted lists with this type, with OR inserted between the alternatives, or the lead-in indicating that alternatives are about to be presented.\r\n"
+			+ "Nested steps may be used in  cases when individual steps within a procedure are rather complex in their own right and need to be broken down into sub-steps. In this case, you indent further and sequence the sub-steps as a, b, c, and so on.\r\n"
+			+ "“Step-less” instructions. can be used when you really cannot use numbered vertical list or provide straightforward instructional-style directing of the reader. Some situations must be so generalized or so variable that steps cannot be stated.\r\n"
+			+ "Supplementary discussion: often, it is not enough simply to tell readers to do this or to do that. They need additional explanatory information such as how the thing should look before and after the step; why they should care about doing this step; what mechanical principle is behind what they are doing; even more micro-level explanation of the step—discussion of the specific actions that make up the step.\r\n"
+			+ "\r\n"
+			+ "The problem with supplementary discussion, however, is that it can hide the actual step. You want the actual step—the specific actions the reader is to take—to stand out. You don’t want it all buried in a heap of words. There are at least two techniques to avoid this problem: you can split the instruction from the supplement into separate paragraphs; or you can bold the instruction.";
+	String About = "This Program was Developed by Roberto Salazar in  2022 as a part of his Senior Project to \n fulfill the rquarement to graduate in his BS degree in \n Computer Science";
 	private JFrame frame;
 	private JTextField textField;
 	private JTextField textField_1;
@@ -144,6 +246,7 @@ public class MainWindow {
 	private JTextField textField_35;
 	private JTable table;
 	private JTable table_1;
+	private JTable table_2;
 
 	/**
 	 * Launch the application.
@@ -974,6 +1077,39 @@ public class MainWindow {
 		
 		JPanel printG = new JPanel();
 		HomePanel.add(printG, "name_1310157503782100");
+		GridBagLayout gbl_printG = new GridBagLayout();
+		gbl_printG.columnWidths = new int[]{572, 0};
+		gbl_printG.rowHeights = new int[]{70, 285, 0};
+		gbl_printG.columnWeights = new double[]{0.0, Double.MIN_VALUE};
+		gbl_printG.rowWeights = new double[]{0.0, 0.0, Double.MIN_VALUE};
+		printG.setLayout(gbl_printG);
+		
+		JPanel panel_27 = new JPanel();
+		GridBagConstraints gbc_panel_27 = new GridBagConstraints();
+		gbc_panel_27.fill = GridBagConstraints.BOTH;
+		gbc_panel_27.insets = new Insets(0, 0, 5, 0);
+		gbc_panel_27.gridx = 0;
+		gbc_panel_27.gridy = 0;
+		printG.add(panel_27, gbc_panel_27);
+		
+		JLabel lblNewLabel_32_1_1 = new JLabel("General Report");
+		panel_27.add(lblNewLabel_32_1_1);
+		
+		JButton btnNewButton_6_1_1 = new JButton("General Report");
+		panel_27.add(btnNewButton_6_1_1);
+		
+		JButton btnNewButton_7_1_1 = new JButton("Excel Report");
+		panel_27.add(btnNewButton_7_1_1);
+		
+		ScrollPane scrollPane_2 = new ScrollPane();
+		GridBagConstraints gbc_scrollPane_2 = new GridBagConstraints();
+		gbc_scrollPane_2.fill = GridBagConstraints.BOTH;
+		gbc_scrollPane_2.gridx = 0;
+		gbc_scrollPane_2.gridy = 1;
+		printG.add(scrollPane_2, gbc_scrollPane_2);
+		
+		table_2 = new JTable(modelGeneral);
+		scrollPane_2.add(table_2);
 		
 		JPanel printL = new JPanel();
 		HomePanel.add(printL, "name_1310157514618300");
@@ -1073,9 +1209,27 @@ public class MainWindow {
 		
 		JPanel instruction = new JPanel();
 		HomePanel.add(instruction, "name_1310157546043900");
+		instruction.setLayout(new GridLayout(0, 1, 0, 0));
+		
+		
+		
+		ScrollPane scrollPane_3 = new ScrollPane();
+		instruction.add(scrollPane_3);
+		
+		JTextPane textPane = new JTextPane();
+		textPane.setText(Instruction);
+		scrollPane_3.add(textPane);
 		
 		JPanel about = new JPanel();
 		HomePanel.add(about, "name_1310157555789500");
+		about.setLayout(new GridLayout(0, 1, 0, 0));
+		
+		ScrollPane scrollPane_4 = new ScrollPane();
+		about.add(scrollPane_4);
+		
+		JTextPane textPane_1 = new JTextPane();
+		textPane_1.setText(About);
+		scrollPane_4.add(textPane_1);
 		
 		JPanel goHome = new JPanel();
 		goHome.setVisible(true);
