@@ -9,7 +9,7 @@ String lineType;
 String direction;
 Station start;
 Station end;
-List<Station> intersectionStations;
+List<Station> Stations;
 int numberOfStation;
 int Linecapacity;
 
