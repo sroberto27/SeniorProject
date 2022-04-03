@@ -17,6 +17,7 @@ import javax.swing.SwingConstants;
 import javax.swing.table.DefaultTableModel;
 
 import java.awt.event.ActionListener;
+import java.util.List;
 import java.awt.event.ActionEvent;
 import javax.swing.JTextField;
 import java.awt.FlowLayout;
@@ -47,6 +48,17 @@ import java.awt.TextArea;
 import javax.swing.JTextPane;
 
 public class MainWindow {
+	String descripTemp;
+	String lineNameTemp;
+	String lineAcroTemp;
+	float lineLengthTemp;
+	String lineTypeTemp;
+	String directionTemp;
+	String startTemp;
+	String endTemp;
+	int numberOfStationTemp;
+	int LinecapacityTemp;
+	String LineClassType[]= {"Class I", "Class II", "Class III"};
 	String ClassType[]= {"ClassificationYard", "InterchangeYard", "IndustrysupportYard"};
 	String Direction []={"EW", "WE", "NS", "SN", "BiNS", "BiWE"};
 	String CarType []={"Local","Tonnage","Manisfest","InterModal"};
@@ -321,7 +333,7 @@ public class MainWindow {
 		JLabel lblNewLabel_3 = new JLabel("Line Class");
 		addLine.add(lblNewLabel_3);
 		
-		JComboBox comboBox = new JComboBox(ClassType);
+		JComboBox comboBox = new JComboBox(LineClassType);
 		addLine.add(comboBox);
 		
 		JLabel lblNewLabel_4 = new JLabel("Line Direction");
@@ -1920,7 +1932,7 @@ public class MainWindow {
 		JMenuItem GoHome = new JMenuItem("Go home");
 		GoHome.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				//HomePanel.setVisible(true);
+				
 				addLine.setVisible(false);
 				editLine.setVisible(false);
 				deleteLine.setVisible(false);
@@ -1942,7 +1954,15 @@ public class MainWindow {
 		
 		btnNewButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				//Home.add(GoHome);
+				//Next in add line to add station of start next
+				//System.out.print("tetsing the print");
+				lineNameTemp = textField.getText();
+				lineAcroTemp = textField_1.getText();
+				lineLengthTemp = Float.parseFloat(textField_2.getText());
+				lineTypeTemp = (String) comboBox.getSelectedItem();
+				directionTemp = (String) comboBox_1.getSelectedItem();
+				descripTemp = textArea.getText();
+				//System.out.print(lineNameTemp+" , "+ lineAcroTemp+" , "+lineLengthTemp+" , "+ lineTypeTemp+" , "+ directionTemp +" , "+ descripTemp);
 				HomePanel.setVisible(true);
 				addLine.setVisible(false);
 				editLine.setVisible(false);
