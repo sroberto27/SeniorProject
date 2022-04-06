@@ -48,6 +48,9 @@ import java.awt.TextArea;
 import javax.swing.JTextPane;
 
 public class MainWindow {
+	//railSystem main object
+	RailSystem MyRailRoad = new RailSystem();
+	//line temporal variables
 	String descripTemp;
 	String lineNameTemp;
 	String lineAcroTemp;
@@ -58,6 +61,37 @@ public class MainWindow {
 	String endTemp;
 	int numberOfStationTemp;
 	int LinecapacityTemp;
+	//Station temporal variable
+	String classTypeSelected;
+	String classTypeSelected2;
+	String stlineTemp;
+	String typeTemp;
+	String nameTemp; 
+	String acroTemp;
+	String directTemp;
+	String headTemp;
+	String tailTemp; 
+	int numLinesTemp;
+	int numCarsTemp;
+	String industreNameTemp;
+	String descriptionTempStation;
+	String station1Temp;
+	String station2Temp;
+	// temp var station 2
+	String stlineTem;
+	String typeTem;
+	String nameTem; 
+	String acroTem;
+	String directTem;
+	String headTem;
+	String tailTem; 
+	int numLinesTem;
+	int numCarsTem;
+	String industreNameTem;
+	String descriptionTempStation2;
+	String station1Tem;
+	String station2Tem;
+	//Combobox values for line types
 	String LineClassType[]= {"Class I", "Class II", "Class III"};
 	String ClassType[]= {"ClassificationYard", "InterchangeYard", "IndustrysupportYard"};
 	String Direction []={"EW", "WE", "NS", "SN", "BiNS", "BiWE"};
@@ -1378,21 +1412,35 @@ public class MainWindow {
 		comboBox_2.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				JComboBox cb = (JComboBox)e.getSource();
-		        String classTypeSelected = (String)cb.getSelectedItem();
+				classTypeSelected = (String)cb.getSelectedItem();
 		        System.out.print(classTypeSelected);
 		        if (classTypeSelected == "InterchangeYard") {
+		        	//industreNameTemp = "";
+					//descriptionTempStation = "";
+					//station1Temp = "nothing yet"; //to string comboBox_4.getSelectedItem();
+					//station2Temp = "nothing yet";// to string comboBox_5.getSelectedItem();
 		        	panel_1.setVisible(true);
 		        	industryY.setVisible(false);
 					interyard.setVisible(true);
+					
 				}else {
 					if (classTypeSelected == "IndustrysupportYard") {
+						//industreNameTemp = textField_7.getText();
+						//descriptionTempStation = textArea_1.getText();
+						//station1Temp = "nothing";
+						//station2Temp = "nothing";
 						panel_1.setVisible(true);
 						industryY.setVisible(true);
 						interyard.setVisible(false);
 					}else {
+						//industreNameTemp = "nothing";
+						//descriptionTempStation = "nothing";
+						//station1Temp = "nothing";
+						//station2Temp = "nothing";
 						panel_1.setVisible(false);
 						interyard.setVisible(false);
 						industryY.setVisible(false);
+						
 					}
 				}
 			}
@@ -1526,10 +1574,6 @@ public class MainWindow {
 		AddEndStation.add(panel_6);
 		
 		JButton AddLineButton = new JButton("Add Line");
-		AddLineButton.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-			}
-		});
 		panel_6.add(AddLineButton);
 		JMenuBar menuBar = new JMenuBar();
 		MainPanel.add(menuBar, BorderLayout.NORTH);
@@ -1988,6 +2032,55 @@ public class MainWindow {
 		});
 		btnNewButton_1.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
+				if (classTypeSelected == "InterchangeYard") {
+					stlineTemp = lineNameTemp;
+					typeTemp = classTypeSelected;
+					nameTemp = textField_3.getText(); 
+					acroTemp = textField_4.getText();
+					directTemp = (String)comboBox_3.getSelectedItem();
+					headTemp = "NothingYet";
+					tailTemp = "Nothing Yet"; 
+					numLinesTemp = Integer.parseInt(textField_5.getText());
+					numCarsTemp = Integer.parseInt(textField_6.getText());
+		        	industreNameTemp = "nothing";
+					descriptionTempStation = "nothing";
+					station1Temp = "nothing yet"; //to string comboBox_4.getSelectedItem();
+					station2Temp = "nothing yet";// to string comboBox_5.getSelectedItem();
+		        	
+					
+				}else {
+					if (classTypeSelected == "IndustrysupportYard") {
+						stlineTemp = lineNameTemp;
+						typeTemp = classTypeSelected;
+						nameTemp = textField_3.getText(); 
+						acroTemp = textField_4.getText();
+						directTemp = (String)comboBox_3.getSelectedItem();
+						headTemp = "NothingYet";
+						tailTemp = "Nothing Yet"; 
+						numLinesTemp = Integer.parseInt(textField_5.getText());
+						numCarsTemp = Integer.parseInt(textField_6.getText());
+						industreNameTemp = textField_7.getText();
+						descriptionTempStation = textArea_1.getText();
+						station1Temp = "nothing";
+						station2Temp = "nothing";
+						
+					}else {
+						stlineTemp = lineNameTemp;
+						typeTemp = classTypeSelected;
+						nameTemp = textField_3.getText(); 
+						acroTemp = textField_4.getText();
+						directTemp = (String)comboBox_3.getSelectedItem();
+						headTemp = "NothingYet";
+						tailTemp = "Nothing Yet"; 
+						numLinesTemp = Integer.parseInt(textField_5.getText());
+						numCarsTemp = Integer.parseInt(textField_6.getText());
+						industreNameTemp = "nothing";
+						descriptionTempStation = "nothing";
+						station1Temp = "nothing";
+						station2Temp = "nothing";
+						
+					}
+				}
 				HomePanel.setVisible(true);
 				addLine.setVisible(false);
 				editLine.setVisible(false);
@@ -2013,17 +2106,97 @@ public class MainWindow {
 				AddEndStation.setVisible(true);
 			}
 		});
+		
+		AddLineButton.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				if (classTypeSelected2 == "InterchangeYard") {
+					stlineTem = lineNameTemp;
+					typeTem = classTypeSelected2;
+					nameTem = textField_8.getText(); 
+					acroTem = textField_9.getText();
+					directTem = (String)comboBox_3_1.getSelectedItem();
+					headTem = "NothingYet";
+					tailTem = "Nothing Yet"; 
+					numLinesTem = Integer.parseInt(textField_10.getText());
+					numCarsTem = Integer.parseInt(textField_11.getText());
+		        	industreNameTem = "nothing";
+					descriptionTempStation2 = "nothing";
+					station1Tem = "nothing yet"; //to string comboBox_4.getSelectedItem();
+					station2Tem = "nothing yet";// to string comboBox_5.getSelectedItem();
+		        	
+					
+				}else {
+					if (classTypeSelected2 == "IndustrysupportYard") {
+						stlineTem = lineNameTemp;
+						typeTem = classTypeSelected2;
+						nameTem = textField_8.getText(); 
+						acroTem = textField_9.getText();
+						directTem = (String)comboBox_3_1.getSelectedItem();
+						headTem = "NothingYet";
+						tailTem = "Nothing Yet"; 
+						numLinesTem = Integer.parseInt(textField_10.getText());
+						numCarsTem = Integer.parseInt(textField_11.getText());
+						industreNameTem = textField_12.getText();
+						descriptionTempStation2 = textArea_1_1.getText();
+						station1Tem = "nothing";
+						station2Tem = "nothing";
+						
+					}else {
+						stlineTem = lineNameTemp;
+						typeTem = classTypeSelected2;
+						nameTem = textField_8.getText(); 
+						acroTem = textField_9.getText();
+						directTem = (String)comboBox_3_1.getSelectedItem();
+						headTem = "NothingYet";
+						tailTem = "Nothing Yet"; 
+						numLinesTem = Integer.parseInt(textField_10.getText());
+						numCarsTem = Integer.parseInt(textField_11.getText());
+						industreNameTem = "nothing";
+						descriptionTempStation2 = "nothing";
+						station1Tem = "nothing";
+						station2Tem = "nothing";
+						
+					}
+				}
+				MyRailRoad.addStation( stlineTemp,  typeTemp,  nameTemp,  acroTemp, directTemp,  headTemp,  tailTemp,  numLinesTemp,  numCarsTemp,  industreNameTemp,  descriptionTempStation,  station1Temp,  station2Temp);
+				MyRailRoad.addStation( stlineTem,  typeTem,  nameTem,  acroTem, directTem,  headTem,  tailTem,  numLinesTem,  numCarsTem,  industreNameTem,  descriptionTempStation2,  station1Tem,  station2Tem);
+				MyRailRoad.addLine(lineNameTemp, lineAcroTemp, lineTypeTemp, directionTemp, lineLengthTemp, nameTemp, nameTem, 2, 0, descripTemp);
+				HomePanel.setVisible(true);
+				addLine.setVisible(false);
+				editLine.setVisible(false);
+				deleteLine.setVisible(false);
+				addStation.setVisible(false);
+				editStation.setVisible(false);
+				deleteStation.setVisible(false);
+				addInventory.setVisible(false);
+				editInventory.setVisible(false);
+				removeInventory.setVisible(false);
+				printG.setVisible(false);
+				printL.setVisible(false);
+				printS.setVisible(false);
+				instruction.setVisible(false);
+				about.setVisible(false);
+				goHome.setVisible(true);
+				nextStrStation.setVisible(false);
+				panel_7.setVisible(false);
+				panel_8.setVisible(false);
+				interyard.setVisible(false);
+				industryY.setVisible(false);
+				
+				AddEndStation.setVisible(false);
+			}
+		});
 		comboBox_2_1.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				JComboBox cb = (JComboBox)e.getSource();
-		        String classTypeSelected = (String)cb.getSelectedItem();
+		        classTypeSelected2 = (String)cb.getSelectedItem();
 		        System.out.print(classTypeSelected);
-		        if (classTypeSelected == "InterchangeYard") {
+		        if (classTypeSelected2 == "InterchangeYard") {
 					panel_5.setVisible(true);
 		        	panel_7.setVisible(true);
 					panel_8.setVisible(false);
 				}else {
-					if (classTypeSelected == "IndustrysupportYard") {
+					if (classTypeSelected2 == "IndustrysupportYard") {
 						panel_5.setVisible(true);
 			        	panel_7.setVisible(false);
 						panel_8.setVisible(true);
