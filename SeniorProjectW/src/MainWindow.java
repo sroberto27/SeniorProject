@@ -91,6 +91,13 @@ public class MainWindow {
 	String descriptionTempStation2;
 	String station1Tem;
 	String station2Tem;
+	//cars tempral variables
+	String staLineNameTemp;
+	String staStartNameTemp;
+	String staEndNameTemp;
+	String carTypeTemp;
+	String carCodeTemp;
+	float carWeightTemp;
 	//Combobox values for line types
 	String LineClassType[]= {"Class I", "Class II", "Class III"};
 	String ClassType[]= {"ClassificationYard", "InterchangeYard", "IndustrysupportYard"};
@@ -548,6 +555,12 @@ public class MainWindow {
 		addStation.add(panel_12);
 		panel_12.setLayout(new FlowLayout(FlowLayout.CENTER, 5, 5));
 		
+		JLabel lblNewLabel_19 = new JLabel("Line name");
+		panel_12.add(lblNewLabel_19);
+		
+		JComboBox comboBox_7 = new JComboBox();
+		panel_12.add(comboBox_7);
+		
 		JLabel lblNewLabel_5_2 = new JLabel("Type of Station");
 		panel_12.add(lblNewLabel_5_2);
 		
@@ -621,12 +634,6 @@ public class MainWindow {
 		textField_21.setColumns(10);
 		panel_12.add(textField_21);
 		
-		JLabel lblNewLabel_19 = new JLabel("Tail Station");
-		panel_12.add(lblNewLabel_19);
-		
-		JComboBox comboBox_7 = new JComboBox();
-		panel_12.add(comboBox_7);
-		
 		JLabel lblNewLabel_20 = new JLabel("Head Station");
 		panel_12.add(lblNewLabel_20);
 		
@@ -674,6 +681,7 @@ public class MainWindow {
 		addStation.add(panel_16);
 		
 		JButton AddStationButton = new JButton("Add Station");
+		
 		panel_16.add(AddStationButton);
 		
 		JPanel editStation = new JPanel();
@@ -975,6 +983,7 @@ public class MainWindow {
 		panel_22.add(lblNewLabel_30);
 		
 		JButton btnNewButton_5 = new JButton("ADD Car");
+		
 		panel_22.add(btnNewButton_5);
 		
 		JPanel editInventory = new JPanel();
@@ -2230,6 +2239,119 @@ public class MainWindow {
 						panel_15.setVisible(false);
 					}
 				}
+			}
+		});
+		AddStationButton.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				if (classTypeSelected == "InterchangeYard") {
+					stlineTemp = "Nothing yet";// comboBox_7.getselecteditem()
+					typeTemp = classTypeSelected;
+					nameTemp = textField_18.getText(); 
+					acroTemp = textField_19.getText();
+					directTemp = (String)comboBox_3_2.getSelectedItem();
+					headTemp = "NothingYet";
+					tailTemp = "Nothing Yet"; 
+					numLinesTemp = Integer.parseInt(textField_20.getText());
+					numCarsTemp = Integer.parseInt(textField_21.getText());
+		        	industreNameTemp = "nothing";
+					descriptionTempStation = "nothing";
+					station1Temp = "nothing yet"; //to string comboBox_4_1_1.getSelectedItem();
+					station2Temp = "nothing yet";// to string comboBox_5_1_1.getSelectedItem();
+		        	
+					
+				}else {
+					if (classTypeSelected == "IndustrysupportYard") {
+						stlineTemp = "Nothing yet";// comboBox_7.getselecteditem()
+						typeTemp = classTypeSelected;
+						nameTemp = textField_18.getText(); 
+						acroTemp = textField_19.getText();
+						directTemp = (String)comboBox_3_2.getSelectedItem();
+						headTemp = "NothingYet";
+						tailTemp = "Nothing Yet"; 
+						numLinesTemp = Integer.parseInt(textField_20.getText());
+						numCarsTemp = Integer.parseInt(textField_21.getText());
+						industreNameTemp = textField_22.getText();
+						descriptionTempStation = textArea_1_1_1.getText();
+						station1Temp = "nothing";
+						station2Temp = "nothing";
+						
+					}else {
+						stlineTemp = "Nothing yet";// comboBox_7.getselecteditem()
+						typeTemp = classTypeSelected;
+						nameTemp = textField_18.getText(); 
+						acroTemp = textField_19.getText();
+						directTemp = (String)comboBox_3_2.getSelectedItem();
+						headTemp = "NothingYet";
+						tailTemp = "Nothing Yet"; 
+						numLinesTemp = Integer.parseInt(textField_20.getText());
+						numCarsTemp = Integer.parseInt(textField_21.getText());
+						industreNameTemp = "nothing";
+						descriptionTempStation = "nothing";
+						station1Temp = "nothing";
+						station2Temp = "nothing";
+						
+					}
+				}
+				MyRailRoad.addStation( stlineTemp,  typeTemp,  nameTemp,  acroTemp, directTemp,  headTemp,  tailTemp,  numLinesTemp,  numCarsTemp,  industreNameTemp,  descriptionTempStation,  station1Temp,  station2Temp);
+				HomePanel.setVisible(true);
+				addLine.setVisible(false);
+				editLine.setVisible(false);
+				deleteLine.setVisible(false);
+				addStation.setVisible(false);
+				editStation.setVisible(false);
+				deleteStation.setVisible(false);
+				addInventory.setVisible(false);
+				editInventory.setVisible(false);
+				removeInventory.setVisible(false);
+				printG.setVisible(false);
+				printL.setVisible(false);
+				printS.setVisible(false);
+				instruction.setVisible(false);
+				about.setVisible(false);
+				goHome.setVisible(true);
+				nextStrStation.setVisible(false);
+				panel_7.setVisible(false);
+				panel_8.setVisible(false);
+				interyard.setVisible(false);
+				industryY.setVisible(false);
+				
+				AddEndStation.setVisible(false);
+			}
+		});
+		btnNewButton_5.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				
+				staLineNameTemp ="Nothing yet"; //(String) comboBox_9.getSelectedItem();
+				staStartNameTemp = "Nothing yet";//(String) comboBox_10.getSelectedItem();
+				staEndNameTemp = "Nothing yet";//(String) comboBox_11.getSelectedItem();
+				carTypeTemp = "Nothing yet";//(String) comboBox_12.getSelectedItem();
+				carCodeTemp = textField_30.getText();
+				carWeightTemp = Float.parseFloat(textField_31.getText());
+				MyRailRoad.addCar(staLineNameTemp, carTypeTemp, staStartNameTemp, staEndNameTemp, carCodeTemp, carWeightTemp);
+				HomePanel.setVisible(true);
+				addLine.setVisible(false);
+				editLine.setVisible(false);
+				deleteLine.setVisible(false);
+				addStation.setVisible(false);
+				editStation.setVisible(false);
+				deleteStation.setVisible(false);
+				addInventory.setVisible(false);
+				editInventory.setVisible(false);
+				removeInventory.setVisible(false);
+				printG.setVisible(false);
+				printL.setVisible(false);
+				printS.setVisible(false);
+				instruction.setVisible(false);
+				about.setVisible(false);
+				goHome.setVisible(true);
+				nextStrStation.setVisible(false);
+				panel_7.setVisible(false);
+				panel_8.setVisible(false);
+				interyard.setVisible(false);
+				industryY.setVisible(false);
+				
+				AddEndStation.setVisible(false);
+				
 			}
 		});
 		Home.add(GoHome);
