@@ -635,7 +635,95 @@ public class MainWindow {
 	public MainWindow() {
 		initialize();
 	}
-
+	
+	private void SetPanelVisible(String panel) {
+		HomePanel.setVisible(true);
+		if(panel == "AddEndStation") {
+			AddEndStation.setVisible(true);
+		}else {
+			AddEndStation.setVisible(false);
+		}
+		if(panel == "nextStrStation") {
+			nextStrStation.setVisible(true);
+		}else {
+			nextStrStation.setVisible(false);
+		}
+		if(panel == "goHome") {
+			goHome.setVisible(true);
+		}else {
+			goHome.setVisible(false);
+		}
+		if(panel == "about") {
+			about.setVisible(true);
+		}else {
+			about.setVisible(false);
+		}
+		if(panel == "instruction") {
+			instruction.setVisible(true);
+		}else {
+			instruction.setVisible(false);
+		}
+		if(panel == "loadInventory") {
+			loadInventory.setVisible(true);
+		}else {
+			loadInventory.setVisible(false);
+		}
+		if(panel == "printS") {
+			printS.setVisible(true);
+		}else {
+			printS.setVisible(false);
+		}
+		if(panel == "printL") {
+			printL.setVisible(true);
+		}else {
+			printL.setVisible(false);
+		}
+		if(panel == "printG") {
+			printG.setVisible(true);
+		}else {
+			printG.setVisible(false);
+		}
+		if(panel == "removeInventory") {
+			removeInventory.setVisible(true);
+		}else {
+			removeInventory.setVisible(false);
+		}
+		if(panel == "editInventory") {
+			editInventory.setVisible(true);
+		}else {
+			editInventory.setVisible(false);
+		}
+		if(panel == "addInventory") {
+			addInventory.setVisible(true);
+		}else {
+			addInventory.setVisible(false);
+		}
+		if(panel == "deleteStation") {
+			deleteStation.setVisible(true);
+		}else {
+			deleteStation.setVisible(false);
+		}
+		if(panel == "addStation") {
+			addStation.setVisible(true);
+		}else {
+			addStation.setVisible(false);
+		}
+		if(panel == "deleteLine") {
+			deleteLine.setVisible(true);
+		}else {
+			deleteLine.setVisible(false);
+		}
+		if(panel == "editLine") {
+			editLine.setVisible(true);
+		}else {
+			editLine.setVisible(false);
+		}
+		if(panel == "addLine") {
+			addLine.setVisible(true);
+		}else {
+			addLine.setVisible(false);
+		}
+	}
 	/**
 	 * Initialize the contents of the frame.
 	 */
@@ -1906,23 +1994,7 @@ public class MainWindow {
 		AddLine.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				//HomePanel.setVisible(false);
-				addLine.setVisible(true);
-				editLine.setVisible(false);
-				deleteLine.setVisible(false);
-				addStation.setVisible(false);
-				editStation.setVisible(false);
-				deleteStation.setVisible(false);
-				addInventory.setVisible(false);
-				editInventory.setVisible(false);
-				removeInventory.setVisible(false);
-				printG.setVisible(false);
-				printL.setVisible(false);
-				printS.setVisible(false);
-				loadInventory.setVisible(false);
-				instruction.setVisible(false);
-				about.setVisible(false);
-				goHome.setVisible(false);
-				nextStrStation.setVisible(false);
+				SetPanelVisible("addLine");
 			}
 		});
 		Lines.add(AddLine);
@@ -1930,24 +2002,9 @@ public class MainWindow {
 		EditLine = new JMenuItem("Edit Line");
 		EditLine.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				//HomePanel.setVisible(true);
-				addLine.setVisible(false);
-				editLine.setVisible(true);
-				deleteLine.setVisible(false);
-				addStation.setVisible(false);
-				editStation.setVisible(false);
-				deleteStation.setVisible(false);
-				addInventory.setVisible(false);
-				editInventory.setVisible(false);
-				removeInventory.setVisible(false);
-				printG.setVisible(false);
-				printL.setVisible(false);
-				printS.setVisible(false);
-				loadInventory.setVisible(false);
-				instruction.setVisible(false);
-				about.setVisible(false);
-				goHome.setVisible(false);
-				nextStrStation.setVisible(false);
+				
+				SetPanelVisible("editLine");
+				
 			}
 		});
 		Lines.add(EditLine);
@@ -1955,24 +2012,9 @@ public class MainWindow {
 		DeleteLine = new JMenuItem("Delete Line");
 		DeleteLine.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				//HomePanel.setVisible(false);
-				addLine.setVisible(false);
-				editLine.setVisible(false);
-				deleteLine.setVisible(true);
-				addStation.setVisible(false);
-				editStation.setVisible(false);
-				deleteStation.setVisible(false);
-				addInventory.setVisible(false);
-				editInventory.setVisible(false);
-				removeInventory.setVisible(false);
-				printG.setVisible(false);
-				printL.setVisible(false);
-				printS.setVisible(false);
-				loadInventory.setVisible(false);
-				instruction.setVisible(false);
-				about.setVisible(false);
-				goHome.setVisible(false);
-				nextStrStation.setVisible(false);
+				
+				SetPanelVisible("deleteLine");
+				
 			}
 		});
 		Lines.add(DeleteLine);
@@ -1984,24 +2026,8 @@ public class MainWindow {
 		AddStation.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				//HomePanel.setVisible(false);
-				addLine.setVisible(false);
-				editLine.setVisible(false);
-				deleteLine.setVisible(false);
-				addStation.setVisible(true);
-				editStation.setVisible(false);
-				deleteStation.setVisible(false);
-				addInventory.setVisible(false);
-				editInventory.setVisible(false);
-				removeInventory.setVisible(false);
-				printG.setVisible(false);
-				printL.setVisible(false);
-				printS.setVisible(false);
-				loadInventory.setVisible(false);
-				instruction.setVisible(false);
-				about.setVisible(false);
-				goHome.setVisible(false);
-				nextStrStation.setVisible(false);
-				panel_13.setVisible(false);
+				
+				SetPanelVisible("addStation");
 			}
 		});
 		Stations.add(AddStation);
@@ -2010,24 +2036,8 @@ public class MainWindow {
 		EditStation.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				//HomePanel.setVisible(false);
-				addLine.setVisible(false);
-				editLine.setVisible(false);
-				deleteLine.setVisible(false);
-				addStation.setVisible(false);
-				editStation.setVisible(true);
-				deleteStation.setVisible(false);
-				addInventory.setVisible(false);
-				editInventory.setVisible(false);
-				removeInventory.setVisible(false);
-				printG.setVisible(false);
-				printL.setVisible(false);
-				printS.setVisible(false);
-				loadInventory.setVisible(false);
-				instruction.setVisible(false);
-				about.setVisible(false);
-				goHome.setVisible(false);
-				nextStrStation.setVisible(false);
-				panel_20.setVisible(false);
+				
+				SetPanelVisible("editStation");
 			}
 		});
 		Stations.add(EditStation);
@@ -2036,23 +2046,8 @@ public class MainWindow {
 		DeleteStation.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				//HomePanel.setVisible(false);
-				addLine.setVisible(false);
-				editLine.setVisible(false);
-				deleteLine.setVisible(false);
-				addStation.setVisible(false);
-				editStation.setVisible(false);
-				deleteStation.setVisible(true);
-				addInventory.setVisible(false);
-				editInventory.setVisible(false);
-				removeInventory.setVisible(false);
-				printG.setVisible(false);
-				printL.setVisible(false);
-				printS.setVisible(false);
-				loadInventory.setVisible(false);
-				instruction.setVisible(false);
-				about.setVisible(false);
-				goHome.setVisible(false);
-				nextStrStation.setVisible(false);
+				
+				SetPanelVisible("deleteStation");
 			}
 		});
 		Stations.add(DeleteStation);
@@ -2063,24 +2058,8 @@ public class MainWindow {
 		AddInventory = new JMenuItem("Add");
 		AddInventory.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				//HomePanel.setVisible(false);
-				addLine.setVisible(false);
-				editLine.setVisible(false);
-				deleteLine.setVisible(false);
-				addStation.setVisible(false);
-				editStation.setVisible(false);
-				deleteStation.setVisible(false);
-				addInventory.setVisible(true);
-				editInventory.setVisible(false);
-				removeInventory.setVisible(false);
-				printG.setVisible(false);
-				printL.setVisible(false);
-				printS.setVisible(false);
-				loadInventory.setVisible(false);
-				instruction.setVisible(false);
-				about.setVisible(false);
-				goHome.setVisible(false);
-				nextStrStation.setVisible(false);
+				
+				SetPanelVisible("addInventory");
 			}
 		});
 		Inventory.add(AddInventory);
@@ -2088,24 +2067,8 @@ public class MainWindow {
 		EditInventory = new JMenuItem("Edit");
 		EditInventory.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				//HomePanel.setVisible(false);
-				addLine.setVisible(false);
-				editLine.setVisible(false);
-				deleteLine.setVisible(false);
-				addStation.setVisible(false);
-				editStation.setVisible(false);
-				deleteStation.setVisible(false);
-				addInventory.setVisible(false);
-				editInventory.setVisible(true);
-				removeInventory.setVisible(false);
-				printG.setVisible(false);
-				printL.setVisible(false);
-				printS.setVisible(false);
-				loadInventory.setVisible(false);
-				instruction.setVisible(false);
-				about.setVisible(false);
-				goHome.setVisible(false);
-				nextStrStation.setVisible(false);
+				
+				SetPanelVisible("editInventory");
 			}
 		});
 		Inventory.add(EditInventory);
@@ -2113,24 +2076,8 @@ public class MainWindow {
 		RemoveInventory = new JMenuItem("Remove");
 		RemoveInventory.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				//HomePanel.setVisible(false);
-				addLine.setVisible(false);
-				editLine.setVisible(false);
-				deleteLine.setVisible(false);
-				addStation.setVisible(false);
-				editStation.setVisible(false);
-				deleteStation.setVisible(false);
-				addInventory.setVisible(false);
-				editInventory.setVisible(false);
-				removeInventory.setVisible(true);
-				printG.setVisible(false);
-				printL.setVisible(false);
-				printS.setVisible(false);
-				loadInventory.setVisible(false);
-				instruction.setVisible(false);
-				about.setVisible(false);
-				goHome.setVisible(false);
-				nextStrStation.setVisible(false);
+				
+				SetPanelVisible("removeInventory");
 			}
 		});
 		Inventory.add(RemoveInventory);
@@ -2141,24 +2088,8 @@ public class MainWindow {
 		ReportGprint = new JMenuItem("Print General Report");
 		ReportGprint.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				//HomePanel.setVisible(false);
-				addLine.setVisible(false);
-				editLine.setVisible(false);
-				deleteLine.setVisible(false);
-				addStation.setVisible(false);
-				editStation.setVisible(false);
-				deleteStation.setVisible(false);
-				addInventory.setVisible(false);
-				editInventory.setVisible(false);
-				removeInventory.setVisible(false);
-				printG.setVisible(true);
-				printL.setVisible(false);
-				printS.setVisible(false);
-				loadInventory.setVisible(false);
-				instruction.setVisible(false);
-				about.setVisible(false);
-				goHome.setVisible(false);
-				nextStrStation.setVisible(false);
+				
+				SetPanelVisible("printG");
 			}
 		});
 		Edit.add(ReportGprint);
@@ -2166,24 +2097,8 @@ public class MainWindow {
 		ReportLprint = new JMenuItem("Print Line Report");
 		ReportLprint.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				//HomePanel.setVisible(false);
-				addLine.setVisible(false);
-				editLine.setVisible(false);
-				deleteLine.setVisible(false);
-				addStation.setVisible(false);
-				editStation.setVisible(false);
-				deleteStation.setVisible(false);
-				addInventory.setVisible(false);
-				editInventory.setVisible(false);
-				removeInventory.setVisible(false);
-				printG.setVisible(false);
-				printL.setVisible(true);
-				printS.setVisible(false);
-				loadInventory.setVisible(false);
-				instruction.setVisible(false);
-				about.setVisible(false);
-				goHome.setVisible(false);
-				nextStrStation.setVisible(false);
+				
+				SetPanelVisible("printL");
 			}
 		});
 		Edit.add(ReportLprint);
@@ -2191,24 +2106,8 @@ public class MainWindow {
 		ReportSprint = new JMenuItem("Print Station Report");
 		ReportSprint.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				//HomePanel.setVisible(false);
-				addLine.setVisible(false);
-				editLine.setVisible(false);
-				deleteLine.setVisible(false);
-				addStation.setVisible(false);
-				editStation.setVisible(false);
-				deleteStation.setVisible(false);
-				addInventory.setVisible(false);
-				editInventory.setVisible(false);
-				removeInventory.setVisible(false);
-				printG.setVisible(false);
-				printL.setVisible(false);
-				printS.setVisible(true);
-				loadInventory.setVisible(false);
-				instruction.setVisible(false);
-				about.setVisible(false);
-				goHome.setVisible(false);
-				nextStrStation.setVisible(false);
+				
+				SetPanelVisible("printS");
 			}
 		});
 		Edit.add(ReportSprint);
@@ -2216,24 +2115,8 @@ public class MainWindow {
 		LoadInventory = new JMenuItem("Load Inventory");
 		LoadInventory.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				//HomePanel.setVisible(false);
-				addLine.setVisible(false);
-				editLine.setVisible(false);
-				deleteLine.setVisible(false);
-				addStation.setVisible(false);
-				editStation.setVisible(false);
-				deleteStation.setVisible(false);
-				addInventory.setVisible(false);
-				editInventory.setVisible(false);
-				removeInventory.setVisible(false);
-				printG.setVisible(false);
-				printL.setVisible(false);
-				printS.setVisible(false);
-				loadInventory.setVisible(true);
-				instruction.setVisible(false);
-				about.setVisible(false);
-				goHome.setVisible(false);
-				nextStrStation.setVisible(false);
+				
+				SetPanelVisible("loadInventory");
 			}
 		});
 		Edit.add(LoadInventory);
@@ -2244,24 +2127,8 @@ public class MainWindow {
 		Instructions = new JMenuItem("Intrusctions");
 		Instructions.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				//HomePanel.setVisible(false);
-				addLine.setVisible(false);
-				editLine.setVisible(false);
-				deleteLine.setVisible(false);
-				addStation.setVisible(false);
-				editStation.setVisible(false);
-				deleteStation.setVisible(false);
-				addInventory.setVisible(false);
-				editInventory.setVisible(false);
-				removeInventory.setVisible(false);
-				printG.setVisible(false);
-				printL.setVisible(false);
-				printS.setVisible(false);
-				loadInventory.setVisible(false);
-				instruction.setVisible(true);
-				about.setVisible(false);
-				goHome.setVisible(false);
-				nextStrStation.setVisible(false);
+				
+				SetPanelVisible("instruction");
 			}
 		});
 		Help.add(Instructions);
@@ -2269,24 +2136,8 @@ public class MainWindow {
 		About = new JMenuItem("About");
 		About.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				//HomePanel.setVisible(false);
-				addLine.setVisible(false);
-				editLine.setVisible(false);
-				deleteLine.setVisible(false);
-				addStation.setVisible(false);
-				editStation.setVisible(false);
-				deleteStation.setVisible(false);
-				addInventory.setVisible(false);
-				editInventory.setVisible(false);
-				removeInventory.setVisible(false);
-				printG.setVisible(false);
-				printL.setVisible(false);
-				printS.setVisible(false);
-				loadInventory.setVisible(false);
-				instruction.setVisible(false);
-				about.setVisible(true);
-				goHome.setVisible(false);
-				nextStrStation.setVisible(false);
+				
+				SetPanelVisible("about");
 			}
 		});
 		Help.add(About);
@@ -2298,22 +2149,7 @@ public class MainWindow {
 		GoHome.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				
-				addLine.setVisible(false);
-				editLine.setVisible(false);
-				deleteLine.setVisible(false);
-				addStation.setVisible(false);
-				editStation.setVisible(false);
-				deleteStation.setVisible(false);
-				addInventory.setVisible(false);
-				editInventory.setVisible(false);
-				removeInventory.setVisible(false);
-				printG.setVisible(false);
-				printL.setVisible(false);
-				printS.setVisible(false);
-				instruction.setVisible(false);
-				about.setVisible(false);
-				goHome.setVisible(true);
-				nextStrStation.setVisible(false);
+				SetPanelVisible("goHome");
 			}
 		});
 		
@@ -2328,25 +2164,8 @@ public class MainWindow {
 				directionTemp = (String) comboBox_1.getSelectedItem();
 				descripTemp = textArea.getText();
 				//System.out.print(lineNameTemp+" , "+ lineAcroTemp+" , "+lineLengthTemp+" , "+ lineTypeTemp+" , "+ directionTemp +" , "+ descripTemp);
-				HomePanel.setVisible(true);
-				addLine.setVisible(false);
-				editLine.setVisible(false);
-				deleteLine.setVisible(false);
-				addStation.setVisible(false);
-				editStation.setVisible(false);
-				deleteStation.setVisible(false);
-				addInventory.setVisible(false);
-				editInventory.setVisible(false);
-				removeInventory.setVisible(false);
-				printG.setVisible(false);
-				printL.setVisible(false);
-				printS.setVisible(false);
-				instruction.setVisible(false);
-				about.setVisible(false);
-				goHome.setVisible(false);
-				nextStrStation.setVisible(true);
-				interyard.setVisible(false);
-				industryY.setVisible(false);
+				
+				SetPanelVisible("nextStrStation");
 				
 				
 			}
@@ -2402,29 +2221,8 @@ public class MainWindow {
 						
 					}
 				}
-				HomePanel.setVisible(true);
-				addLine.setVisible(false);
-				editLine.setVisible(false);
-				deleteLine.setVisible(false);
-				addStation.setVisible(false);
-				editStation.setVisible(false);
-				deleteStation.setVisible(false);
-				addInventory.setVisible(false);
-				editInventory.setVisible(false);
-				removeInventory.setVisible(false);
-				printG.setVisible(false);
-				printL.setVisible(false);
-				printS.setVisible(false);
-				instruction.setVisible(false);
-				about.setVisible(false);
-				goHome.setVisible(false);
-				nextStrStation.setVisible(false);
-				panel_7.setVisible(false);
-				panel_8.setVisible(false);
-				interyard.setVisible(false);
-				industryY.setVisible(false);
 				
-				AddEndStation.setVisible(true);
+				SetPanelVisible("AddEndStation");
 			}
 		});
 		
@@ -2482,29 +2280,8 @@ public class MainWindow {
 				MyRailRoad.addStation( stlineTemp,  typeTemp,  nameTemp,  acroTemp, directTemp,  headTemp,  tailTemp,  numLinesTemp,  numCarsTemp,  industreNameTemp,  descriptionTempStation,  station1Temp,  station2Temp);
 				MyRailRoad.addStation( stlineTem,  typeTem,  nameTem,  acroTem, directTem,  headTem,  tailTem,  numLinesTem,  numCarsTem,  industreNameTem,  descriptionTempStation2,  station1Tem,  station2Tem);
 				MyRailRoad.addLine(lineNameTemp, lineAcroTemp, lineTypeTemp, directionTemp, lineLengthTemp, nameTemp, nameTem, 2, 0, descripTemp);
-				HomePanel.setVisible(true);
-				addLine.setVisible(false);
-				editLine.setVisible(false);
-				deleteLine.setVisible(false);
-				addStation.setVisible(false);
-				editStation.setVisible(false);
-				deleteStation.setVisible(false);
-				addInventory.setVisible(false);
-				editInventory.setVisible(false);
-				removeInventory.setVisible(false);
-				printG.setVisible(false);
-				printL.setVisible(false);
-				printS.setVisible(false);
-				instruction.setVisible(false);
-				about.setVisible(false);
-				goHome.setVisible(true);
-				nextStrStation.setVisible(false);
-				panel_7.setVisible(false);
-				panel_8.setVisible(false);
-				interyard.setVisible(false);
-				industryY.setVisible(false);
 				
-				AddEndStation.setVisible(false);
+				SetPanelVisible("goHome");
 			}
 		});
 		comboBox_2_1.addActionListener(new ActionListener() {
@@ -2605,29 +2382,8 @@ public class MainWindow {
 					}
 				}
 				MyRailRoad.addStation( stlineTemp,  typeTemp,  nameTemp,  acroTemp, directTemp,  headTemp,  tailTemp,  numLinesTemp,  numCarsTemp,  industreNameTemp,  descriptionTempStation,  station1Temp,  station2Temp);
-				HomePanel.setVisible(true);
-				addLine.setVisible(false);
-				editLine.setVisible(false);
-				deleteLine.setVisible(false);
-				addStation.setVisible(false);
-				editStation.setVisible(false);
-				deleteStation.setVisible(false);
-				addInventory.setVisible(false);
-				editInventory.setVisible(false);
-				removeInventory.setVisible(false);
-				printG.setVisible(false);
-				printL.setVisible(false);
-				printS.setVisible(false);
-				instruction.setVisible(false);
-				about.setVisible(false);
-				goHome.setVisible(true);
-				nextStrStation.setVisible(false);
-				panel_7.setVisible(false);
-				panel_8.setVisible(false);
-				interyard.setVisible(false);
-				industryY.setVisible(false);
 				
-				AddEndStation.setVisible(false);
+				SetPanelVisible("goHome");
 			}
 		});
 		btnNewButton_5.addActionListener(new ActionListener() {
@@ -2640,56 +2396,14 @@ public class MainWindow {
 				carCodeTemp = textField_30.getText();
 				carWeightTemp = Float.parseFloat(textField_31.getText());
 				MyRailRoad.addCar(staLineNameTemp, carTypeTemp, staStartNameTemp, staEndNameTemp, carCodeTemp, carWeightTemp);
-				HomePanel.setVisible(true);
-				addLine.setVisible(false);
-				editLine.setVisible(false);
-				deleteLine.setVisible(false);
-				addStation.setVisible(false);
-				editStation.setVisible(false);
-				deleteStation.setVisible(false);
-				addInventory.setVisible(false);
-				editInventory.setVisible(false);
-				removeInventory.setVisible(false);
-				printG.setVisible(false);
-				printL.setVisible(false);
-				printS.setVisible(false);
-				instruction.setVisible(false);
-				about.setVisible(false);
-				goHome.setVisible(true);
-				nextStrStation.setVisible(false);
-				panel_7.setVisible(false);
-				panel_8.setVisible(false);
-				interyard.setVisible(false);
-				industryY.setVisible(false);
 				
-				AddEndStation.setVisible(false);
+				SetPanelVisible("goHome");
 				
 			}
 		});
 		Home.add(GoHome);
-		HomePanel.setVisible(true);
-		addLine.setVisible(false);
-		editLine.setVisible(false);
-		deleteLine.setVisible(false);
-		addStation.setVisible(false);
-		editStation.setVisible(false);
-		deleteStation.setVisible(false);
-		addInventory.setVisible(false);
-		editInventory.setVisible(false);
-		removeInventory.setVisible(false);
-		printG.setVisible(false);
-		printL.setVisible(false);
-		printS.setVisible(false);
-		instruction.setVisible(false);
-		about.setVisible(false);
-		goHome.setVisible(true);
-		nextStrStation.setVisible(false);
-		interyard.setVisible(false);
-		industryY.setVisible(false);
-		panel_1.setVisible(false);
-		panel_5.setVisible(false);
-    	panel_7.setVisible(false);
-		panel_8.setVisible(false);
+		
+		SetPanelVisible("goHome");
 	}
 
 }
