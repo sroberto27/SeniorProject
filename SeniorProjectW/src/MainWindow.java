@@ -40,6 +40,9 @@ import javax.swing.JTable;
 import javax.swing.JScrollBar;
 import javax.swing.JScrollPane;
 import javax.swing.table.TableModel;
+
+import org.eclipse.osgi.internal.debug.Debug;
+
 import java.awt.Scrollbar;
 import java.awt.ScrollPane;
 import javax.swing.JTree;
@@ -374,8 +377,9 @@ public class MainWindow {
 	int numberOfStationTemp;
 	int LinecapacityTemp;
 	//Station temporal variable
+	String serachStation;
+	int indexStation;
 	String classTypeSelected;
-	String classTypeSelected2;
 	String stlineTemp;
 	String typeTemp;
 	String nameTemp; 
@@ -390,6 +394,7 @@ public class MainWindow {
 	String station1Temp;
 	String station2Temp;
 	// temp var station 2
+	String classTypeSelected2;
 	String stlineTem;
 	String typeTem;
 	String nameTem; 
@@ -612,6 +617,8 @@ public class MainWindow {
 	private JTable table;
 	private JTable table_1;
 	private JTable table_2;
+	private JPanel noFound_3;
+	private JLabel lblNewLabel_16_3;
 
 	/**
 	 * Launch the application.
@@ -718,6 +725,11 @@ public class MainWindow {
 		}else {
 			editLine.setVisible(false);
 		}
+		if(panel == "editStation") {
+			editStation.setVisible(true);
+		}else {
+			editStation.setVisible(false);
+		}
 		if(panel == "addLine") {
 			addLine.setVisible(true);
 		}else {
@@ -730,7 +742,7 @@ public class MainWindow {
 	private void initialize() {
 		frame = new JFrame();
 		frame.setResizable(false);
-		frame.setBounds(100, 100, 586, 420);
+		frame.setBounds(100, 100, 600, 420);
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		frame.getContentPane().setLayout(new CardLayout(0, 0));
 		
@@ -828,6 +840,7 @@ public class MainWindow {
 		panel_9.setLayout(new CardLayout(0, 0));
 		
 		noFound = new JPanel();
+		FlowLayout flowLayout_2 = (FlowLayout) noFound.getLayout();
 		panel_9.add(noFound, "name_1393384886757600");
 		
 		lblNewLabel_16 = new JLabel("No Coincidence ...");
@@ -835,46 +848,59 @@ public class MainWindow {
 		
 		found = new JPanel();
 		panel_9.add(found, "name_1393413172175100");
+		found.setLayout(null);
 		
 		lblNewLabel_17 = new JLabel("Line Name");
+		lblNewLabel_17.setBounds(10, 8, 71, 14);
 		found.add(lblNewLabel_17);
 		
 		textField_14 = new JTextField();
+		textField_14.setBounds(86, 5, 96, 20);
 		textField_14.setColumns(10);
 		found.add(textField_14);
 		
 		lblNewLabel_1_1 = new JLabel("Line Acronym");
+		lblNewLabel_1_1.setBounds(187, 8, 84, 14);
 		found.add(lblNewLabel_1_1);
 		
 		textField_15 = new JTextField();
+		textField_15.setBounds(276, 5, 96, 20);
 		textField_15.setColumns(10);
 		found.add(textField_15);
 		
-		lblNewLabel_2_1 = new JLabel("Line length");
+		lblNewLabel_2_1 = new JLabel("Length");
+		lblNewLabel_2_1.setBounds(377, 8, 54, 14);
 		found.add(lblNewLabel_2_1);
 		
 		textField_16 = new JTextField();
+		textField_16.setBounds(441, 5, 96, 20);
 		textField_16.setColumns(10);
 		found.add(textField_16);
 		
-		lblNewLabel_3_1 = new JLabel("Line Class");
+		lblNewLabel_3_1 = new JLabel("Class");
+		lblNewLabel_3_1.setBounds(109, 33, 56, 14);
 		found.add(lblNewLabel_3_1);
 		
-		comboBox_6 = new JComboBox(ClassType);
+		comboBox_6 = new JComboBox(LineClassType);
+		comboBox_6.setBounds(171, 30, 127, 20);
 		found.add(comboBox_6);
 		
 		lblNewLabel_4_1 = new JLabel("Line Direction");
+		lblNewLabel_4_1.setBounds(303, 33, 84, 14);
 		found.add(lblNewLabel_4_1);
 		
 		comboBox_1_1 = new JComboBox(Direction);
+		comboBox_1_1.setBounds(387, 30, 96, 20);
 		found.add(comboBox_1_1);
 		
 		textArea_2 = new JTextArea();
+		textArea_2.setBounds(29, 55, 411, 184);
 		textArea_2.setRows(10);
 		textArea_2.setColumns(60);
 		found.add(textArea_2);
 		
 		btnNewButton_3 = new JButton("Edit");
+		btnNewButton_3.setBounds(485, 135, 84, 23);
 		found.add(btnNewButton_3);
 		
 		deleteLine = new JPanel();
@@ -1091,7 +1117,7 @@ public class MainWindow {
 		panel_17 = new JPanel();
 		editStation.add(panel_17);
 		
-		lblNewLabel_15_2 = new JLabel("Enter Name or Acronym of the Line");
+		lblNewLabel_15_2 = new JLabel("Enter Name or Acronym of the Station");
 		panel_17.add(lblNewLabel_15_2);
 		
 		textField_23 = new JTextField();
@@ -1099,6 +1125,7 @@ public class MainWindow {
 		panel_17.add(textField_23);
 		
 		btnNewButton_2_2 = new JButton("Search");
+		
 		panel_17.add(btnNewButton_2_2);
 		
 		panel_18 = new JPanel();
@@ -1155,7 +1182,7 @@ public class MainWindow {
 		label_10_2_1 = new JLabel("");
 		panel_12_1.add(label_10_2_1);
 		
-		comboBox_2_2_1 = new JComboBox(new Object[]{});
+		comboBox_2_2_1 = new JComboBox(ClassType);
 		panel_12_1.add(comboBox_2_2_1);
 		
 		lblNewLabel_6_2_1 = new JLabel("Station Name");
@@ -1243,6 +1270,12 @@ public class MainWindow {
 		textArea_1_1_1_1.setRows(4);
 		textArea_1_1_1_1.setColumns(40);
 		panel_15_1.add(textArea_1_1_1_1);
+		
+		noFound_3 = new JPanel();
+		panel_20.add(noFound_3, "name_267675201670499");
+		
+		lblNewLabel_16_3 = new JLabel("No Coincidence ...");
+		noFound_3.add(lblNewLabel_16_3);
 		
 		deleteStation = new JPanel();
 		HomePanel.add(deleteStation, "name_1310157463020500");
@@ -2205,6 +2238,7 @@ public class MainWindow {
 						station2Temp = "nothing";
 						
 					}else {
+						if (classTypeSelected == "ClassificationYard") {
 						stlineTemp = lineNameTemp;
 						typeTemp = classTypeSelected;
 						nameTemp = textField_3.getText(); 
@@ -2218,6 +2252,7 @@ public class MainWindow {
 						descriptionTempStation = "nothing";
 						station1Temp = "nothing";
 						station2Temp = "nothing";
+						}
 						
 					}
 				}
@@ -2261,6 +2296,7 @@ public class MainWindow {
 						station2Tem = "nothing";
 						
 					}else {
+						if (classTypeSelected2 == "ClassificationYard") {
 						stlineTem = lineNameTemp;
 						typeTem = classTypeSelected2;
 						nameTem = textField_8.getText(); 
@@ -2274,13 +2310,15 @@ public class MainWindow {
 						descriptionTempStation2 = "nothing";
 						station1Tem = "nothing";
 						station2Tem = "nothing";
+						}
 						
 					}
 				}
+				System.out.print(nameTemp);
 				MyRailRoad.addStation( stlineTemp,  typeTemp,  nameTemp,  acroTemp, directTemp,  headTemp,  tailTemp,  numLinesTemp,  numCarsTemp,  industreNameTemp,  descriptionTempStation,  station1Temp,  station2Temp);
 				MyRailRoad.addStation( stlineTem,  typeTem,  nameTem,  acroTem, directTem,  headTem,  tailTem,  numLinesTem,  numCarsTem,  industreNameTem,  descriptionTempStation2,  station1Tem,  station2Tem);
 				MyRailRoad.addLine(lineNameTemp, lineAcroTemp, lineTypeTemp, directionTemp, lineLengthTemp, nameTemp, nameTem, 2, 0, descripTemp);
-				
+				MyRailRoad.printLineData();
 				SetPanelVisible("goHome");
 			}
 		});
@@ -2392,13 +2430,70 @@ public class MainWindow {
 				staLineNameTemp ="Nothing yet"; //(String) comboBox_9.getSelectedItem();
 				staStartNameTemp = "Nothing yet";//(String) comboBox_10.getSelectedItem();
 				staEndNameTemp = "Nothing yet";//(String) comboBox_11.getSelectedItem();
-				carTypeTemp = "Nothing yet";//(String) comboBox_12.getSelectedItem();
+				carTypeTemp = (String) comboBox_12.getSelectedItem();
 				carCodeTemp = textField_30.getText();
 				carWeightTemp = Float.parseFloat(textField_31.getText());
 				MyRailRoad.addCar(staLineNameTemp, carTypeTemp, staStartNameTemp, staEndNameTemp, carCodeTemp, carWeightTemp);
 				
 				SetPanelVisible("goHome");
 				
+			}
+		});
+		btnNewButton_2.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				System.out.print(textField_13.getText());
+				if (MyRailRoad.searchLine(textField_13.getText(), found, noFound)) {
+				MyRailRoad.setTempLineData(lineNameTemp, lineAcroTemp, lineLengthTemp, lineTypeTemp, directionTemp, descripTemp);
+				 textArea_2.setText(descripTemp) ;
+				 textField_14.setText( lineNameTemp); 
+				 textField_15.setText(lineAcroTemp) ;
+				 textField_16.setText( Float.toString(lineLengthTemp));
+				 comboBox_6.setSelectedIndex(MyRailRoad.getArrayIndex(LineClassType, lineTypeTemp));
+				 comboBox_1_1.setSelectedIndex(MyRailRoad.getArrayIndex(Direction, directionTemp));
+				}
+				
+				
+			}
+		});
+		btnNewButton_2_2.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				System.out.print(textField_23.getText());
+				if (MyRailRoad.searchStation(textField_23.getText(),serachStation,indexStation,panel_12_1 , noFound_2, noFound_3, panel_15_1, panel_14_1)) {
+					System.out.print("searching station:"+indexStation);
+					MyRailRoad.setTempStationData(serachStation, 
+							indexStation, 
+							classTypeSelected, 
+							stlineTemp, 
+							carTypeTemp, 
+							nameTemp, 
+							acroTemp, 
+							directTemp, 
+							headTemp,
+							tailTemp,
+							numLinesTemp, 
+							numCarsTemp, 
+							industreNameTemp,
+							descriptionTempStation,
+							station1Temp, 
+							station2Temp);
+					comboBox_2_2_1.setSelectedIndex(MyRailRoad.getArrayIndex(ClassType,classTypeSelected ));
+					textField_24.setText(nameTemp);
+					textField_25.setText(acroTemp);
+					comboBox_3_2_1.setSelectedIndex(MyRailRoad.getArrayIndex(Direction, classTypeSelected));
+					textField_26.setText(Integer.toString(numLinesTemp));
+					textField_27.setText(Integer.toString(numCarsTemp));
+					//comboBox_7_1.setSelectedIndex(MyRailRoad.getArrayIndex(Direction, classTypeSelected)); // tail
+					//comboBox_8_1.setSelectedIndex(MyRailRoad.getArrayIndex(Direction, classTypeSelected)); //head
+					//comboBox_4_1_1_1.setSelectedIndex(MyRailRoad.getArrayIndex(Direction, classTypeSelected)); // tail
+					//comboBox_5_1_1_1.setSelectedIndex(MyRailRoad.getArrayIndex(Direction, classTypeSelected)); //head
+					textField_28.setText(industreNameTemp);
+					textArea_1_1_1_1.setText(descriptionTempStation);
+				}
+			}
+		});
+		btnNewButton_4.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				MyRailRoad.editStation( indexStation,stlineTemp,  typeTemp,  nameTemp,  acroTemp, directTemp,  headTemp,  tailTemp,  numLinesTemp,  numCarsTemp,  industreNameTemp,  descriptionTempStation,  station1Temp,  station2Temp);
 			}
 		});
 		Home.add(GoHome);

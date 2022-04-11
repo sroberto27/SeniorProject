@@ -1,3 +1,4 @@
+// componets declaration
 JPanel HomePanel;
 JPanel addLine;
 JLabel lblNewLabel;
