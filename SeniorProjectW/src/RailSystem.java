@@ -29,20 +29,33 @@ public class RailSystem extends GlobalVars{
 		Lines.set(index, new Line(name, acro, type, dir,length, Lines.get(index).start, Lines.get(index).end, Lines.get(index).numberOfStation, capSta, descr)) ;
 	
 	}
-	
+	public int getLineIndex(String name) {
+		int x=0;
+		for(Line line : Lines) {
+			if (line.lineName.equals(name)) {
+				break;
+			}
+			x++;
+		}
+		return x;
+	}
 	public void addStation(String stline, String type, String name, String acro,String direct, String head, String tail, int numLines, int numCars, String industreName, String descrip, String station1, String station2) {
 		if(type == "ClassificationYard") {
 			//System.out.print("testing enters");
 			ClassifYard temp = new ClassifYard(stline,  type,  name, acro,direct,head,tail,numLines,numCars);
 			classifYards.add(temp);
+System.out.print("Index of add station: "+ getLineIndex(stline));
+			Lines.get(getLineIndex(stline)).Stations.add(classifYards.get(classifYards.size()-1));
 		}else
 			if(type == "InterchangeYard") {
 				InterYard temp = new InterYard ( stline,  type,  name,  acro, direct,  head,  tail,  numLines,  numCars,  station1,  station2);
 				interYard.add(temp);
+				Lines.get(getLineIndex(stline)).Stations.add(interYard.get(interYard.size()-1));
 			}else
 				if(type == "IndustrysupportYard") {
 					IndusYard temp = new IndusYard( stline,  type,  name,  acro, direct,  head,  tail,  numLines,  numCars,  industreName,  descrip);
 					indusYard.add(temp);
+					Lines.get(getLineIndex(stline)).Stations.add(indusYard.get(indusYard.size()-1));
 				}
 	}
 	public void editStation(int index,String stline, String type, String name, String acro,String direct, String head, String tail, int numLines, int numCars, String industreName, String descrip, String station1, String station2) {

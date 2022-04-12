@@ -17,6 +17,7 @@ import javax.swing.SwingConstants;
 import javax.swing.table.DefaultTableModel;
 
 import java.awt.event.ActionListener;
+import java.util.Iterator;
 import java.util.List;
 import java.awt.event.ActionEvent;
 import javax.swing.JTextField;
@@ -2005,6 +2006,11 @@ public class MainWindow extends GlobalVars {
 		AddStation.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				//HomePanel.setVisible(false);
+				comboBox_7.removeAllItems();
+				for(Line line : MyRailRoad.Lines) {
+					
+						comboBox_7.addItem(line.lineName);
+				}
 				
 				SetPanelVisible("addStation");
 			}
@@ -2261,9 +2267,10 @@ public class MainWindow extends GlobalVars {
 					}
 				}
 				System.out.print(nameTemp);
+				MyRailRoad.addLine(lineNameTemp, lineAcroTemp, lineTypeTemp, directionTemp, lineLengthTemp, nameTemp, nameTem, 2, 0, descripTemp);
 				MyRailRoad.addStation( stlineTemp,  typeTemp,  nameTemp,  acroTemp, directTemp,  headTemp,  tailTemp,  numLinesTemp,  numCarsTemp,  industreNameTemp,  descriptionTempStation,  station1Temp,  station2Temp);
 				MyRailRoad.addStation( stlineTem,  typeTem,  nameTem,  acroTem, directTem,  headTem,  tailTem,  numLinesTem,  numCarsTem,  industreNameTem,  descriptionTempStation2,  station1Tem,  station2Tem);
-				MyRailRoad.addLine(lineNameTemp, lineAcroTemp, lineTypeTemp, directionTemp, lineLengthTemp, nameTemp, nameTem, 2, 0, descripTemp);
+				
 				MyRailRoad.printLineData();
 				MyRailRoad.printCalssStationData();
 				SetPanelVisible("goHome");
@@ -2318,7 +2325,7 @@ public class MainWindow extends GlobalVars {
 		AddStationButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				if (classTypeSelected == "InterchangeYard") {
-					stlineTemp = "Nothing yet";// comboBox_7.getselecteditem()
+					stlineTemp = (String)comboBox_7.getSelectedItem();
 					typeTemp = classTypeSelected;
 					nameTemp = textField_18.getText(); 
 					acroTemp = textField_19.getText();
@@ -2335,7 +2342,7 @@ public class MainWindow extends GlobalVars {
 					
 				}else {
 					if (classTypeSelected == "IndustrysupportYard") {
-						stlineTemp = "Nothing yet";// comboBox_7.getselecteditem()
+						stlineTemp =(String)comboBox_7.getSelectedItem();
 						typeTemp = classTypeSelected;
 						nameTemp = textField_18.getText(); 
 						acroTemp = textField_19.getText();
@@ -2350,7 +2357,7 @@ public class MainWindow extends GlobalVars {
 						station2Temp = "nothing";
 						
 					}else {
-						stlineTemp = "Nothing yet";// comboBox_7.getselecteditem()
+						stlineTemp = (String)comboBox_7.getSelectedItem();
 						typeTemp = classTypeSelected;
 						nameTemp = textField_18.getText(); 
 						acroTemp = textField_19.getText();
@@ -2434,6 +2441,27 @@ public class MainWindow extends GlobalVars {
 		btnNewButton_4.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				MyRailRoad.editStation( MyRailRoad.searchIndexGlobalIntStation,stlineTemp,  (String)comboBox_2_2_1.getSelectedItem(),  textField_24.getText(),  textField_25.getText(), (String)comboBox_3_2_1.getSelectedItem(),  headTemp,  tailTemp,  Integer.parseInt(textField_26.getText()),  Integer.parseInt(textField_27.getText()),  textField_28.getText(),  textArea_1_1_1_1.getText(),  station1Temp,  station2Temp);
+			}
+		});
+		comboBox_7.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				comboBox_8.removeAllItems();
+				for(Object stationObject : MyRailRoad.Lines.get(MyRailRoad.getLineIndex((String)comboBox_7.getSelectedItem())).Stations) {
+					if (stationObject.getClass() == InterYard.class) {
+						InterYard tempInterYard = (InterYard) stationObject;
+						comboBox_8.addItem(tempInterYard.stationName);
+					}
+					if (stationObject.getClass() == IndusYard.class) {
+						IndusYard tempIndusYard= (IndusYard) stationObject;
+						comboBox_8.addItem(tempIndusYard.stationName);
+					}
+					if (stationObject.getClass() == ClassifYard.class) {
+						ClassifYard tempClassifYard = (ClassifYard) stationObject;
+						comboBox_8.addItem(tempClassifYard.stationName);
+					}
+					
+					
+				}
 			}
 		});
 		Home.add(GoHome);

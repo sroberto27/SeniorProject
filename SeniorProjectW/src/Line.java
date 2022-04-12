@@ -1,3 +1,4 @@
+import java.util.ArrayList;
 import java.util.List;
 
 public class Line {
@@ -9,7 +10,7 @@ String lineType;
 String direction;
 String start;
 String end;
-List<Station> Stations;
+List<Object> Stations;
 int numberOfStation;
 int Linecapacity;
 
@@ -24,6 +25,7 @@ int Linecapacity;
 		 end=endSta;
 		 numberOfStation=numSta;
 		 Linecapacity=capSta;
+		 Stations =  new ArrayList<Object>();
 }
 
 }
