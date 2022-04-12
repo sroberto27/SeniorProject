@@ -1,16 +1,18 @@
 import java.util.ArrayList;
 import java.util.List;
-
 import javax.swing.JPanel;
 
 import com.ibm.icu.impl.number.AffixPatternProvider.Flags;
 
-public class RailSystem {
+public class RailSystem extends GlobalVars{
 	List<Line> Lines;
 	List<ClassifYard> classifYards;
 	List<IndusYard> indusYard;
 	List<InterYard> interYard;
 	List<Cars> cars;
+	public String searchTypeGlobalString="";
+	public int searchIndexGlobalIntStation=-1;
+	public int searchIndexGlobalIntLine=-1;
 	public RailSystem() {
 		Lines = new ArrayList<Line>();
 		classifYards = new ArrayList<ClassifYard>();
@@ -24,7 +26,7 @@ public class RailSystem {
 	}
 	public void addStation(String stline, String type, String name, String acro,String direct, String head, String tail, int numLines, int numCars, String industreName, String descrip, String station1, String station2) {
 		if(type == "ClassificationYard") {
-			System.out.print("testing enters");
+			//System.out.print("testing enters");
 			ClassifYard temp = new ClassifYard(stline,  type,  name, acro,direct,head,tail,numLines,numCars);
 			classifYards.add(temp);
 		}else
@@ -39,7 +41,7 @@ public class RailSystem {
 	}
 	public void editStation(int index,String stline, String type, String name, String acro,String direct, String head, String tail, int numLines, int numCars, String industreName, String descrip, String station1, String station2) {
 		if(type == "ClassificationYard") {
-			System.out.print("testing enters");
+			//System.out.print("testing enters");
 			classifYards.set(index, new ClassifYard(stline,  type,  name, acro,direct,head,tail,numLines,numCars)) ;
 			
 		}else
@@ -58,61 +60,63 @@ public class RailSystem {
 	
 	public boolean searchLine(String lineN, JPanel pfound, JPanel pNoFound) {
 		boolean flag = false;
+		int x=0;
 		for (Line line : Lines) {
 			if (line.lineName.equals(lineN) || line.lineAcro.equals(lineN)) {
+				lineNameTemp = line.lineName;
+				searchIndexGlobalIntLine=x;
 				flag = true;
 				break;
 			}else {
 				flag = false;
 			}
+		x++;
 		}
 		if (flag) {
-			System.out.print("got in the tru");
+			//System.out.print("got in the tru");
 			pfound.setVisible(true);
 			pNoFound.setVisible(false);
 		}else {
-			System.out.print("got in the false");
+			//System.out.print("got in the false");
 			pfound.setVisible(false);
 			pNoFound.setVisible(true);
 		}
 		return flag;
 	}
-	public boolean searchStation(String stationN, String typeOfSt, int index,JPanel pfound, JPanel pNoFound , JPanel normal, JPanel industry, JPanel inter) {
+	public int searchStation(String stationN, String typeOfSt, int index,JPanel pfound, JPanel pNoFound , JPanel normal, JPanel industry, JPanel inter) {
 		boolean flag = false;
+		int x;
 		String typeSt = "";
-		int  x = 0 ;
-		for (InterYard st : interYard) {
-			x++;
-			if (st.stationName.equals(stationN) || st.stationAcro.equals(stationN)) {
+		for ( x=0; x< interYard.size();x++) {
+			if (interYard.get(x).stationName.equals(stationN) || interYard.get(x).stationAcro.equals(stationN)) {
 				flag = true;
-				typeSt = st.statType;
+				typeSt = interYard.get(x).statType;
 				index= x;
+				searchIndexGlobalIntStation=x;
 				break;
 			}else {
 				flag = false;
 			}
 		}
-		x=0;
-		for (ClassifYard st : classifYards) {
-			System.out.print(st.stationName);
-			x++;
-			if (st.stationName.equals(stationN) || st.stationAcro.equals(stationN)) {
+		for ( x=0; x< classifYards.size();x++ ) {
+			////System.out.print(classifYards.get(x).stationName+" index: "+ x+"\n");
+			if (classifYards.get(x).stationName.equals(stationN) || classifYards.get(x).stationAcro.equals(stationN)) {
 				System.out.print("Found calssyard");
 				flag = true;
-				typeSt = st.statType;
+				typeSt =classifYards.get(x).statType;
 				index=  x;
+				searchIndexGlobalIntStation=x;
 				break;
 			}else {
 				flag = false;
 			}
 		}
-		x=0;
-		for (IndusYard st : indusYard) {
-			x++;
-			if (st.stationName.equals(stationN) || st.stationAcro.equals(stationN)) {
+		for ( x=0; x< indusYard.size();x++  ) {
+			if (indusYard.get(x).stationName.equals(stationN) || indusYard.get(x).stationAcro.equals(stationN)) {
 				flag = true;
-				typeSt = st.statType;
+				typeSt = indusYard.get(x).statType;
 				index=  x;
+				searchIndexGlobalIntStation=x;
 				break;
 			}else {
 				flag = false;
@@ -120,9 +124,9 @@ public class RailSystem {
 		}
 		if (flag) {
 			pfound.setVisible(true);
-			System.out.print("IIIIIII");
+			//System.out.print("IIIIIII");
 			if (typeSt == "ClassificationYard") {
-				System.out.print("VVVVV");
+				//System.out.print("VVVVV");
 				 pNoFound.setVisible(false);
 				 normal.setVisible(true);
 				 industry.setVisible(false);  
@@ -144,6 +148,7 @@ public class RailSystem {
 				}
 			}
 		}else {
+			x=-1;
 			pfound.setVisible(false);
 			pNoFound.setVisible(true);
 			 normal.setVisible(true);
@@ -151,24 +156,14 @@ public class RailSystem {
 			 inter.setVisible(false);
 		}
 		typeOfSt = typeSt;
-		return flag;
+		searchTypeGlobalString = typeSt;
+		return searchIndexGlobalIntStation;
 	}
-	public void setTempStationData(String searchType,int index,
-			String classTypeSelected,
-			String stlineTemp,
-			String typeTemp,
-			String nameTemp,
-			String acroTemp,
-			String directTemp,
-			String headTemp,
-			String tailTemp, 
-			int numLinesTemp,
-			int numCarsTemp,
-			String industreNameTemp,
-			String descriptionTempStation,
-			String station1Temp,
-			String station2Temp) {
+	public void setTempStationData(String searchType,int index) {
+		//System.out.print(" set search typeeeeee:  "+searchType);
+		//System.out.print("set indexxxxxx: "+index);
 		if (searchType == ("ClassificationYard")) {
+			//System.out.print("111111");
 			 stlineTemp=classifYards.get(index).stationLine;
 			 typeTemp=classifYards.get(index).statType;
 			 nameTemp=classifYards.get(index).stationName;
@@ -219,18 +214,20 @@ public class RailSystem {
 		
 		
 	}
-	public void setTempLineData(String lineNameTemp, String lineAcroTemp,	float lineLengthTemp,	String lineTypeTemp, String directionTemp,	String descripTemp) {
+	public void setTempLineData() {
+		int x=0;
 		for (Line line : Lines) {
 			if (line.lineName.equals(lineNameTemp) || line.lineAcro.equals(lineNameTemp)) {
-				 descripTemp = line.descrip;
-				 lineNameTemp =line.lineName;
-				 lineAcroTemp =line.lineAcro;
-				 lineLengthTemp =line.lineLength;
-				 lineTypeTemp =line.lineType;
-				 directionTemp =line.lineType;
+				 descripTemp = Lines.get(x).descrip;
+				 lineNameTemp =Lines.get(x).lineName;
+				 lineAcroTemp =Lines.get(x).lineAcro;
+				 lineLengthTemp =Lines.get(x).lineLength;
+				 lineTypeTemp =Lines.get(x).lineType;
+				 directionTemp = Lines.get(x).direction;
 				
 				break;
 			}
+		x++;
 		}
 		
 	}
@@ -243,9 +240,14 @@ public class RailSystem {
 		}
 	return index;
 	}
+	public void printCalssStationData() {
+		for (ClassifYard st : classifYards) {
+			//System.out.print(st.stationName + " ,,,, "+st.stationAcro);
+		}
+	}
 	public void printLineData() {
 		for (Line line : Lines) {
-			System.out.print(line.lineName +",  "+line.lineAcro);
+			//System.out.print(line.lineName +",  "+line.lineAcro);
 		}
 	}
 	

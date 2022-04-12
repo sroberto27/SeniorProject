@@ -50,7 +50,7 @@ import java.awt.Panel;
 import java.awt.TextArea;
 import javax.swing.JTextPane;
 
-public class MainWindow {
+public class MainWindow extends GlobalVars {
 	//railSystem main object
 	RailSystem MyRailRoad = new RailSystem();
 	// components J--------------------------------
@@ -365,61 +365,7 @@ public class MainWindow {
 	JMenuItem GoHome;
 	
 	
-	//line temporal variables
-	String descripTemp;
-	String lineNameTemp;
-	String lineAcroTemp;
-	float lineLengthTemp;
-	String lineTypeTemp;
-	String directionTemp;
-	String startTemp;
-	String endTemp;
-	int numberOfStationTemp;
-	int LinecapacityTemp;
-	//Station temporal variable
-	String serachStation;
-	int indexStation;
-	String classTypeSelected;
-	String stlineTemp;
-	String typeTemp;
-	String nameTemp; 
-	String acroTemp;
-	String directTemp;
-	String headTemp;
-	String tailTemp; 
-	int numLinesTemp;
-	int numCarsTemp;
-	String industreNameTemp;
-	String descriptionTempStation;
-	String station1Temp;
-	String station2Temp;
-	// temp var station 2
-	String classTypeSelected2;
-	String stlineTem;
-	String typeTem;
-	String nameTem; 
-	String acroTem;
-	String directTem;
-	String headTem;
-	String tailTem; 
-	int numLinesTem;
-	int numCarsTem;
-	String industreNameTem;
-	String descriptionTempStation2;
-	String station1Tem;
-	String station2Tem;
-	//cars tempral variables
-	String staLineNameTemp;
-	String staStartNameTemp;
-	String staEndNameTemp;
-	String carTypeTemp;
-	String carCodeTemp;
-	float carWeightTemp;
-	//Combobox values for line types
-	String LineClassType[]= {"Class I", "Class II", "Class III"};
-	String ClassType[]= {"ClassificationYard", "InterchangeYard", "IndustrysupportYard"};
-	String Direction []={"EW", "WE", "NS", "SN", "BiNS", "BiWE"};
-	String CarType []={"Local","Tonnage","Manisfest","InterModal"};
+	
 	String[] columnNames = {"Line","Type","Code","Line in Station","Direction","Position"};
 	String[][] data = {{"Noting","Noting","Noting","Noting","Noting","Noting"},
 			{"Noting","Noting","Noting","Noting","Noting","Noting"},
@@ -2319,6 +2265,7 @@ public class MainWindow {
 				MyRailRoad.addStation( stlineTem,  typeTem,  nameTem,  acroTem, directTem,  headTem,  tailTem,  numLinesTem,  numCarsTem,  industreNameTem,  descriptionTempStation2,  station1Tem,  station2Tem);
 				MyRailRoad.addLine(lineNameTemp, lineAcroTemp, lineTypeTemp, directionTemp, lineLengthTemp, nameTemp, nameTem, 2, 0, descripTemp);
 				MyRailRoad.printLineData();
+				MyRailRoad.printCalssStationData();
 				SetPanelVisible("goHome");
 			}
 		});
@@ -2443,13 +2390,13 @@ public class MainWindow {
 			public void actionPerformed(ActionEvent e) {
 				System.out.print(textField_13.getText());
 				if (MyRailRoad.searchLine(textField_13.getText(), found, noFound)) {
-				MyRailRoad.setTempLineData(lineNameTemp, lineAcroTemp, lineLengthTemp, lineTypeTemp, directionTemp, descripTemp);
-				 textArea_2.setText(descripTemp) ;
-				 textField_14.setText( lineNameTemp); 
-				 textField_15.setText(lineAcroTemp) ;
-				 textField_16.setText( Float.toString(lineLengthTemp));
-				 comboBox_6.setSelectedIndex(MyRailRoad.getArrayIndex(LineClassType, lineTypeTemp));
-				 comboBox_1_1.setSelectedIndex(MyRailRoad.getArrayIndex(Direction, directionTemp));
+				MyRailRoad.setTempLineData();
+				 textArea_2.setText(MyRailRoad.descripTemp) ;
+				 textField_14.setText( MyRailRoad.lineNameTemp); 
+				 textField_15.setText(MyRailRoad.lineAcroTemp) ;
+				 textField_16.setText( Float.toString(MyRailRoad.lineLengthTemp));
+				 comboBox_6.setSelectedIndex(MyRailRoad.getArrayIndex(LineClassType, MyRailRoad.lineTypeTemp));
+				 comboBox_1_1.setSelectedIndex(MyRailRoad.getArrayIndex(Direction, MyRailRoad.directionTemp));
 				}
 				
 				
@@ -2457,37 +2404,26 @@ public class MainWindow {
 		});
 		btnNewButton_2_2.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				System.out.print(textField_23.getText());
-				if (MyRailRoad.searchStation(textField_23.getText(),serachStation,indexStation,panel_12_1 , noFound_2, noFound_3, panel_15_1, panel_14_1)) {
-					System.out.print("searching station:"+indexStation);
-					MyRailRoad.setTempStationData(serachStation, 
-							indexStation, 
-							classTypeSelected, 
-							stlineTemp, 
-							carTypeTemp, 
-							nameTemp, 
-							acroTemp, 
-							directTemp, 
-							headTemp,
-							tailTemp,
-							numLinesTemp, 
-							numCarsTemp, 
-							industreNameTemp,
-							descriptionTempStation,
-							station1Temp, 
-							station2Temp);
-					comboBox_2_2_1.setSelectedIndex(MyRailRoad.getArrayIndex(ClassType,classTypeSelected ));
-					textField_24.setText(nameTemp);
-					textField_25.setText(acroTemp);
+				System.out.print("Text in text field"+textField_23.getText()+"\n");
+			    indexStation =	MyRailRoad.searchStation(textField_23.getText(),serachStation,indexStation,panel_12_1 , noFound_2, noFound_3, panel_15_1, panel_14_1);
+				if (-1!= indexStation) {
+					System.out.print("searching station index:"+indexStation+"\n");
+					System.out.print("searching station indexGlobal:"+MyRailRoad.searchIndexGlobalIntStation+"\n");
+					System.out.print("search station name:"+MyRailRoad.searchTypeGlobalString+"\n");
+					MyRailRoad.setTempStationData(MyRailRoad.searchTypeGlobalString, 
+							MyRailRoad.searchIndexGlobalIntStation);
+					comboBox_2_2_1.setSelectedIndex(MyRailRoad.getArrayIndex(ClassType,MyRailRoad.searchTypeGlobalString ));
+					textField_24.setText(MyRailRoad.nameTemp);
+					textField_25.setText(MyRailRoad.acroTemp);
 					comboBox_3_2_1.setSelectedIndex(MyRailRoad.getArrayIndex(Direction, classTypeSelected));
-					textField_26.setText(Integer.toString(numLinesTemp));
-					textField_27.setText(Integer.toString(numCarsTemp));
-					//comboBox_7_1.setSelectedIndex(MyRailRoad.getArrayIndex(Direction, classTypeSelected)); // tail
-					//comboBox_8_1.setSelectedIndex(MyRailRoad.getArrayIndex(Direction, classTypeSelected)); //head
-					//comboBox_4_1_1_1.setSelectedIndex(MyRailRoad.getArrayIndex(Direction, classTypeSelected)); // tail
-					//comboBox_5_1_1_1.setSelectedIndex(MyRailRoad.getArrayIndex(Direction, classTypeSelected)); //head
-					textField_28.setText(industreNameTemp);
-					textArea_1_1_1_1.setText(descriptionTempStation);
+					textField_26.setText(Integer.toString(MyRailRoad.numLinesTemp));
+					textField_27.setText(Integer.toString(MyRailRoad.numCarsTemp));
+					//comboBox_7_1.setSelectedIndex(MyRailRoad.getArrayIndex(Direction, MyRailRoad.classTypeSelected)); // tail
+					//comboBox_8_1.setSelectedIndex(MyRailRoad.getArrayIndex(Direction, MyRailRoad.classTypeSelected)); //head
+					//comboBox_4_1_1_1.setSelectedIndex(MyRailRoad.getArrayIndex(Direction, MyRailRoad.classTypeSelected)); // tail
+					//comboBox_5_1_1_1.setSelectedIndex(MyRailRoad.getArrayIndex(Direction, MyRailRoad.classTypeSelected)); //head
+					textField_28.setText(MyRailRoad.industreNameTemp);
+					textArea_1_1_1_1.setText(MyRailRoad.descriptionTempStation);
 				}
 			}
 		});
