@@ -2405,9 +2405,8 @@ public class MainWindow extends GlobalVars {
 		btnNewButton_2_2.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				System.out.print("Text in text field"+textField_23.getText()+"\n");
-			    indexStation =	MyRailRoad.searchStation(textField_23.getText(),serachStation,indexStation,panel_12_1 , noFound_2, noFound_3, panel_15_1, panel_14_1);
-				if (-1!= indexStation) {
-					System.out.print("searching station index:"+indexStation+"\n");
+				System.out.print("Bool: "+MyRailRoad.searchStation(textField_23.getText(),serachStation,panel_12_1 , noFound_2, noFound_3, panel_15_1, panel_14_1)+" \n");
+				if (MyRailRoad.searchStation(textField_23.getText(),serachStation,panel_12_1 , noFound_2, noFound_3, panel_15_1, panel_14_1)) {
 					System.out.print("searching station indexGlobal:"+MyRailRoad.searchIndexGlobalIntStation+"\n");
 					System.out.print("search station name:"+MyRailRoad.searchTypeGlobalString+"\n");
 					MyRailRoad.setTempStationData(MyRailRoad.searchTypeGlobalString, 
@@ -2427,9 +2426,14 @@ public class MainWindow extends GlobalVars {
 				}
 			}
 		});
+		btnNewButton_3.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				MyRailRoad.editLine(MyRailRoad.searchIndexGlobalIntLine,textField_14.getText(), textField_15.getText(), (String) comboBox_6.getSelectedItem(), (String) comboBox_1_1.getSelectedItem(),Float.parseFloat(textField_16.getText()), "nothing", "nothing", 0, 0, textArea_2.getText());
+			}
+		});
 		btnNewButton_4.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				MyRailRoad.editStation( indexStation,stlineTemp,  typeTemp,  nameTemp,  acroTemp, directTemp,  headTemp,  tailTemp,  numLinesTemp,  numCarsTemp,  industreNameTemp,  descriptionTempStation,  station1Temp,  station2Temp);
+				MyRailRoad.editStation( MyRailRoad.searchIndexGlobalIntStation,stlineTemp,  (String)comboBox_2_2_1.getSelectedItem(),  textField_24.getText(),  textField_25.getText(), (String)comboBox_3_2_1.getSelectedItem(),  headTemp,  tailTemp,  Integer.parseInt(textField_26.getText()),  Integer.parseInt(textField_27.getText()),  textField_28.getText(),  textArea_1_1_1_1.getText(),  station1Temp,  station2Temp);
 			}
 		});
 		Home.add(GoHome);

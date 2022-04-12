@@ -24,6 +24,12 @@ public class RailSystem extends GlobalVars{
 		Line temp = new Line(name, acro, type, dir,length, strSta, endSta, numSta, capSta, descr);
 		Lines.add(temp);
 	}
+	public void editLine(int index, String name, String acro, String type, String dir, float length, String strSta, String endSta, int numSta, int capSta, String descr){
+		
+		Lines.set(index, new Line(name, acro, type, dir,length, Lines.get(index).start, Lines.get(index).end, Lines.get(index).numberOfStation, capSta, descr)) ;
+	
+	}
+	
 	public void addStation(String stline, String type, String name, String acro,String direct, String head, String tail, int numLines, int numCars, String industreName, String descrip, String station1, String station2) {
 		if(type == "ClassificationYard") {
 			//System.out.print("testing enters");
@@ -83,7 +89,7 @@ public class RailSystem extends GlobalVars{
 		}
 		return flag;
 	}
-	public int searchStation(String stationN, String typeOfSt, int index,JPanel pfound, JPanel pNoFound , JPanel normal, JPanel industry, JPanel inter) {
+	public boolean searchStation(String stationN, String typeOfSt, JPanel pfound, JPanel pNoFound , JPanel normal, JPanel industry, JPanel inter) {
 		boolean flag = false;
 		int x;
 		String typeSt = "";
@@ -91,11 +97,9 @@ public class RailSystem extends GlobalVars{
 			if (interYard.get(x).stationName.equals(stationN) || interYard.get(x).stationAcro.equals(stationN)) {
 				flag = true;
 				typeSt = interYard.get(x).statType;
-				index= x;
+				
 				searchIndexGlobalIntStation=x;
 				break;
-			}else {
-				flag = false;
 			}
 		}
 		for ( x=0; x< classifYards.size();x++ ) {
@@ -104,22 +108,18 @@ public class RailSystem extends GlobalVars{
 				System.out.print("Found calssyard");
 				flag = true;
 				typeSt =classifYards.get(x).statType;
-				index=  x;
+				
 				searchIndexGlobalIntStation=x;
 				break;
-			}else {
-				flag = false;
 			}
 		}
 		for ( x=0; x< indusYard.size();x++  ) {
 			if (indusYard.get(x).stationName.equals(stationN) || indusYard.get(x).stationAcro.equals(stationN)) {
 				flag = true;
 				typeSt = indusYard.get(x).statType;
-				index=  x;
+				
 				searchIndexGlobalIntStation=x;
 				break;
-			}else {
-				flag = false;
 			}
 		}
 		if (flag) {
@@ -157,7 +157,7 @@ public class RailSystem extends GlobalVars{
 		}
 		typeOfSt = typeSt;
 		searchTypeGlobalString = typeSt;
-		return searchIndexGlobalIntStation;
+		return flag;
 	}
 	public void setTempStationData(String searchType,int index) {
 		//System.out.print(" set search typeeeeee:  "+searchType);
