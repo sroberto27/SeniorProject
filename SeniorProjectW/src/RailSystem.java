@@ -99,6 +99,113 @@ System.out.print("Index of add station: "+ getLineIndex(stline));
 		x++;}
 		return x;
 	}
+	public void printCarsInSatation(String name, Line line) {
+		for(Object tempObject : line.Stations) {
+			if (tempObject.getClass() == InterYard.class) {
+				InterYard tempInterYard = (InterYard) tempObject;
+				if (tempInterYard.stationName.equals(name)) {
+					System.out.print("name of station print: "+tempInterYard.stationName+"\n");
+					for(int x=0; x< tempInterYard.numberLines;x++) {
+						for(int y=0;y<tempInterYard.carsPerLine;y++) {
+							System.out.print(tempInterYard.LinesArr[x][y].carCode + " -- ");
+						}
+						System.out.print("\n");
+					}
+					break;
+				}
+				
+			}
+			if (tempObject.getClass() == IndusYard.class) {
+				IndusYard tempIndusYard= (IndusYard) tempObject;
+				if (tempIndusYard.stationName.equals(name)) {
+					System.out.print("name of station print: "+tempIndusYard.stationName+"\n");
+					for(int x=0; x< tempIndusYard.numberLines;x++) {
+						for(int y=0;y<tempIndusYard.carsPerLine;y++) {
+							System.out.print(tempIndusYard.LinesArr[x][y].carCode + " -- ");
+						}
+						System.out.print("\n");
+					}
+					break;
+				}
+			}
+			if (tempObject.getClass() == ClassifYard.class) {
+				ClassifYard tempClassifYard = (ClassifYard) tempObject;
+				if (tempClassifYard.stationName.equals(name)) {
+					System.out.print("name of station print: "+tempClassifYard.stationName+"\n");
+					for(int x=0; x< tempClassifYard.numberLines;x++) {
+						for(int y=0;y<tempClassifYard.carsPerLine;y++) {
+							System.out.print(tempClassifYard.LinesArr[x][y].carCode + " -- ");
+						}
+						System.out.print("\n");
+					}
+					break;
+				}
+			}
+		}
+	}
+	public void SortCars(String name, Line line) {
+		for(Object tempObject : line.Stations) {
+			if (tempObject.getClass() == InterYard.class) {
+				InterYard tempInterYard = (InterYard) tempObject;
+				if (tempInterYard.stationName.equals(name)) {
+					for(int x=0; x< tempInterYard.numberLines;x++) {
+						for (int i = 0; i < tempInterYard.carsPerLine - 1; i++) {
+				            for (int j = 0; j < tempInterYard.carsPerLine - i - 1; j++) {
+				                if (getStationIndex(tempInterYard.LinesArr[x][j].end, line) > getStationIndex(tempInterYard.LinesArr[x][j + 1].end, line)) {
+				                    // swap arr[j+1] and arr[j]
+				                    Cars temp = tempInterYard.LinesArr[x][j];
+				                    tempInterYard.LinesArr[x][j] = tempInterYard.LinesArr[x][j + 1];
+				                    tempInterYard.LinesArr[x][j + 1] = temp;
+				                }
+				            }
+						}
+				    }
+				Lines.get(getLineIndex(line.lineName)).Stations.set(getStationIndex(name, line), tempInterYard);
+					break;
+				}
+				
+			}
+			if (tempObject.getClass() == IndusYard.class) {
+				IndusYard tempIndusYard= (IndusYard) tempObject;
+				if (tempIndusYard.stationName.equals(name)) {
+					for(int x=0; x< tempIndusYard.numberLines;x++) {
+						for (int i = 0; i < tempIndusYard.carsPerLine - 1; i++) {
+				            for (int j = 0; j < tempIndusYard.carsPerLine - i - 1; j++) {
+				                if (getStationIndex(tempIndusYard.LinesArr[x][j].end, line) > getStationIndex(tempIndusYard.LinesArr[x][j + 1].end, line)) {
+				                    // swap arr[j+1] and arr[j]
+				                    Cars temp = tempIndusYard.LinesArr[x][j];
+				                    tempIndusYard.LinesArr[x][j] = tempIndusYard.LinesArr[x][j + 1];
+				                    tempIndusYard.LinesArr[x][j + 1] = temp;
+				                }
+				            }
+						}
+				    }
+				Lines.get(getLineIndex(line.lineName)).Stations.set(getStationIndex(name, line), tempIndusYard);
+					break;
+				}
+			}
+			if (tempObject.getClass() == ClassifYard.class) {
+				ClassifYard tempClassifYard = (ClassifYard) tempObject;
+				if (tempClassifYard.stationName.equals(name)) {
+					for(int x=0; x< tempClassifYard.numberLines;x++) {
+						for (int i = 0; i < tempClassifYard.carsPerLine - 1; i++) {
+				            for (int j = 0; j < tempClassifYard.carsPerLine - i - 1; j++) {
+				                if (getStationIndex(tempClassifYard.LinesArr[x][j].end, line) > getStationIndex(tempClassifYard.LinesArr[x][j + 1].end, line)) {
+				                    // swap arr[j+1] and arr[j]
+				                    Cars temp = tempClassifYard.LinesArr[x][j];
+				                    tempClassifYard.LinesArr[x][j] = tempClassifYard.LinesArr[x][j + 1];
+				                    tempClassifYard.LinesArr[x][j + 1] = temp;
+				                }
+				            }
+						}
+				    }
+				Lines.get(getLineIndex(line.lineName)).Stations.set(getStationIndex(name, line), tempClassifYard);
+					break;
+				}
+			}
+			
+		}
+	}
 	public String addCar(String line, String type, String str, String en, String code, float w) {
 		Cars temp = new Cars(line,type,str,en,code,w);
 		cars.add(temp);
