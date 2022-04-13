@@ -1,4 +1,6 @@
+import java.time.Year;
 import java.util.ArrayList;
+import java.util.Iterator;
 import java.util.List;
 import javax.swing.JPanel;
 
@@ -71,10 +73,93 @@ System.out.print("Index of add station: "+ getLineIndex(stline));
 					indusYard.set(index, new IndusYard( stline,  type,  name,  acro, direct,  head,  tail,  numLines,  numCars,  industreName,  descrip));
 				}
 	}
-	
-	public void addCar(String line, String type, String str, String en, String code, float w) {
+	public int getStationIndex(String name, Line line) {
+		int x=0;
+		for(Object tempObject : line.Stations) {
+			if (tempObject.getClass() == InterYard.class) {
+				InterYard tempInterYard = (InterYard) tempObject;
+				if (tempInterYard.stationName.equals(name)) {
+					break;
+				}
+				
+			}
+			if (tempObject.getClass() == IndusYard.class) {
+				IndusYard tempIndusYard= (IndusYard) tempObject;
+				if (tempIndusYard.stationName.equals(name)) {
+					break;
+				}
+			}
+			if (tempObject.getClass() == ClassifYard.class) {
+				ClassifYard tempClassifYard = (ClassifYard) tempObject;
+				if (tempClassifYard.stationName.equals(name)) {
+					break;
+				}
+			}
+			
+		x++;}
+		return x;
+	}
+	public String addCar(String line, String type, String str, String en, String code, float w) {
 		Cars temp = new Cars(line,type,str,en,code,w);
 		cars.add(temp);
+		Object temObject = Lines.get(getLineIndex(line)).Stations.get(getStationIndex(str, Lines.get(getLineIndex(line))));
+		boolean flag =false;
+		String rtString="";
+		if (temObject.getClass() == InterYard.class) {
+			System.out.print("got in in the if 1 \n");
+			InterYard tempInterYard = (InterYard) temObject;
+			for(int x=0; x<tempInterYard.numberLines; x++) {
+				for(int y=0; y<tempInterYard.carsPerLine;y++ ) {
+					if (tempInterYard.LinesArr[x][y] == null) {
+						flag =true;
+						tempInterYard.LinesArr[x][y]=temp;
+					}
+				}
+			}
+			if (flag) {
+				Lines.get(getLineIndex(line)).Stations.add(getStationIndex(str, Lines.get(getLineIndex(line))),tempInterYard);
+				rtString = "car Added to the station!";
+			}else {
+				rtString="Not enough Space in the Station";
+			}
+			
+		}
+		if (temObject.getClass() == IndusYard.class) {
+			IndusYard tempIndusYard= (IndusYard) temObject;
+			for(int x=0; x<tempIndusYard.numberLines; x++) {
+				for(int y=0; y<tempIndusYard.carsPerLine;y++ ) {
+					if (tempIndusYard.LinesArr[x][y] == null) {
+						flag =true;
+						tempIndusYard.LinesArr[x][y]=temp;
+					}
+				}
+			}
+			if (flag) {
+				Lines.get(getLineIndex(line)).Stations.add(getStationIndex(str, Lines.get(getLineIndex(line))),tempIndusYard);
+				rtString = "car Added to the station!";
+			}else {
+				rtString="Not enough Space in the Station";
+			}
+		}
+		if (temObject.getClass() == ClassifYard.class) {
+			ClassifYard tempClassifYard = (ClassifYard) temObject;
+			for(int x=0; x<tempClassifYard.numberLines; x++) {
+				for(int y=0; y<tempClassifYard.carsPerLine;y++ ) {
+					if (tempClassifYard.LinesArr[x][y] == null) {
+						flag =true;
+						tempClassifYard.LinesArr[x][y]=temp;
+					}
+				}
+			}
+			if (flag) {
+				Lines.get(getLineIndex(line)).Stations.add(getStationIndex(str, Lines.get(getLineIndex(line))),tempClassifYard);
+				rtString = "car Added to the station!";
+			}else {
+				rtString="Not enough Space in the Station";
+			}
+		}
+		return rtString;
+		
 	}
 	
 	public boolean searchLine(String lineN, JPanel pfound, JPanel pNoFound) {

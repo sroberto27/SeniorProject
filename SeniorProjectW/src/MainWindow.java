@@ -2043,7 +2043,11 @@ public class MainWindow extends GlobalVars {
 		AddInventory = new JMenuItem("Add");
 		AddInventory.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				
+				comboBox_9.removeAllItems();
+				for(Line line : MyRailRoad.Lines) {
+					
+						comboBox_9.addItem(line.lineName);
+				}
 				SetPanelVisible("addInventory");
 			}
 		});
@@ -2381,15 +2385,15 @@ public class MainWindow extends GlobalVars {
 		btnNewButton_5.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				
-				staLineNameTemp ="Nothing yet"; //(String) comboBox_9.getSelectedItem();
-				staStartNameTemp = "Nothing yet";//(String) comboBox_10.getSelectedItem();
-				staEndNameTemp = "Nothing yet";//(String) comboBox_11.getSelectedItem();
+				staLineNameTemp =(String) comboBox_9.getSelectedItem();
+				staStartNameTemp = (String) comboBox_10.getSelectedItem();
+				staEndNameTemp = (String) comboBox_11.getSelectedItem();
 				carTypeTemp = (String) comboBox_12.getSelectedItem();
 				carCodeTemp = textField_30.getText();
 				carWeightTemp = Float.parseFloat(textField_31.getText());
-				MyRailRoad.addCar(staLineNameTemp, carTypeTemp, staStartNameTemp, staEndNameTemp, carCodeTemp, carWeightTemp);
-				
-				SetPanelVisible("goHome");
+				String temp = MyRailRoad.addCar(staLineNameTemp, carTypeTemp, staStartNameTemp, staEndNameTemp, carCodeTemp, carWeightTemp);
+				lblNewLabel_30.setText(temp);
+				//SetPanelVisible("goHome");
 				
 			}
 		});
@@ -2458,6 +2462,31 @@ public class MainWindow extends GlobalVars {
 					if (stationObject.getClass() == ClassifYard.class) {
 						ClassifYard tempClassifYard = (ClassifYard) stationObject;
 						comboBox_8.addItem(tempClassifYard.stationName);
+					}
+					
+					
+				}
+			}
+		});
+		comboBox_9.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				comboBox_10.removeAllItems();
+				comboBox_11.removeAllItems();
+				for(Object stationObject : MyRailRoad.Lines.get(MyRailRoad.getLineIndex((String)comboBox_9.getSelectedItem())).Stations) {
+					if (stationObject.getClass() == InterYard.class) {
+						InterYard tempInterYard = (InterYard) stationObject;
+						comboBox_10.addItem(tempInterYard.stationName);
+						comboBox_11.addItem(tempInterYard.stationName);
+					}
+					if (stationObject.getClass() == IndusYard.class) {
+						IndusYard tempIndusYard= (IndusYard) stationObject;
+						comboBox_10.addItem(tempIndusYard.stationName);
+						comboBox_11.addItem(tempIndusYard.stationName);
+					}
+					if (stationObject.getClass() == ClassifYard.class) {
+						ClassifYard tempClassifYard = (ClassifYard) stationObject;
+						comboBox_10.addItem(tempClassifYard.stationName);
+						comboBox_11.addItem(tempClassifYard.stationName);
 					}
 					
 					
