@@ -20,7 +20,7 @@ int Linecapacity;
 		 lineAcro=acro;
 		 lineLength=length;
 		 lineType=type;
-		 direction=descr;
+		 direction=dir;
 		 start=strSta;
 		 end=endSta;
 		 numberOfStation=numSta;
