@@ -13,6 +13,8 @@ public class RailSystem extends GlobalVars{
 	List<InterYard> interYard;
 	List<Cars> cars;
 	public String searchTypeGlobalString="";
+	public String searchStNameGlobalString="";
+	public String searchLnNameGlobalString="";
 	public int searchIndexGlobalIntStation=-1;
 	public int searchIndexGlobalIntLine=-1;
 	public RailSystem() {
@@ -95,7 +97,7 @@ System.out.print("Index of add station: "+ getLineIndex(stline));
 				InterYard temp = new InterYard ( stline,  type,  name,  acro, direct,  head,  tail,  numLines,  numCars,  station1,  station2);
 				//testing to be deleted
 				interYard.set(index, temp) ;
-				int idx = getStationIndex(name,Lines.get(getLineIndex(stline)));
+				int idx = getStationIndex(namelook,Lines.get(getLineIndex(stline)));
 				Lines.get(getLineIndex(stline)).Stations.add(idx,temp);
 				Lines.get(getLineIndex(stline)).Stations.remove(idx+1);
 			}else
@@ -103,7 +105,7 @@ System.out.print("Index of add station: "+ getLineIndex(stline));
 					IndusYard temp = new IndusYard( stline,  type,  name,  acro, direct,  head,  tail,  numLines,  numCars,  industreName,  descrip);
 					//testing to be deleted
 					indusYard.set(index, temp);
-					int idx = getStationIndex(name,Lines.get(getLineIndex(stline)));
+					int idx = getStationIndex(namelook,Lines.get(getLineIndex(stline)));
 					Lines.get(getLineIndex(stline)).Stations.add(idx,temp);
 					Lines.get(getLineIndex(stline)).Stations.remove(idx+1);
 				}
@@ -123,25 +125,24 @@ System.out.print("Index of add station: "+ getLineIndex(stline));
 		if(type == "ClassificationYard") {
 
 			//testing to be deleted
-			classifYards.remove(index);
+			//classifYards.remove(index);
 System.out.print("Index of add station: "+ getLineIndex(stline));
 			Lines.get(getLineIndex(stline)).Stations.remove(getStationIndex(name,Lines.get(getLineIndex(stline))));
 			Lines.get(getLineIndex(stline)).numberOfStation-=1;
 		}else
 			if(type == "InterchangeYard") {
 				//testing to be deleted
-				interYard.remove(index) ;
+			//	interYard.remove(index) ;
 				Lines.get(getLineIndex(stline)).Stations.remove(getStationIndex(name,Lines.get(getLineIndex(stline))));
 				Lines.get(getLineIndex(stline)).numberOfStation-=1;
 			}else
 				if(type == "IndustrysupportYard") {
 					//testing to be deleted
-					indusYard.remove(index);
+				//	indusYard.remove(index);
 					Lines.get(getLineIndex(stline)).Stations.remove(getStationIndex(name,Lines.get(getLineIndex(stline))));
 					Lines.get(getLineIndex(stline)).numberOfStation-=1;
 				}
 	}
-	//Change this to lines.stations----------------------------------------------------------
 	public int getStationIndex(String name, Line line) {
 		int x=0;
 		System.out.print(name+ "  --nameeeee");
@@ -461,56 +462,100 @@ System.out.print("Index of add station: "+ getLineIndex(stline));
 	}
 	//Change this to lines.stations----------------------------------------------------------
 	public boolean searchStation(String stationN, String typeOfSt, JPanel pfound, JPanel pNoFound , JPanel normal, JPanel industry, JPanel inter) {
+//		for ( x=0; x< interYard.size();x++) {
+//			if (interYard.get(x).stationName.equals(stationN) || interYard.get(x).stationAcro.equals(stationN)) {
+//				flag = true;
+//				typeSt = interYard.get(x).statType;
+//				
+//				searchIndexGlobalIntStation=x;
+//				break;
+//			}
+//		}
+//		for ( x=0; x< classifYards.size();x++ ) {
+//			////System.out.print(classifYards.get(x).stationName+" index: "+ x+"\n");
+//			if (classifYards.get(x).stationName.equals(stationN) || classifYards.get(x).stationAcro.equals(stationN)) {
+//				System.out.print("Found calssyard");
+//				flag = true;
+//				typeSt =classifYards.get(x).statType;
+//				
+//				searchIndexGlobalIntStation=x;
+//				break;
+//			}
+//		}
+//		for ( x=0; x< indusYard.size();x++  ) {
+//			if (indusYard.get(x).stationName.equals(stationN) || indusYard.get(x).stationAcro.equals(stationN)) {
+//				flag = true;
+//				typeSt = indusYard.get(x).statType;
+//				
+//				searchIndexGlobalIntStation=x;
+//				break;
+//			}
+//		}
 		boolean flag = false;
-		int x;
-		String typeSt = "";
-		for ( x=0; x< interYard.size();x++) {
-			if (interYard.get(x).stationName.equals(stationN) || interYard.get(x).stationAcro.equals(stationN)) {
-				flag = true;
-				typeSt = interYard.get(x).statType;
+		int x=0;
+		for(Line line: Lines ) {
+			for(Object tempObject : line.Stations) {
+				if (tempObject.getClass() == InterYard.class) {
+					InterYard tempInterYard = (InterYard) tempObject;
+					if (tempInterYard.stationName.equals(stationN)||tempInterYard.stationAcro.equals(stationN)) {
+						flag = true;
+						searchTypeGlobalString = tempInterYard.statType;
+						searchStNameGlobalString = tempInterYard.stationName;
+						searchLnNameGlobalString = tempInterYard.stationLine;
+						searchIndexGlobalIntStation=x;
+						break;
+					}
+					
+				}
+				if (tempObject.getClass() == IndusYard.class) {
+					IndusYard tempIndusYard= (IndusYard) tempObject;
+					if (tempIndusYard.stationName.equals(stationN)||tempIndusYard.stationAcro.equals(stationN)) {
+						flag = true;
+						searchTypeGlobalString = tempIndusYard.statType;
+						searchStNameGlobalString = tempIndusYard.stationName;
+						searchLnNameGlobalString = tempIndusYard.stationLine;
+						searchIndexGlobalIntStation=x;
+						break;
+					}
+				}
+				if (tempObject.getClass() == ClassifYard.class) {
+					ClassifYard tempClassifYard = (ClassifYard) tempObject;
+					System.out.print("\n found station: " + x+" name: "+tempClassifYard.stationName);
+					if (tempClassifYard.stationName.equals(stationN)||tempClassifYard.stationAcro.equals(stationN)) {
+						System.out.print("\n found station");
+						flag = true;
+						searchTypeGlobalString = tempClassifYard.statType;
+						searchStNameGlobalString = tempClassifYard.stationName;
+						searchLnNameGlobalString = tempClassifYard.stationLine;
+						searchIndexGlobalIntStation=x;
+						break;
+					}
+				}
 				
-				searchIndexGlobalIntStation=x;
-				break;
+			x++;
 			}
-		}
-		for ( x=0; x< classifYards.size();x++ ) {
-			////System.out.print(classifYards.get(x).stationName+" index: "+ x+"\n");
-			if (classifYards.get(x).stationName.equals(stationN) || classifYards.get(x).stationAcro.equals(stationN)) {
-				System.out.print("Found calssyard");
-				flag = true;
-				typeSt =classifYards.get(x).statType;
-				
-				searchIndexGlobalIntStation=x;
-				break;
-			}
-		}
-		for ( x=0; x< indusYard.size();x++  ) {
-			if (indusYard.get(x).stationName.equals(stationN) || indusYard.get(x).stationAcro.equals(stationN)) {
-				flag = true;
-				typeSt = indusYard.get(x).statType;
-				
-				searchIndexGlobalIntStation=x;
+			if (flag) {
 				break;
 			}
 		}
 		if (flag) {
 			pfound.setVisible(true);
 			//System.out.print("IIIIIII");
-			if (typeSt == "ClassificationYard") {
+			if (searchTypeGlobalString == "ClassificationYard") {
 				//System.out.print("VVVVV");
 				 pNoFound.setVisible(false);
 				 normal.setVisible(true);
 				 industry.setVisible(false);  
 				 inter.setVisible(false);
 			}else {
-				if (typeSt == "InterchangeYard") {
+				if (searchTypeGlobalString == "InterchangeYard") {
 					pNoFound.setVisible(false);
 					 normal.setVisible(false);
 					 industry.setVisible(false);  
 					 inter.setVisible(true);
 					
 				}else {
-					if (typeSt == "IndustrysupportYard") {
+					if (searchTypeGlobalString == "IndustrysupportYard") {
 						pNoFound.setVisible(false);
 						 normal.setVisible(false);
 						 industry.setVisible(true);  
@@ -526,57 +571,59 @@ System.out.print("Index of add station: "+ getLineIndex(stline));
 			 industry.setVisible(false);  
 			 inter.setVisible(false);
 		}
-		typeOfSt = typeSt;
-		searchTypeGlobalString = typeSt;
 		return flag;
 	}
-	//Change this to lines.stations----------------------------------------------------------
-	public void setTempStationData(String searchType,int index) {
+	
+	public void setTempStationData(String searchType,int index, String stName, String lnName) {
 		//System.out.print(" set search typeeeeee:  "+searchType);
 		//System.out.print("set indexxxxxx: "+index);
 		if (searchType == ("ClassificationYard")) {
 			//System.out.print("111111");
-			 stlineTemp=classifYards.get(index).stationLine;
-			 typeTemp=classifYards.get(index).statType;
-			 nameTemp=classifYards.get(index).stationName;
-			 acroTemp=classifYards.get(index).stationAcro;
-			 directTemp=classifYards.get(index).stationDirection;
-			 headTemp=classifYards.get(index).ahead;
-			 tailTemp= classifYards.get(index).atail;
-			 numLinesTemp=classifYards.get(index).numberLines;
-			 numCarsTemp=classifYards.get(index).carsPerLine;
+			
+			ClassifYard temp=(ClassifYard)Lines.get(getLineIndex(lnName)).Stations.get(getStationIndex(stName, Lines.get(getLineIndex(lnName))));
+			 stlineTemp=temp.stationLine;
+			 typeTemp=temp.statType;
+			 nameTemp=temp.stationName;
+			 acroTemp=temp.stationAcro;
+			 directTemp=temp.stationDirection;
+			 headTemp=temp.ahead;
+			 tailTemp= temp.atail;
+			 numLinesTemp=temp.numberLines;
+			 numCarsTemp=temp.carsPerLine;
 			 industreNameTemp="nothing";
 			 descriptionTempStation="nothing";
 			 station1Temp="nothing";
 			 station2Temp="nothing";
 		}
 		if (searchType==( "InterchangeYard")) {
-			 stlineTemp=interYard.get(index).stationLine;
-			 typeTemp=interYard.get(index).statType;
-			 nameTemp=interYard.get(index).stationName;
-			 acroTemp=interYard.get(index).stationAcro;
-			 directTemp=interYard.get(index).stationDirection;
-			 headTemp=interYard.get(index).ahead;
-			 tailTemp= interYard.get(index).atail;
-			 numLinesTemp=interYard.get(index).numberLines;
-			 numCarsTemp=interYard.get(index).carsPerLine;
+			InterYard temp=(InterYard)Lines.get(getLineIndex(lnName)).Stations.get(getStationIndex(stName, Lines.get(getLineIndex(lnName))));
+			 stlineTemp=temp.stationLine;
+			 typeTemp=temp.statType;
+			 nameTemp=temp.stationName;
+			 acroTemp=temp.stationAcro;
+			 directTemp=temp.stationDirection;
+			 headTemp=temp.ahead;
+			 tailTemp= temp.atail;
+			 numLinesTemp=temp.numberLines;
+			 numCarsTemp=temp.carsPerLine;
 			 industreNameTemp= "nothing";
 			 descriptionTempStation="nothing";
-			 station1Temp=interYard.get(index).station1;
-			 station2Temp=interYard.get(index).station2;
+			 station1Temp=temp.station1;
+			 station2Temp=temp.station2;
 		}
 		if (searchType==("IndustrysupportYard")) {
-			 stlineTemp=indusYard.get(index).stationLine;
-			 typeTemp=indusYard.get(index).statType;
-			 nameTemp=indusYard.get(index).stationName;
-			 acroTemp=indusYard.get(index).stationAcro;
-			 directTemp=indusYard.get(index).stationDirection;
-			 headTemp=indusYard.get(index).ahead;
-			 tailTemp= indusYard.get(index).atail;
-			 numLinesTemp=indusYard.get(index).numberLines;
-			 numCarsTemp=indusYard.get(index).carsPerLine;
-			 industreNameTemp=indusYard.get(index).industryName;
-			 descriptionTempStation=indusYard.get(index).descrip;
+			IndusYard temp=(IndusYard)Lines.get(getLineIndex(lnName)).Stations.get(getStationIndex(stName, Lines.get(getLineIndex(lnName))));
+			 stlineTemp=temp.stationLine;
+			 typeTemp=temp.statType;
+			 nameTemp=temp.stationName;
+			 acroTemp=temp.stationAcro;
+			 directTemp=temp.stationDirection;
+			 headTemp=temp.ahead;
+			 tailTemp= temp.atail;
+			 numLinesTemp=temp.numberLines;
+			 numCarsTemp=temp.carsPerLine;
+			 industreNameTemp=temp.industryName;
+			 descriptionTempStation=temp.descrip;
 			 station1Temp="nothing";
 			 station2Temp="nothing";
 		}
@@ -596,7 +643,7 @@ System.out.print("Index of add station: "+ getLineIndex(stline));
 				 lineLengthTemp =Lines.get(x).lineLength;
 				 lineTypeTemp =Lines.get(x).lineType;
 				 directionTemp = Lines.get(x).direction;
-				
+				 searchIndexGlobalIntLine = x;
 				break;
 			}
 		x++;
