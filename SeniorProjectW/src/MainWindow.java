@@ -1316,6 +1316,7 @@ public class MainWindow extends GlobalVars {
 		btnNewButton_3_1_1.setBounds(392, 78, 157, 68);
 		btnNewButton_3_1_1.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
+				MyRailRoad.deleteStation(MyRailRoad.searchIndexGlobalIntLine, MyRailRoad.stlineTemp, MyRailRoad.typeTemp, MyRailRoad.nameTemp);
 			}
 		});
 		Found2.add(btnNewButton_3_1_1);
@@ -2477,7 +2478,7 @@ public class MainWindow extends GlobalVars {
 		});
 		btnNewButton_4.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				MyRailRoad.editStation( MyRailRoad.searchIndexGlobalIntStation,stlineTemp,  (String)comboBox_2_2_1.getSelectedItem(),  textField_24.getText(),  textField_25.getText(), (String)comboBox_3_2_1.getSelectedItem(),  (String)comboBox_7_1.getSelectedItem(),  tailTemp,  Integer.parseInt(textField_26.getText()),  Integer.parseInt(textField_27.getText()),  textField_28.getText(),  textArea_1_1_1_1.getText(),  station1Temp,  station2Temp);
+				MyRailRoad.editStation( MyRailRoad.searchIndexGlobalIntStation,MyRailRoad.nameTemp,stlineTemp,  (String)comboBox_2_2_1.getSelectedItem(),  textField_24.getText(),  textField_25.getText(), (String)comboBox_3_2_1.getSelectedItem(),  (String)comboBox_7_1.getSelectedItem(),  tailTemp,  Integer.parseInt(textField_26.getText()),  Integer.parseInt(textField_27.getText()),  textField_28.getText(),  textArea_1_1_1_1.getText(),  station1Temp, station2Temp);
 			}
 		});
 		comboBox_7.addActionListener(new ActionListener() {

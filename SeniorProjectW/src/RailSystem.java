@@ -50,24 +50,24 @@ public class RailSystem extends GlobalVars{
 			ClassifYard temp = new ClassifYard(stline,  type,  name, acro,direct,head,tail,numLines,numCars);
 			classifYards.add(temp);
 System.out.print("Index of add station: "+ getLineIndex(stline));
-			Lines.get(getLineIndex(stline)).Stations.add(getStationIndex(head,Lines.get(getLineIndex(stline))),classifYards.get(classifYards.size()-1));
+			Lines.get(getLineIndex(stline)).Stations.add(getStationIndex(head,Lines.get(getLineIndex(stline))),temp);
 			Lines.get(getLineIndex(stline)).numberOfStation+=1;
 		}else
 			if(type == "InterchangeYard") {
 				InterYard temp = new InterYard ( stline,  type,  name,  acro, direct,  head,  tail,  numLines,  numCars,  station1,  station2);
 				interYard.add(temp);
-				Lines.get(getLineIndex(stline)).Stations.add(getStationIndex(head,Lines.get(getLineIndex(stline))),interYard.get(interYard.size()-1));
+				Lines.get(getLineIndex(stline)).Stations.add(getStationIndex(head,Lines.get(getLineIndex(stline))),temp);
 				Lines.get(getLineIndex(stline)).numberOfStation+=1;
 			}else
 				if(type == "IndustrysupportYard") {
 					IndusYard temp = new IndusYard( stline,  type,  name,  acro, direct,  head,  tail,  numLines,  numCars,  industreName,  descrip);
 					indusYard.add(temp);
-					Lines.get(getLineIndex(stline)).Stations.add(getStationIndex(head,Lines.get(getLineIndex(stline))),indusYard.get(indusYard.size()-1));
+					Lines.get(getLineIndex(stline)).Stations.add(getStationIndex(head,Lines.get(getLineIndex(stline))),temp);
 					Lines.get(getLineIndex(stline)).numberOfStation+=1;
 				}
 	}
 	// have to modify this to work with the lines.stations
-	public void editStation(int index, String stline, String type, String name, String acro,String direct, String head, String tail, int numLines, int numCars, String industreName, String descrip, String station1, String station2) {
+	public void editStation(int index,String namelook, String stline, String type, String name, String acro,String direct, String head, String tail, int numLines, int numCars, String industreName, String descrip, String station1, String station2) {
 //		if(type == "ClassificationYard") {
 //			//System.out.print("testing enters");
 //			classifYards.set(index, new ClassifYard(stline,  type,  name, acro,direct,head,tail,numLines,numCars)) ;
@@ -84,58 +84,87 @@ System.out.print("Index of add station: "+ getLineIndex(stline));
 			ClassifYard temp = new ClassifYard(stline,  type,  name, acro,direct,head,tail,numLines,numCars);
 			//testing to be deleted
 			classifYards.set(index, temp) ;
-System.out.print("Index of add station: "+ getLineIndex(stline));
-			Lines.get(getLineIndex(stline)).Stations.add(getStationIndex(head,Lines.get(getLineIndex(stline))),classifYards.get(classifYards.size()-1));
-			Lines.get(getLineIndex(stline)).Stations.remove(getStationIndex(head,Lines.get(getLineIndex(stline)))+1);
+			
+			int idx = getStationIndex(namelook,Lines.get(getLineIndex(stline)));
+			System.out.print("Index line of add station: "+ getLineIndex(stline));
+			System.out.print("Index of add station: "+ idx);
+			Lines.get(getLineIndex(stline)).Stations.add(idx,temp);
+			Lines.get(getLineIndex(stline)).Stations.remove(idx+1);
 		}else
 			if(type == "InterchangeYard") {
 				InterYard temp = new InterYard ( stline,  type,  name,  acro, direct,  head,  tail,  numLines,  numCars,  station1,  station2);
 				//testing to be deleted
 				interYard.set(index, temp) ;
-				Lines.get(getLineIndex(stline)).Stations.add(getStationIndex(head,Lines.get(getLineIndex(stline))),interYard.get(interYard.size()-1));
-				Lines.get(getLineIndex(stline)).Stations.remove(getStationIndex(head,Lines.get(getLineIndex(stline)))+1);
+				int idx = getStationIndex(name,Lines.get(getLineIndex(stline)));
+				Lines.get(getLineIndex(stline)).Stations.add(idx,temp);
+				Lines.get(getLineIndex(stline)).Stations.remove(idx+1);
 			}else
 				if(type == "IndustrysupportYard") {
 					IndusYard temp = new IndusYard( stline,  type,  name,  acro, direct,  head,  tail,  numLines,  numCars,  industreName,  descrip);
 					//testing to be deleted
 					indusYard.set(index, temp);
-					Lines.get(getLineIndex(stline)).Stations.add(getStationIndex(head,Lines.get(getLineIndex(stline))),indusYard.get(indusYard.size()-1));
-					Lines.get(getLineIndex(stline)).Stations.remove(getStationIndex(head,Lines.get(getLineIndex(stline)))+1);
+					int idx = getStationIndex(name,Lines.get(getLineIndex(stline)));
+					Lines.get(getLineIndex(stline)).Stations.add(idx,temp);
+					Lines.get(getLineIndex(stline)).Stations.remove(idx+1);
 				}
 	}
-	public void deleteStation(int index,String type) {
+	public void deleteStation(int index, String stline, String type,String name) {
+//		if(type == "ClassificationYard") {
+//			//System.out.print("testing enters");
+//			classifYards.remove(index) ;
+//			
+//		}else
+//			if(type == "InterchangeYard") {
+//				interYard.remove(index);
+//			}else
+//				if(type == "IndustrysupportYard") {
+//					indusYard.remove(index);
+//				}
 		if(type == "ClassificationYard") {
-			//System.out.print("testing enters");
-			classifYards.remove(index) ;
-			
+
+			//testing to be deleted
+			classifYards.remove(index);
+System.out.print("Index of add station: "+ getLineIndex(stline));
+			Lines.get(getLineIndex(stline)).Stations.remove(getStationIndex(name,Lines.get(getLineIndex(stline))));
+			Lines.get(getLineIndex(stline)).numberOfStation-=1;
 		}else
 			if(type == "InterchangeYard") {
-				interYard.remove(index);
+				//testing to be deleted
+				interYard.remove(index) ;
+				Lines.get(getLineIndex(stline)).Stations.remove(getStationIndex(name,Lines.get(getLineIndex(stline))));
+				Lines.get(getLineIndex(stline)).numberOfStation-=1;
 			}else
 				if(type == "IndustrysupportYard") {
+					//testing to be deleted
 					indusYard.remove(index);
+					Lines.get(getLineIndex(stline)).Stations.remove(getStationIndex(name,Lines.get(getLineIndex(stline))));
+					Lines.get(getLineIndex(stline)).numberOfStation-=1;
 				}
 	}
+	//Change this to lines.stations----------------------------------------------------------
 	public int getStationIndex(String name, Line line) {
 		int x=0;
+		System.out.print(name+ "  --nameeeee");
 		for(Object tempObject : line.Stations) {
 			if (tempObject.getClass() == InterYard.class) {
 				InterYard tempInterYard = (InterYard) tempObject;
 				if (tempInterYard.stationName.equals(name)) {
-					break;
+					return x;
 				}
 				
 			}
 			if (tempObject.getClass() == IndusYard.class) {
 				IndusYard tempIndusYard= (IndusYard) tempObject;
 				if (tempIndusYard.stationName.equals(name)) {
-					break;
+					return x;
 				}
 			}
 			if (tempObject.getClass() == ClassifYard.class) {
 				ClassifYard tempClassifYard = (ClassifYard) tempObject;
+				System.out.print("\n found station: " + x+" name: "+tempClassifYard.stationName);
 				if (tempClassifYard.stationName.equals(name)) {
-					break;
+					System.out.print("\n found station");
+					return x;
 				}
 			}
 			
@@ -371,6 +400,7 @@ System.out.print("Index of add station: "+ getLineIndex(stline));
 		}
 		return flag;
 	}
+	//change this to use line.station//Change this to lines.stations----------------------------------------------------------
 	public boolean searchStationToDelete(String stationN, String typeOfSt, JPanel pfound, JPanel pNoFound ) {
 		boolean flag = false;
 		int x;
@@ -429,6 +459,7 @@ System.out.print("Index of add station: "+ getLineIndex(stline));
 		searchTypeGlobalString = typeSt;
 		return flag;
 	}
+	//Change this to lines.stations----------------------------------------------------------
 	public boolean searchStation(String stationN, String typeOfSt, JPanel pfound, JPanel pNoFound , JPanel normal, JPanel industry, JPanel inter) {
 		boolean flag = false;
 		int x;
@@ -499,6 +530,7 @@ System.out.print("Index of add station: "+ getLineIndex(stline));
 		searchTypeGlobalString = typeSt;
 		return flag;
 	}
+	//Change this to lines.stations----------------------------------------------------------
 	public void setTempStationData(String searchType,int index) {
 		//System.out.print(" set search typeeeeee:  "+searchType);
 		//System.out.print("set indexxxxxx: "+index);
