@@ -557,9 +557,7 @@ public class MainWindow extends GlobalVars {
 	private JLabel lblNewLabel_16_3;
 	private JLabel lblNewLabel_1_1_1_2;
 
-	/**
-	 * Launch the application.
-	 */
+
 	public static void main(String[] args) {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
@@ -2556,7 +2554,6 @@ public class MainWindow extends GlobalVars {
 				MyRailRoad.addStation( stlineTem,  typeTem,  nameTem,  acroTem, directTem,  headTem,  tailTem,  numLinesTem,  numCarsTem,  industreNameTem,  descriptionTempStation2,  station1Tem,  station2Tem);
 				
 				MyRailRoad.printLineData();
-				MyRailRoad.printCalssStationData();
 				SetPanelVisible("goHome");
 			}
 		});
