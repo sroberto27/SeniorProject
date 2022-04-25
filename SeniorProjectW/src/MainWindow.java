@@ -1570,6 +1570,10 @@ public class MainWindow extends GlobalVars {
 		panel_23.add(textField_34);
 		
 		btnNewButton_2_1_1_1 = new JButton("Search");
+		btnNewButton_2_1_1_1.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+			}
+		});
 		btnNewButton_2_1_1_1.setBounds(377, 5, 111, 39);
 		panel_23.add(btnNewButton_2_1_1_1);
 		
@@ -1647,6 +1651,10 @@ public class MainWindow extends GlobalVars {
 		panel_29.add(lblNewLabel_30_1);
 		
 		btnNewButton_5_1 = new JButton("EDIT Car");
+		btnNewButton_5_1.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+			}
+		});
 		btnNewButton_5_1.setBounds(462, 151, 96, 58);
 		panel_29.add(btnNewButton_5_1);
 		
@@ -1798,6 +1806,13 @@ public class MainWindow extends GlobalVars {
 		panel_30_1.add(comboBox_13_1);
 		
 		btnNewButton_6_1 = new JButton("Line Report");
+		btnNewButton_6_1.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				DefaultTableModel modelGeneral = new DefaultTableModel(MyRailRoad.createStringsStationsArry( (String) comboBox_13_1.getSelectedItem()),columnNameStation);
+				modelGeneral.fireTableDataChanged();
+				table_1.setModel(modelGeneral);
+			}
+		});
 		panel_30_1.add(btnNewButton_6_1);
 		
 		btnNewButton_7_1 = new JButton("Excel Report");
@@ -1866,6 +1881,13 @@ public class MainWindow extends GlobalVars {
 		panel_30.add(comboBox_14);
 		
 		btnNewButton_6 = new JButton("Station Report");
+		btnNewButton_6.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				DefaultTableModel modelGeneral = new DefaultTableModel(MyRailRoad.createStringStation((String)comboBox_13.getSelectedItem(), (String)comboBox_14.getSelectedItem()),columnNames);
+				modelGeneral.fireTableDataChanged();
+				table.setModel(modelGeneral);
+			}
+		});
 		panel_30.add(btnNewButton_6);
 		
 		btnNewButton_7 = new JButton("Excel Report");
@@ -2397,7 +2419,11 @@ public class MainWindow extends GlobalVars {
 		ReportLprint = new JMenuItem("Print Line Report");
 		ReportLprint.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				
+				comboBox_13_1.removeAllItems();
+				for(Line line : MyRailRoad.Lines) {
+					
+						comboBox_13_1.addItem(line.lineName);
+				}
 				SetPanelVisible("printL");
 			}
 		});
