@@ -4,6 +4,8 @@ import java.util.Iterator;
 import java.util.List;
 import javax.swing.JPanel;
 
+import org.eclipse.swt.internal.win32.CREATESTRUCT;
+
 import com.ibm.icu.impl.number.AffixPatternProvider.Flags;
 
 public class RailSystem extends GlobalVars{
@@ -649,6 +651,77 @@ System.out.print("Index of add station: "+ getLineIndex(stline));
 		}
 		
 	}
+	public int carsPerLine(String stationN) {
+		int total = 0;
+		for (Line line : Lines) {
+			for(Object station : line.Stations) {
+				if (station.getClass() == InterYard.class) {
+					InterYard tempInterYard = (InterYard) station;
+					if (tempInterYard.stationLine.equals(stationN)) {
+						for (int i = 0; i < tempInterYard.numberLines; i++) {
+							for (int j = 0; j < tempInterYard.carsPerLine; j++) {
+								if (tempInterYard.LinesArr[i][j]!=null) {
+									total+=1;
+								}
+							}
+						}
+						
+					}
+					
+				}
+				if (station.getClass() == IndusYard.class) {
+					IndusYard tempIndusYard= (IndusYard) station;
+					if (tempIndusYard.stationLine.equals(stationN)) {
+						for (int i = 0; i < tempIndusYard.numberLines; i++) {
+							for (int j = 0; j < tempIndusYard.carsPerLine; j++) {
+								if (tempIndusYard.LinesArr[i][j]!=null) {
+									total+=1;
+								}
+							}
+						}
+						
+					}
+				}
+				if (station.getClass() == ClassifYard.class) {
+					ClassifYard tempClassifYard = (ClassifYard) station;
+					if (tempClassifYard.stationLine.equals(stationN)) {
+						for (int i = 0; i < tempClassifYard.numberLines; i++) {
+							for (int j = 0; j < tempClassifYard.carsPerLine; j++) {
+								if (tempClassifYard.LinesArr[i][j]!=null) {
+									total+=1;
+								}
+							}
+						}
+						
+					}
+				}
+			}
+			
+		}
+		System.out.print("total: -- "+total);
+		return total;
+		
+	}
+	public String[][] createStringsLinesArray(){
+		String tempArray[][]= new String [Lines.size()] [4];
+		int x=0;
+		for (Line line : Lines) {
+			tempArray[x][0]= line.lineName;
+			tempArray[x][1]= line.lineAcro;
+			tempArray[x][2]= Integer.toString(line.numberOfStation);
+			tempArray[x][3]= Integer.toString(carsPerLine(line.lineName));
+		x++;}
+		for (int i = 0; i < Lines.size(); i++) {
+			for (int j = 0; j < 4; j++) {
+				System.out.print(tempArray[i][j]+" , ");
+			}
+			System.out.print("\n");
+		}
+		return tempArray;
+	}
+//	public String[][] createStringsStationArry(String stName, String lnName){
+//		
+//	}
 	public int getArrayIndex( String[] array , String selected) {
 		int index = -1;
 		for (int x = 0 ; x< array.length; x++) {

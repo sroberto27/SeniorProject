@@ -242,7 +242,6 @@ public class MainWindow extends GlobalVars {
 	JLabel lblNewLabel_32_1_1;
 	JButton btnNewButton_6_1_1;
 	JButton btnNewButton_7_1_1;
-	ScrollPane scrollPane_2;
 	JPanel printL;
 	JPanel panel_30_1;
 	JLabel lblNewLabel_32_1;
@@ -556,6 +555,8 @@ public class MainWindow extends GlobalVars {
 	private JPanel noFound_3;
 	private JLabel lblNewLabel_16_3;
 	private JLabel lblNewLabel_1_1_1_2;
+	private JPanel panel_33;
+	private ScrollPane scrollPane_2;
 
 
 	public static void main(String[] args) {
@@ -1729,8 +1730,8 @@ public class MainWindow extends GlobalVars {
 		printG = new JPanel();
 		HomePanel.add(printG, "name_1310157503782100");
 		GridBagLayout gbl_printG = new GridBagLayout();
-		gbl_printG.columnWidths = new int[]{572, 0};
-		gbl_printG.rowHeights = new int[]{70, 285, 0};
+		gbl_printG.columnWidths = new int[]{586, 0};
+		gbl_printG.rowHeights = new int[]{77, 280, 0};
 		gbl_printG.columnWeights = new double[]{0.0, Double.MIN_VALUE};
 		gbl_printG.rowWeights = new double[]{0.0, 0.0, Double.MIN_VALUE};
 		printG.setLayout(gbl_printG);
@@ -1747,20 +1748,31 @@ public class MainWindow extends GlobalVars {
 		panel_27.add(lblNewLabel_32_1_1);
 		
 		btnNewButton_6_1_1 = new JButton("General Report");
+		btnNewButton_6_1_1.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				DefaultTableModel modelGeneral = new DefaultTableModel(MyRailRoad.createStringsLinesArray(),columnNameGeneral);
+				modelGeneral.fireTableDataChanged();
+				table_2.setModel(modelGeneral);
+			}
+		});
 		panel_27.add(btnNewButton_6_1_1);
 		
 		btnNewButton_7_1_1 = new JButton("Excel Report");
 		panel_27.add(btnNewButton_7_1_1);
 		
-		scrollPane_2 = new ScrollPane();
-		GridBagConstraints gbc_scrollPane_2 = new GridBagConstraints();
-		gbc_scrollPane_2.fill = GridBagConstraints.BOTH;
-		gbc_scrollPane_2.gridx = 0;
-		gbc_scrollPane_2.gridy = 1;
-		printG.add(scrollPane_2, gbc_scrollPane_2);
+		panel_33 = new JPanel();
+		GridBagConstraints gbc_panel_33 = new GridBagConstraints();
+		gbc_panel_33.fill = GridBagConstraints.BOTH;
+		gbc_panel_33.gridx = 0;
+		gbc_panel_33.gridy = 1;
+		printG.add(panel_33, gbc_panel_33);
+		panel_33.setLayout(null);
 		
+		scrollPane_2 = new ScrollPane();
 		table_2 = new JTable(modelGeneral);
 		scrollPane_2.add(table_2);
+		scrollPane_2.setBounds(0, 0, 586, 280);
+		panel_33.add(scrollPane_2);
 		
 		printL = new JPanel();
 		HomePanel.add(printL, "name_1310157514618300");
@@ -1824,6 +1836,27 @@ public class MainWindow extends GlobalVars {
 		panel_30.add(lblNewLabel_32);
 		
 		comboBox_13 = new JComboBox();
+		comboBox_13.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				comboBox_14.removeAllItems();
+				for(Object stationObject : MyRailRoad.Lines.get(MyRailRoad.getLineIndex((String)comboBox_13.getSelectedItem())).Stations) {
+					if (stationObject.getClass() == InterYard.class) {
+						InterYard tempInterYard = (InterYard) stationObject;
+						comboBox_14.addItem(tempInterYard.stationName);
+					}
+					if (stationObject.getClass() == IndusYard.class) {
+						IndusYard tempIndusYard= (IndusYard) stationObject;
+						comboBox_14.addItem(tempIndusYard.stationName);
+					}
+					if (stationObject.getClass() == ClassifYard.class) {
+						ClassifYard tempClassifYard = (ClassifYard) stationObject;
+						comboBox_14.addItem(tempClassifYard.stationName);
+					}
+					
+					
+				}
+			}
+		});
 		panel_30.add(comboBox_13);
 		
 		lblNewLabel_33 = new JLabel("Station Name");
@@ -2373,7 +2406,11 @@ public class MainWindow extends GlobalVars {
 		ReportSprint = new JMenuItem("Print Station Report");
 		ReportSprint.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				
+				comboBox_13.removeAllItems();
+				for(Line line : MyRailRoad.Lines) {
+					
+						comboBox_13.addItem(line.lineName);
+				}
 				SetPanelVisible("printS");
 			}
 		});
@@ -2549,7 +2586,7 @@ public class MainWindow extends GlobalVars {
 					}
 				}
 				System.out.print(nameTemp);
-				MyRailRoad.addLine(lineNameTemp, lineAcroTemp, lineTypeTemp, directionTemp, lineLengthTemp, nameTemp, nameTem, 2, 0, descripTemp);
+				MyRailRoad.addLine(lineNameTemp, lineAcroTemp, lineTypeTemp, directionTemp, lineLengthTemp, nameTemp, nameTem, 0, 0, descripTemp);
 				MyRailRoad.addStation( stlineTemp,  typeTemp,  nameTemp,  acroTemp, directTemp,  headTemp,  tailTemp,  numLinesTemp,  numCarsTemp,  industreNameTemp,  descriptionTempStation,  station1Temp,  station2Temp);
 				MyRailRoad.addStation( stlineTem,  typeTem,  nameTem,  acroTem, directTem,  headTem,  tailTem,  numLinesTem,  numCarsTem,  industreNameTem,  descriptionTempStation2,  station1Tem,  station2Tem);
 				
