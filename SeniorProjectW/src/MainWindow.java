@@ -42,7 +42,6 @@ import javax.swing.JScrollBar;
 import javax.swing.JScrollPane;
 import javax.swing.table.TableModel;
 
-import org.eclipse.osgi.internal.debug.Debug;
 
 import java.awt.Scrollbar;
 import java.awt.ScrollPane;
@@ -450,21 +449,21 @@ public class MainWindow extends GlobalVars {
 			+ "Early in the process, define the audience and situation of your instructions. Remember that defining an audience means defining the level of familiarity your readers have with the topic.\r\n"
 			+ "\r\n"
 			+ "2. Determine the number of tasks\r\n"
-			+ "How many tasks are there in the procedure you are writing about? Let’s use the term procedure to refer to the whole set of activities your instructions are intended to discuss. A task is a semi-independent group of actions within the procedure: for example, setting the clock on a microwave oven is one task in the big overall procedure of operating a microwave oven.\r\n"
+			+ "How many tasks are there in the procedure you are writing about? Letï¿½s use the term procedure to refer to the whole set of activities your instructions are intended to discuss. A task is a semi-independent group of actions within the procedure: for example, setting the clock on a microwave oven is one task in the big overall procedure of operating a microwave oven.\r\n"
 			+ "\r\n"
 			+ "A simple procedure like changing the oil in a car contains only one task; there are no semi-independent groupings of activities. A more complex procedure like using a microwave oven contains several semi-independent tasks:  setting the clock; setting the power level; using the timer; cleaning and maintaining the microwave, among others.\r\n"
 			+ "\r\n"
-			+ "Some instructions have only a single task, but have many steps within that single task. For example, imagine a set of instructions for assembling a kids’ swing set. In my own experience, there were more than a 130 steps! That can be a bit daunting. A good approach is to group similar and related steps into phases, and start renumbering the steps at each new phase. A phase then is a group of similar steps within a single-task procedure. In the swing-set example, setting up the frame would be a phase; anchoring the thing in the ground would be another; assembling the box swing would be still another.\r\n"
+			+ "Some instructions have only a single task, but have many steps within that single task. For example, imagine a set of instructions for assembling a kidsï¿½ swing set. In my own experience, there were more than a 130 steps! That can be a bit daunting. A good approach is to group similar and related steps into phases, and start renumbering the steps at each new phase. A phase then is a group of similar steps within a single-task procedure. In the swing-set example, setting up the frame would be a phase; anchoring the thing in the ground would be another; assembling the box swing would be still another.\r\n"
 			+ "\r\n"
 			+ "3.  Determine the best approach to the step-by-step discussion\r\n"
-			+ "For most instructions, you can focus on tasks, or you can focus on tools (or features of tools).  In a task approach (also known as task orientation) to instructions on using a phone-answering service, you’d have these sections:\r\n"
+			+ "For most instructions, you can focus on tasks, or you can focus on tools (or features of tools).  In a task approach (also known as task orientation) to instructions on using a phone-answering service, youï¿½d have these sections:\r\n"
 			+ "\r\n"
 			+ "Recording your greeting\r\n"
 			+ "Playing back your messages\r\n"
 			+ "Saving your messages\r\n"
 			+ "Forwarding your messages\r\n"
 			+ "Deleting your messages, and so on\r\n"
-			+ "These are tasks—the typical things we’d want to do with the machine.\r\n"
+			+ "These are tasksï¿½the typical things weï¿½d want to do with the machine.\r\n"
 			+ "\r\n"
 			+ "On the other hand, in a tools approach to instructions on using a photocopier, there likely would be sections on how to use specific features:\r\n"
 			+ "\r\n"
@@ -473,7 +472,7 @@ public class MainWindow extends GlobalVars {
 			+ "Enlarge/reduce button\r\n"
 			+ "Collate/staple button\r\n"
 			+ "Copy-size button, and so on\r\n"
-			+ "If you designed a set of instructions on this plan, you’d write steps for using each button or feature of the photocopier. Instructions using this tools approach are hard to make work. Sometimes, the name of the button doesn’t quite match the task it is associated with; sometimes you have to use more than just the one button to accomplish the task. Still, there can be times when the tools/feature approach may be preferable.\r\n"
+			+ "If you designed a set of instructions on this plan, youï¿½d write steps for using each button or feature of the photocopier. Instructions using this tools approach are hard to make work. Sometimes, the name of the button doesnï¿½t quite match the task it is associated with; sometimes you have to use more than just the one button to accomplish the task. Still, there can be times when the tools/feature approach may be preferable.\r\n"
 			+ "\r\n"
 			+ "4.  Design groupings of tasks\r\n"
 			+ "Listing tasks may not be all that you need to do. There may be so many tasks that you must group them so that readers can find individual ones more easily. For example, the following are common task groupings in instructions:\r\n"
@@ -489,11 +488,11 @@ public class MainWindow extends GlobalVars {
 			+ "Give a general idea of the procedure and what it accomplishes\r\n"
 			+ "Indicate the conditions when these instructions should (or should not) be used\r\n"
 			+ "Give an overview of the contents of the instructions.\r\n"
-			+ "General warning, caution, danger notices:  instructions often must alert readers to the possibility of ruining their equipment, screwing up the procedure, and hurting themselves. Also, instructions must often emphasize key points or exceptions. For these situations, you use special notices—note, warning, caution, and danger notices. Notice how these special notices are used in the example instructions listed above.\r\n"
+			+ "General warning, caution, danger notices:  instructions often must alert readers to the possibility of ruining their equipment, screwing up the procedure, and hurting themselves. Also, instructions must often emphasize key points or exceptions. For these situations, you use special noticesï¿½note, warning, caution, and danger notices. Notice how these special notices are used in the example instructions listed above.\r\n"
 			+ "\r\n"
-			+ "Technical background or theory:  at the beginning of certain kinds of instructions (after the introduction), you may need a discussion of background related to the procedure. For certain instructions, this background is critical—otherwise, the steps in the procedure make no sense. For example, you may have had some experience with those software applets in which you define your own colors by nudging red, green, and blue slider bars around. To really understand what you’re doing, you need to have some background on color. Similarly, you can imagine that, for certain instructions using cameras, some theory might be needed as well.\r\n"
+			+ "Technical background or theory:  at the beginning of certain kinds of instructions (after the introduction), you may need a discussion of background related to the procedure. For certain instructions, this background is criticalï¿½otherwise, the steps in the procedure make no sense. For example, you may have had some experience with those software applets in which you define your own colors by nudging red, green, and blue slider bars around. To really understand what youï¿½re doing, you need to have some background on color. Similarly, you can imagine that, for certain instructions using cameras, some theory might be needed as well.\r\n"
 			+ "\r\n"
-			+ "Equipment and supplies:  notice that most instructions include a list of the things you need to gather before you start the procedure. This includes equipment, the tools you use in the procedure (such as mixing bowls, spoons, bread pans, hammers, drills, and saws) and supplies, the things that are consumed in the procedure (such as wood, paint, oil, flour, and nails). In instructions, these typically are listed either in a simple vertical list or in a two-column list. Use the two-column list if you need to add some specifications to some or all of the items—for example, brand names, sizes, amounts, types, model numbers, and so on.\r\n"
+			+ "Equipment and supplies:  notice that most instructions include a list of the things you need to gather before you start the procedure. This includes equipment, the tools you use in the procedure (such as mixing bowls, spoons, bread pans, hammers, drills, and saws) and supplies, the things that are consumed in the procedure (such as wood, paint, oil, flour, and nails). In instructions, these typically are listed either in a simple vertical list or in a two-column list. Use the two-column list if you need to add some specifications to some or all of the itemsï¿½for example, brand names, sizes, amounts, types, model numbers, and so on.\r\n"
 			+ "\r\n"
 			+ "Discussion of the steps:  when you get to the actual writing of the steps, there are several things to keep in mind: (1) the structure and format of those steps, (2) supplementary information that might be needed, and (3) the point of view and general writing style.\r\n"
 			+ "\r\n"
@@ -503,10 +502,10 @@ public class MainWindow extends GlobalVars {
 			+ "Variable-order steps are steps that can be performed in practically any order. Good examples are those troubleshooting guides that tell you to check this, check that where you are trying to fix something. You can do these kinds of steps in practically any order. With this type, the bulleted list is the appropriate format.\r\n"
 			+ "Alternate steps are those in which two or more ways to accomplish the same thing are presented. Alternate steps are also used when various conditions might exist. Use bulleted lists with this type, with OR inserted between the alternatives, or the lead-in indicating that alternatives are about to be presented.\r\n"
 			+ "Nested steps may be used in  cases when individual steps within a procedure are rather complex in their own right and need to be broken down into sub-steps. In this case, you indent further and sequence the sub-steps as a, b, c, and so on.\r\n"
-			+ "“Step-less” instructions. can be used when you really cannot use numbered vertical list or provide straightforward instructional-style directing of the reader. Some situations must be so generalized or so variable that steps cannot be stated.\r\n"
-			+ "Supplementary discussion: often, it is not enough simply to tell readers to do this or to do that. They need additional explanatory information such as how the thing should look before and after the step; why they should care about doing this step; what mechanical principle is behind what they are doing; even more micro-level explanation of the step—discussion of the specific actions that make up the step.\r\n"
+			+ "ï¿½Step-lessï¿½ instructions. can be used when you really cannot use numbered vertical list or provide straightforward instructional-style directing of the reader. Some situations must be so generalized or so variable that steps cannot be stated.\r\n"
+			+ "Supplementary discussion: often, it is not enough simply to tell readers to do this or to do that. They need additional explanatory information such as how the thing should look before and after the step; why they should care about doing this step; what mechanical principle is behind what they are doing; even more micro-level explanation of the stepï¿½discussion of the specific actions that make up the step.\r\n"
 			+ "\r\n"
-			+ "The problem with supplementary discussion, however, is that it can hide the actual step. You want the actual step—the specific actions the reader is to take—to stand out. You don’t want it all buried in a heap of words. There are at least two techniques to avoid this problem: you can split the instruction from the supplement into separate paragraphs; or you can bold the instruction.";
+			+ "The problem with supplementary discussion, however, is that it can hide the actual step. You want the actual stepï¿½the specific actions the reader is to takeï¿½to stand out. You donï¿½t want it all buried in a heap of words. There are at least two techniques to avoid this problem: you can split the instruction from the supplement into separate paragraphs; or you can bold the instruction.";
 	String aboutStr = "This Program was Developed by Roberto Salazar in  2022 as a part of his Senior Project to \n fulfill the rquarement to graduate in his BS degree in \n Computer Science";
 	private JFrame frame;
 	private JTextField textField;
@@ -1572,9 +1571,21 @@ public class MainWindow extends GlobalVars {
 		btnNewButton_2_1_1_1 = new JButton("Search");
 		btnNewButton_2_1_1_1.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
+				if (MyRailRoad.searchCar(textField_34.getText())) {
+					
+					panel_28.setVisible(false);
+					panel_29.setVisible(true);
+					MyRailRoad.setCarTemporal(MyRailRoad.searchLnNameGlobalString,MyRailRoad.searchStNameGlobalString , MyRailRoad.carGlobalXindex, MyRailRoad.carGlobalYindex);
+					
+					System.out.print("pass tru");
+				}else {
+					System.out.print("NOOOO pass tru");
+					panel_28.setVisible(true);
+					panel_29.setVisible(false);
+				}
 			}
 		});
-		btnNewButton_2_1_1_1.setBounds(377, 5, 111, 39);
+		btnNewButton_2_1_1_1.setBounds(378, 5, 111, 39);
 		panel_23.add(btnNewButton_2_1_1_1);
 		
 		panel_24 = new JPanel();
@@ -1601,6 +1612,31 @@ public class MainWindow extends GlobalVars {
 		panel_29.add(lblNewLabel_24_1);
 		
 		comboBox_9_1 = new JComboBox();
+		comboBox_9_1.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				comboBox_10_1.removeAllItems();
+				comboBox_11_1.removeAllItems();
+				for(Object stationObject : MyRailRoad.Lines.get(MyRailRoad.getLineIndex((String)comboBox_9_1.getSelectedItem())).Stations) {
+					if (stationObject.getClass() == InterYard.class) {
+						InterYard tempInterYard = (InterYard) stationObject;
+						comboBox_10_1.addItem(tempInterYard.stationName);
+						comboBox_11_1.addItem(tempInterYard.stationName);
+					}
+					if (stationObject.getClass() == IndusYard.class) {
+						IndusYard tempIndusYard= (IndusYard) stationObject;
+						comboBox_10_1.addItem(tempIndusYard.stationName);
+						comboBox_11_1.addItem(tempIndusYard.stationName);
+					}
+					if (stationObject.getClass() == ClassifYard.class) {
+						ClassifYard tempClassifYard = (ClassifYard) stationObject;
+						comboBox_10_1.addItem(tempClassifYard.stationName);
+						comboBox_11_1.addItem(tempClassifYard.stationName);
+					}
+					
+					
+				}
+			}
+		});
 		comboBox_9_1.setBounds(99, 23, 57, 22);
 		panel_29.add(comboBox_9_1);
 		
@@ -1624,7 +1660,7 @@ public class MainWindow extends GlobalVars {
 		lblNewLabel_27_1.setBounds(447, 27, 41, 14);
 		panel_29.add(lblNewLabel_27_1);
 		
-		comboBox_12_1 = new JComboBox(new Object[]{});
+		comboBox_12_1 = new JComboBox(CarType);
 		comboBox_12_1.setBounds(498, 23, 78, 22);
 		panel_29.add(comboBox_12_1);
 		
@@ -2389,7 +2425,18 @@ public class MainWindow extends GlobalVars {
 		EditInventory = new JMenuItem("Edit");
 		EditInventory.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				
+//				comboBox_9_1.removeAllItems();
+//				comboBox_10_1.removeAllItems();
+//				comboBox_11_1.removeAllItems();
+//				comboBox_12_1.removeAllItems();
+//				textField_32.setText("");
+//				textField_33.setText("");
+//				lblNewLabel_30_1.setText("");
+				//have to fix this part to get line in position//
+				//-----------------------------------------------//
+				for(Line line: MyRailRoad.Lines) {
+					comboBox_9_1.addItem(line);
+				}
 				SetPanelVisible("editInventory");
 			}
 		});

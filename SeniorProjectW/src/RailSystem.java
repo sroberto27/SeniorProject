@@ -911,6 +911,116 @@ public String[][] createStringStation(String lnName,String stName){
 		}
 		return tempArray;
 }
+public void setCarTemporal(String lnName, String stName, int x, int y) { 
+	int stIndex= getStationIndex(stName, Lines.get(getLineIndex(lnName)));
+	Object station = Lines.get(getLineIndex(lnName)).Stations.get(stIndex);
+	if (station.getClass() == InterYard.class) {
+		InterYard temp = (InterYard)station;
+		staLineNameTemp = temp.LinesArr[x][y].carsLine;
+		staStartNameTemp= temp.LinesArr[x][y].start;
+		staEndNameTemp= temp.LinesArr[x][y].end;
+		carTypeTemp= temp.LinesArr[x][y].car_type;
+		carCodeTemp= temp.LinesArr[x][y].carCode;
+		carWeightTemp= temp.LinesArr[x][y].carWeight;
+	}
+	if (station.getClass() == IndusYard.class) {
+		IndusYard temp = (IndusYard)station;
+		staLineNameTemp = temp.LinesArr[x][y].carsLine;
+		staStartNameTemp= temp.LinesArr[x][y].start;
+		staEndNameTemp= temp.LinesArr[x][y].end;
+		carTypeTemp= temp.LinesArr[x][y].car_type;
+		carCodeTemp= temp.LinesArr[x][y].carCode;
+		carWeightTemp= temp.LinesArr[x][y].carWeight;
+	}
+	if (station.getClass() == ClassifYard.class) {
+		ClassifYard temp = (ClassifYard)station;
+		staLineNameTemp = temp.LinesArr[x][y].carsLine;
+		staStartNameTemp= temp.LinesArr[x][y].start;
+		staEndNameTemp= temp.LinesArr[x][y].end;
+		carTypeTemp= temp.LinesArr[x][y].car_type;
+		carCodeTemp= temp.LinesArr[x][y].carCode;
+		carWeightTemp= temp.LinesArr[x][y].carWeight;
+	}
+//	staLineNameTemp;
+//	staStartNameTemp;
+//	staEndNameTemp;
+//	carTypeTemp;
+//	carCodeTemp;
+//	carWeightTemp;
+}
+public void editCar(String lnName, String stName, int x, int y, Cars newCar) {
+	int stIndex= getStationIndex(stName, Lines.get(getLineIndex(lnName)));
+	Object station = Lines.get(getLineIndex(lnName)).Stations.get(stIndex);
+	if (station.getClass() == InterYard.class) {
+		InterYard temp = (InterYard)station;
+		Lines.get(getLineIndex(lnName)).Stations.add(stIndex, temp);
+		Lines.get(getLineIndex(lnName)).Stations.remove(stIndex+1);
+	}
+	if (station.getClass() == IndusYard.class) {
+		IndusYard temp = (IndusYard)station;
+		Lines.get(getLineIndex(lnName)).Stations.add(stIndex, temp);
+		Lines.get(getLineIndex(lnName)).Stations.remove(stIndex+1);
+	}
+	if (station.getClass() == ClassifYard.class) {
+		ClassifYard temp = (ClassifYard)station;
+		Lines.get(getLineIndex(lnName)).Stations.add(stIndex, temp);
+		Lines.get(getLineIndex(lnName)).Stations.remove(stIndex+1);
+	}
+}
+public boolean searchCar(String code) {
+	int x=0;
+	for(Line line: Lines ) {
+		for(Object tempObject : line.Stations) {
+			if (tempObject.getClass() == InterYard.class) {
+				InterYard tempInterYard = (InterYard) tempObject;
+				for (int i = 0; i < tempInterYard.numberLines; i++) {
+					for (int j = 0; j < tempInterYard.carsPerLine; j++) {
+						if(tempInterYard.LinesArr[i][j]!=null)
+							if (tempInterYard.LinesArr[i][j].carCode.equals(code)) {
+							searchStNameGlobalString = tempInterYard.stationName;
+							searchLnNameGlobalString = tempInterYard.stationLine;
+							carGlobalXindex = i;
+							carGlobalYindex = j;
+							return true;
+						}
+					}
+				}
+				
+			}
+			if (tempObject.getClass() == IndusYard.class) {
+				IndusYard tempIndusYard= (IndusYard) tempObject;
+				for (int i = 0; i < tempIndusYard.numberLines; i++) {
+					for (int j = 0; j < tempIndusYard.carsPerLine; j++) {
+						if(tempIndusYard.LinesArr[i][j]!=null)
+							if (tempIndusYard.LinesArr[i][j].carCode.equals(code)) {
+							searchStNameGlobalString = tempIndusYard.stationName;
+							searchLnNameGlobalString = tempIndusYard.stationLine;
+							carGlobalXindex = i;
+							carGlobalYindex = j;
+							return true;
+						}
+					}
+				}
+			}
+			if (tempObject.getClass() == ClassifYard.class) {
+				ClassifYard tempClassifYard = (ClassifYard) tempObject;
+				for (int i = 0; i < tempClassifYard.numberLines; i++) {
+					for (int j = 0; j < tempClassifYard.carsPerLine; j++) {
+						if(tempClassifYard.LinesArr[i][j]!=null)
+							if (tempClassifYard.LinesArr[i][j].carCode.equals(code)) {
+							searchStNameGlobalString = tempClassifYard.stationName;
+							searchLnNameGlobalString = tempClassifYard.stationLine;
+							carGlobalXindex = i;
+							carGlobalYindex = j;
+							return true;
+						}
+					}
+				}
+				}
+		}
+	}
+	return false;
+}
 	public int getArrayIndex( String[] array , String selected) {
 		int index = -1;
 		for (int x = 0 ; x< array.length; x++) {
