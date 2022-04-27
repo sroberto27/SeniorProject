@@ -5,9 +5,7 @@ import java.util.List;
 import javax.swing.JPanel;
 import javax.swing.table.DefaultTableModel;
 
-import org.eclipse.swt.internal.win32.CREATESTRUCT;
 
-import com.ibm.icu.impl.number.AffixPatternProvider.Flags;
 
 public class RailSystem extends GlobalVars{
 	List<Line> Lines;
@@ -968,7 +966,7 @@ public void editCar(String lnName, String stName, int x, int y, Cars newCar) {
 	}
 }
 public boolean searchCar(String code) {
-	int x=0;
+
 	for(Line line: Lines ) {
 		for(Object tempObject : line.Stations) {
 			if (tempObject.getClass() == InterYard.class) {

@@ -1482,6 +1482,7 @@ public class MainWindow extends GlobalVars {
 		panel_21.add(lblNewLabel_24);
 		
 		comboBox_9 = new JComboBox();
+		comboBox_9.removeAllItems();
 		comboBox_9.setBounds(81, 9, 57, 22);
 		panel_21.add(comboBox_9);
 		
@@ -1569,22 +1570,6 @@ public class MainWindow extends GlobalVars {
 		panel_23.add(textField_34);
 		
 		btnNewButton_2_1_1_1 = new JButton("Search");
-		btnNewButton_2_1_1_1.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-				if (MyRailRoad.searchCar(textField_34.getText())) {
-					
-					panel_28.setVisible(false);
-					panel_29.setVisible(true);
-					MyRailRoad.setCarTemporal(MyRailRoad.searchLnNameGlobalString,MyRailRoad.searchStNameGlobalString , MyRailRoad.carGlobalXindex, MyRailRoad.carGlobalYindex);
-					
-					System.out.print("pass tru");
-				}else {
-					System.out.print("NOOOO pass tru");
-					panel_28.setVisible(true);
-					panel_29.setVisible(false);
-				}
-			}
-		});
 		btnNewButton_2_1_1_1.setBounds(378, 5, 111, 39);
 		panel_23.add(btnNewButton_2_1_1_1);
 		
@@ -1612,32 +1597,9 @@ public class MainWindow extends GlobalVars {
 		panel_29.add(lblNewLabel_24_1);
 		
 		comboBox_9_1 = new JComboBox();
-		comboBox_9_1.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-				comboBox_10_1.removeAllItems();
-				comboBox_11_1.removeAllItems();
-				for(Object stationObject : MyRailRoad.Lines.get(MyRailRoad.getLineIndex((String)comboBox_9_1.getSelectedItem())).Stations) {
-					if (stationObject.getClass() == InterYard.class) {
-						InterYard tempInterYard = (InterYard) stationObject;
-						comboBox_10_1.addItem(tempInterYard.stationName);
-						comboBox_11_1.addItem(tempInterYard.stationName);
-					}
-					if (stationObject.getClass() == IndusYard.class) {
-						IndusYard tempIndusYard= (IndusYard) stationObject;
-						comboBox_10_1.addItem(tempIndusYard.stationName);
-						comboBox_11_1.addItem(tempIndusYard.stationName);
-					}
-					if (stationObject.getClass() == ClassifYard.class) {
-						ClassifYard tempClassifYard = (ClassifYard) stationObject;
-						comboBox_10_1.addItem(tempClassifYard.stationName);
-						comboBox_11_1.addItem(tempClassifYard.stationName);
-					}
-					
-					
-				}
-			}
-		});
+		comboBox_9_1.setEnabled(false);
 		comboBox_9_1.setBounds(99, 23, 57, 22);
+		comboBox_9_1.removeAllItems();
 		panel_29.add(comboBox_9_1);
 		
 		lblNewLabel_25_1 = new JLabel("Start Station");
@@ -2428,15 +2390,6 @@ public class MainWindow extends GlobalVars {
 //				comboBox_9_1.removeAllItems();
 //				comboBox_10_1.removeAllItems();
 //				comboBox_11_1.removeAllItems();
-//				comboBox_12_1.removeAllItems();
-//				textField_32.setText("");
-//				textField_33.setText("");
-//				lblNewLabel_30_1.setText("");
-				//have to fix this part to get line in position//
-				//-----------------------------------------------//
-				for(Line line: MyRailRoad.Lines) {
-					comboBox_9_1.addItem(line);
-				}
 				SetPanelVisible("editInventory");
 			}
 		});
@@ -2880,6 +2833,82 @@ public class MainWindow extends GlobalVars {
 				lblNewLabel_3_1_1.setText("Line Class: ");
 				lblNewLabel_4_1_1.setText("Line Direction: ");
 				MyRailRoad.deleteLine(MyRailRoad.searchIndexGlobalIntLine);
+			}
+		});
+		btnNewButton_2_1_1_1.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				comboBox_9_1.removeAllItems();
+				comboBox_10_1.removeAllItems();
+				comboBox_11_1.removeAllItems();
+				if (MyRailRoad.searchCar(textField_34.getText())) {
+					
+					MyRailRoad.setCarTemporal(MyRailRoad.searchLnNameGlobalString,MyRailRoad.searchStNameGlobalString , MyRailRoad.carGlobalXindex, MyRailRoad.carGlobalYindex);
+					
+				
+
+					
+					for(Object stationObject : MyRailRoad.Lines.get(MyRailRoad.getLineIndex(MyRailRoad.searchLnNameGlobalString)).Stations) {
+						if (stationObject.getClass() == InterYard.class) {
+							InterYard tempInterYard = (InterYard) stationObject;
+							comboBox_10_1.addItem(tempInterYard.stationName);
+							comboBox_11_1.addItem(tempInterYard.stationName);
+						}
+						if (stationObject.getClass() == IndusYard.class) {
+							IndusYard tempIndusYard= (IndusYard) stationObject;
+							comboBox_10_1.addItem(tempIndusYard.stationName);
+							comboBox_11_1.addItem(tempIndusYard.stationName);
+						}
+						if (stationObject.getClass() == ClassifYard.class) {
+							ClassifYard tempClassifYard = (ClassifYard) stationObject;
+							comboBox_10_1.addItem(tempClassifYard.stationName);
+							comboBox_11_1.addItem(tempClassifYard.stationName);
+						}
+						
+						
+					}
+					comboBox_9_1.setSelectedItem(MyRailRoad.searchLnNameGlobalString);
+					comboBox_10_1.setSelectedIndex(MyRailRoad.getStationIndex(MyRailRoad.staStartNameTemp, MyRailRoad.Lines.get(MyRailRoad.getLineIndex(MyRailRoad.searchLnNameGlobalString))));
+					comboBox_11_1.setSelectedIndex(MyRailRoad.getStationIndex(MyRailRoad.staEndNameTemp, MyRailRoad.Lines.get(MyRailRoad.getLineIndex(MyRailRoad.searchLnNameGlobalString))));
+					comboBox_12_1.setSelectedIndex(MyRailRoad.getArrayIndex(CarType, MyRailRoad.carTypeTemp));
+					textField_32.setText(MyRailRoad.carCodeTemp);
+					textField_33.setText(Float.toString(MyRailRoad.carWeightTemp));
+					panel_28.setVisible(false);
+					panel_29.setVisible(true);
+					
+					
+					System.out.print("pass tru");
+				}else {
+					System.out.print("NOOOO pass tru");
+					panel_28.setVisible(true);
+					panel_29.setVisible(false);
+				}
+			}
+		});
+		comboBox_9_1.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+//				comboBox_10_1.removeAllItems();
+//				comboBox_11_1.removeAllItems();
+//				for(Object stationObject : MyRailRoad.Lines.get(MyRailRoad.getLineIndex((String)comboBox_9_1.getSelectedItem())).Stations) {
+//					if (stationObject.getClass() == InterYard.class) {
+//						InterYard tempInterYard = (InterYard) stationObject;
+//						comboBox_10_1.addItem(tempInterYard.stationName);
+//						comboBox_11_1.addItem(tempInterYard.stationName);
+//					}
+//					if (stationObject.getClass() == IndusYard.class) {
+//						IndusYard tempIndusYard= (IndusYard) stationObject;
+//						comboBox_10_1.addItem(tempIndusYard.stationName);
+//						comboBox_11_1.addItem(tempIndusYard.stationName);
+//					}
+//					if (stationObject.getClass() == ClassifYard.class) {
+//						ClassifYard tempClassifYard = (ClassifYard) stationObject;
+//						comboBox_10_1.addItem(tempClassifYard.stationName);
+//						comboBox_11_1.addItem(tempClassifYard.stationName);
+//					}
+//					
+//					
+//				}
+				
+				
 			}
 		});
 		Home.add(GoHome);
