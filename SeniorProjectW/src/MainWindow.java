@@ -209,9 +209,7 @@ public class MainWindow extends GlobalVars {
 	JLabel lblNewLabel_31;
 	JPanel panel_29;
 	JLabel lblNewLabel_24_1;
-	JComboBox comboBox_9_1;
 	JLabel lblNewLabel_25_1;
-	JComboBox comboBox_10_1;
 	JLabel lblNewLabel_26_1;
 	JComboBox comboBox_11_1;
 	JLabel lblNewLabel_27_1;
@@ -1561,7 +1559,7 @@ public class MainWindow extends GlobalVars {
 		panel_23.setLayout(null);
 		
 		lblNewLabel_15_1_1_1 = new JLabel("Enter Code of car to EDIT");
-		lblNewLabel_15_1_1_1.setBounds(94, 17, 128, 14);
+		lblNewLabel_15_1_1_1.setBounds(33, 17, 189, 14);
 		panel_23.add(lblNewLabel_15_1_1_1);
 		
 		textField_34 = new JTextField();
@@ -1593,25 +1591,15 @@ public class MainWindow extends GlobalVars {
 		panel_29.setLayout(null);
 		
 		lblNewLabel_24_1 = new JLabel("Station's Line");
-		lblNewLabel_24_1.setBounds(28, 27, 66, 14);
+		lblNewLabel_24_1.setBounds(28, 27, 126, 14);
 		panel_29.add(lblNewLabel_24_1);
 		
-		comboBox_9_1 = new JComboBox();
-		comboBox_9_1.setEnabled(false);
-		comboBox_9_1.setBounds(99, 23, 57, 22);
-		comboBox_9_1.removeAllItems();
-		panel_29.add(comboBox_9_1);
-		
 		lblNewLabel_25_1 = new JLabel("Start Station");
-		lblNewLabel_25_1.setBounds(166, 27, 62, 14);
+		lblNewLabel_25_1.setBounds(166, 27, 116, 14);
 		panel_29.add(lblNewLabel_25_1);
 		
-		comboBox_10_1 = new JComboBox();
-		comboBox_10_1.setBounds(238, 23, 64, 22);
-		panel_29.add(comboBox_10_1);
-		
 		lblNewLabel_26_1 = new JLabel("End Station");
-		lblNewLabel_26_1.setBounds(312, 27, 57, 14);
+		lblNewLabel_26_1.setBounds(291, 27, 78, 14);
 		panel_29.add(lblNewLabel_26_1);
 		
 		comboBox_11_1 = new JComboBox();
@@ -1619,7 +1607,7 @@ public class MainWindow extends GlobalVars {
 		panel_29.add(comboBox_11_1);
 		
 		lblNewLabel_27_1 = new JLabel("Car type");
-		lblNewLabel_27_1.setBounds(447, 27, 41, 14);
+		lblNewLabel_27_1.setBounds(447, 27, 53, 14);
 		panel_29.add(lblNewLabel_27_1);
 		
 		comboBox_12_1 = new JComboBox(CarType);
@@ -1627,7 +1615,7 @@ public class MainWindow extends GlobalVars {
 		panel_29.add(comboBox_12_1);
 		
 		lblNewLabel_28_1 = new JLabel("Car code");
-		lblNewLabel_28_1.setBounds(28, 96, 43, 14);
+		lblNewLabel_28_1.setBounds(28, 96, 59, 14);
 		panel_29.add(lblNewLabel_28_1);
 		
 		textField_32 = new JTextField();
@@ -1636,7 +1624,7 @@ public class MainWindow extends GlobalVars {
 		panel_29.add(textField_32);
 		
 		lblNewLabel_29_1 = new JLabel("Car weight");
-		lblNewLabel_29_1.setBounds(226, 96, 53, 14);
+		lblNewLabel_29_1.setBounds(226, 96, 75, 14);
 		panel_29.add(lblNewLabel_29_1);
 		
 		textField_33 = new JTextField();
@@ -1645,12 +1633,14 @@ public class MainWindow extends GlobalVars {
 		panel_29.add(textField_33);
 		
 		lblNewLabel_30_1 = new JLabel("Status of EDITION:");
-		lblNewLabel_30_1.setBounds(183, 173, 96, 14);
+		lblNewLabel_30_1.setBounds(183, 173, 226, 14);
 		panel_29.add(lblNewLabel_30_1);
 		
 		btnNewButton_5_1 = new JButton("EDIT Car");
 		btnNewButton_5_1.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
+				Cars newTempCars = new Cars(MyRailRoad.searchLnNameGlobalString, (String)comboBox_12_1.getSelectedItem(), lblNewLabel_25_1.getText(), (String)comboBox_11_1.getSelectedItem(), textField_32.getText(), Float.parseFloat(textField_33.getText()));
+				MyRailRoad.editCar(MyRailRoad.searchLnNameGlobalString, MyRailRoad.searchStNameGlobalString, MyRailRoad.carGlobalXindex, MyRailRoad.carGlobalYindex, newTempCars);
 			}
 		});
 		btnNewButton_5_1.setBounds(462, 151, 96, 58);
@@ -1681,6 +1671,30 @@ public class MainWindow extends GlobalVars {
 		panel_25.add(textField_35);
 		
 		btnNewButton_2_1_1_1_1 = new JButton("Search");
+		btnNewButton_2_1_1_1_1.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				if (MyRailRoad.searchCar(textField_35.getText())) {
+					
+					MyRailRoad.setCarTemporal(MyRailRoad.searchLnNameGlobalString,MyRailRoad.searchStNameGlobalString , MyRailRoad.carGlobalXindex, MyRailRoad.carGlobalYindex);
+					lblNewLabel_24_1_1.setText("Station's Line "+MyRailRoad.searchLnNameGlobalString);
+					lblNewLabel_25_1_1.setText("Start Station "+MyRailRoad.staStartNameTemp);
+					lblNewLabel_26_1_1.setText("End Station "+MyRailRoad.staEndNameTemp);
+					lblNewLabel_27_1_1.setText("Car type "+MyRailRoad.carTypeTemp);
+					lblNewLabel_28_1_1.setText("Car code"+MyRailRoad.carCodeTemp);
+					lblNewLabel_29_1_1.setText("Car weight "+Float.toString(MyRailRoad.carWeightTemp));
+					lblNewLabel_30_1_1.setText("Status of DELETION: ");
+					panel_31.setVisible(false);
+					panel_32.setVisible(true);
+					
+					
+					//System.out.print("pass tru");
+				}else {
+					//System.out.print("NOOOO pass tru");
+					panel_31.setVisible(true);
+					panel_32.setVisible(false);
+				}
+			}
+		});
 		panel_25.add(btnNewButton_2_1_1_1_1);
 		
 		panel_26 = new JPanel();
@@ -1702,34 +1716,46 @@ public class MainWindow extends GlobalVars {
 		panel_32.setLayout(null);
 		
 		lblNewLabel_24_1_1 = new JLabel("Station's Line");
-		lblNewLabel_24_1_1.setBounds(12, 31, 66, 14);
+		lblNewLabel_24_1_1.setBounds(12, 31, 355, 14);
 		panel_32.add(lblNewLabel_24_1_1);
 		
 		lblNewLabel_25_1_1 = new JLabel("Start Station");
-		lblNewLabel_25_1_1.setBounds(16, 56, 62, 14);
+		lblNewLabel_25_1_1.setBounds(16, 56, 351, 14);
 		panel_32.add(lblNewLabel_25_1_1);
 		
 		lblNewLabel_26_1_1 = new JLabel("End Station");
-		lblNewLabel_26_1_1.setBounds(16, 81, 57, 14);
+		lblNewLabel_26_1_1.setBounds(16, 81, 351, 14);
 		panel_32.add(lblNewLabel_26_1_1);
 		
 		lblNewLabel_27_1_1 = new JLabel("Car type");
-		lblNewLabel_27_1_1.setBounds(16, 106, 41, 14);
+		lblNewLabel_27_1_1.setBounds(16, 106, 351, 14);
 		panel_32.add(lblNewLabel_27_1_1);
 		
 		lblNewLabel_28_1_1 = new JLabel("Car code");
-		lblNewLabel_28_1_1.setBounds(16, 135, 43, 14);
+		lblNewLabel_28_1_1.setBounds(16, 135, 351, 14);
 		panel_32.add(lblNewLabel_28_1_1);
 		
 		lblNewLabel_29_1_1 = new JLabel("Car weight");
-		lblNewLabel_29_1_1.setBounds(16, 160, 53, 14);
+		lblNewLabel_29_1_1.setBounds(16, 160, 351, 14);
 		panel_32.add(lblNewLabel_29_1_1);
 		
 		lblNewLabel_30_1_1 = new JLabel("Status of DELETION:");
-		lblNewLabel_30_1_1.setBounds(194, 160, 104, 14);
+		lblNewLabel_30_1_1.setBounds(198, 195, 358, 14);
 		panel_32.add(lblNewLabel_30_1_1);
 		
 		btnNewButton_5_1_1 = new JButton("DELETE Car");
+		btnNewButton_5_1_1.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				lblNewLabel_24_1_1.setText("Station's Line ");
+				lblNewLabel_25_1_1.setText("Start Station ");
+				lblNewLabel_26_1_1.setText("End Station ");
+				lblNewLabel_27_1_1.setText("Car type ");
+				lblNewLabel_28_1_1.setText("Car code");
+				lblNewLabel_29_1_1.setText("Car weight");
+				lblNewLabel_30_1_1.setText("Status of DELETION: Car DELETED");
+				MyRailRoad.deleteCar(MyRailRoad.searchLnNameGlobalString, MyRailRoad.searchStNameGlobalString, MyRailRoad.carGlobalXindex, MyRailRoad.carGlobalYindex);
+			}
+		});
 		btnNewButton_5_1_1.setBounds(413, 84, 143, 66);
 		panel_32.add(btnNewButton_5_1_1);
 		
@@ -2374,7 +2400,8 @@ public class MainWindow extends GlobalVars {
 		AddInventory = new JMenuItem("Add");
 		AddInventory.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				comboBox_9.removeAllItems();
+				if(comboBox_9.getItemCount()!=0)
+					comboBox_9.removeAllItems();
 				for(Line line : MyRailRoad.Lines) {
 					
 						comboBox_9.addItem(line.lineName);
@@ -2398,7 +2425,13 @@ public class MainWindow extends GlobalVars {
 		RemoveInventory = new JMenuItem("Remove");
 		RemoveInventory.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				
+				lblNewLabel_24_1_1.setText("Station's Line ");
+				lblNewLabel_25_1_1.setText("Start Station ");
+				lblNewLabel_26_1_1.setText("End Station ");
+				lblNewLabel_27_1_1.setText("Car type ");
+				lblNewLabel_28_1_1.setText("Car code");
+				lblNewLabel_29_1_1.setText("Car weight");
+				lblNewLabel_30_1_1.setText("Status of DELETION: ");
 				SetPanelVisible("removeInventory");
 			}
 		});
@@ -2837,8 +2870,6 @@ public class MainWindow extends GlobalVars {
 		});
 		btnNewButton_2_1_1_1.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				comboBox_9_1.removeAllItems();
-				comboBox_10_1.removeAllItems();
 				comboBox_11_1.removeAllItems();
 				if (MyRailRoad.searchCar(textField_34.getText())) {
 					
@@ -2850,24 +2881,23 @@ public class MainWindow extends GlobalVars {
 					for(Object stationObject : MyRailRoad.Lines.get(MyRailRoad.getLineIndex(MyRailRoad.searchLnNameGlobalString)).Stations) {
 						if (stationObject.getClass() == InterYard.class) {
 							InterYard tempInterYard = (InterYard) stationObject;
-							comboBox_10_1.addItem(tempInterYard.stationName);
+							lblNewLabel_25_1.setText(tempInterYard.stationName);
 							comboBox_11_1.addItem(tempInterYard.stationName);
 						}
 						if (stationObject.getClass() == IndusYard.class) {
 							IndusYard tempIndusYard= (IndusYard) stationObject;
-							comboBox_10_1.addItem(tempIndusYard.stationName);
+							lblNewLabel_25_1.setText(tempIndusYard.stationName);
 							comboBox_11_1.addItem(tempIndusYard.stationName);
 						}
 						if (stationObject.getClass() == ClassifYard.class) {
 							ClassifYard tempClassifYard = (ClassifYard) stationObject;
-							comboBox_10_1.addItem(tempClassifYard.stationName);
+							lblNewLabel_25_1.setText(tempClassifYard.stationName);
 							comboBox_11_1.addItem(tempClassifYard.stationName);
 						}
 						
-						
 					}
-					comboBox_9_1.setSelectedItem(MyRailRoad.searchLnNameGlobalString);
-					comboBox_10_1.setSelectedIndex(MyRailRoad.getStationIndex(MyRailRoad.staStartNameTemp, MyRailRoad.Lines.get(MyRailRoad.getLineIndex(MyRailRoad.searchLnNameGlobalString))));
+					lblNewLabel_24_1.setText(MyRailRoad.searchLnNameGlobalString);
+					lblNewLabel_25_1.setText(MyRailRoad.staStartNameTemp);
 					comboBox_11_1.setSelectedIndex(MyRailRoad.getStationIndex(MyRailRoad.staEndNameTemp, MyRailRoad.Lines.get(MyRailRoad.getLineIndex(MyRailRoad.searchLnNameGlobalString))));
 					comboBox_12_1.setSelectedIndex(MyRailRoad.getArrayIndex(CarType, MyRailRoad.carTypeTemp));
 					textField_32.setText(MyRailRoad.carCodeTemp);
@@ -2884,36 +2914,8 @@ public class MainWindow extends GlobalVars {
 				}
 			}
 		});
-		comboBox_9_1.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-//				comboBox_10_1.removeAllItems();
-//				comboBox_11_1.removeAllItems();
-//				for(Object stationObject : MyRailRoad.Lines.get(MyRailRoad.getLineIndex((String)comboBox_9_1.getSelectedItem())).Stations) {
-//					if (stationObject.getClass() == InterYard.class) {
-//						InterYard tempInterYard = (InterYard) stationObject;
-//						comboBox_10_1.addItem(tempInterYard.stationName);
-//						comboBox_11_1.addItem(tempInterYard.stationName);
-//					}
-//					if (stationObject.getClass() == IndusYard.class) {
-//						IndusYard tempIndusYard= (IndusYard) stationObject;
-//						comboBox_10_1.addItem(tempIndusYard.stationName);
-//						comboBox_11_1.addItem(tempIndusYard.stationName);
-//					}
-//					if (stationObject.getClass() == ClassifYard.class) {
-//						ClassifYard tempClassifYard = (ClassifYard) stationObject;
-//						comboBox_10_1.addItem(tempClassifYard.stationName);
-//						comboBox_11_1.addItem(tempClassifYard.stationName);
-//					}
-//					
-//					
-//				}
-				
-				
-			}
-		});
 		Home.add(GoHome);
 		
 		SetPanelVisible("goHome");
 	}
-
 }
