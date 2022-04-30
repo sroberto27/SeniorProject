@@ -5,14 +5,21 @@ public class Cars {
 	String start;
 	String end;
 	String carCode;
-	float carWeight;
+	int positionX;
+	int positionY;
+	int carWeight;
 	 
-	 public Cars(String line, String type, String str, String en, String code, float w) {
+	 public Cars(String line, String type, String str, String en, String code, int w) {
 		 	 car_type = type;
 			 carsLine = line;
 			 start = str;
 			 end = en;
 			 carCode = code;
 			 carWeight = w;
+			 
+	 }
+	 public void setPos(int x, int y) {
+		 positionX=x;
+		 positionY=y;
 	 }
 }

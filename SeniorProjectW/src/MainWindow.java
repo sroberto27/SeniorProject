@@ -1,6 +1,10 @@
 import java.awt.EventQueue;
 import java.awt.Font;
-
+import java.awt.event.WindowAdapter;
+import java.awt.event.WindowEvent;
+import javax.swing.JFrame;
+import javax.swing.JLabel;
+import javax.swing.WindowConstants;
 import javax.swing.JFrame;
 import java.awt.CardLayout;
 import java.awt.Color;
@@ -50,9 +54,12 @@ import java.awt.Panel;
 import java.awt.TextArea;
 import javax.swing.JTextPane;
 
+
+
+
 public class MainWindow extends GlobalVars {
 	//railSystem main object
-	RailSystem MyRailRoad = new RailSystem();
+public	RailSystem MyRailRoad = new RailSystem();
 	// components J--------------------------------
 	
 	JPanel HomePanel;
@@ -554,12 +561,15 @@ public class MainWindow extends GlobalVars {
 	private JLabel lblNewLabel_1_1_1_2;
 	private JPanel panel_33;
 	private ScrollPane scrollPane_2;
+	private JButton btnNewButton_9;
+	private JLabel lblNewLabel_11;
 
 
 	public static void main(String[] args) {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {
+					
 					MainWindow window = new MainWindow();
 					window.frame.setVisible(true);
 				} catch (Exception e) {
@@ -571,9 +581,11 @@ public class MainWindow extends GlobalVars {
 
 	/**
 	 * Create the application.
+	 * @throws Exception 
 	 */
-	public MainWindow() {
+	public MainWindow() throws Exception {
 		initialize();
+		MyRailRoad.LoadFile("railSystem.csv");
 	}
 	
 	private void SetPanelVisible(String panel) {
@@ -682,6 +694,16 @@ public class MainWindow extends GlobalVars {
 		frame = new JFrame();
 		frame.setResizable(false);
 		frame.setBounds(100, 100, 600, 420);
+		frame.addWindowListener(new WindowAdapter() {
+		    public void windowClosing(WindowEvent e) {
+		        try {
+					MyRailRoad.saveFile("railSystem.csv");
+				} catch (Exception e1) {
+					// TODO Auto-generated catch block
+					e1.printStackTrace();
+				}
+		    }
+		});
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		frame.getContentPane().setLayout(new CardLayout(0, 0));
 		
@@ -1639,7 +1661,7 @@ public class MainWindow extends GlobalVars {
 		btnNewButton_5_1 = new JButton("EDIT Car");
 		btnNewButton_5_1.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				Cars newTempCars = new Cars(MyRailRoad.searchLnNameGlobalString, (String)comboBox_12_1.getSelectedItem(), lblNewLabel_25_1.getText(), (String)comboBox_11_1.getSelectedItem(), textField_32.getText(), Float.parseFloat(textField_33.getText()));
+				Cars newTempCars = new Cars(MyRailRoad.searchLnNameGlobalString, (String)comboBox_12_1.getSelectedItem(), lblNewLabel_25_1.getText(), (String)comboBox_11_1.getSelectedItem(), textField_32.getText(), Integer.parseInt(textField_33.getText()));
 				MyRailRoad.editCar(MyRailRoad.searchLnNameGlobalString, MyRailRoad.searchStNameGlobalString, MyRailRoad.carGlobalXindex, MyRailRoad.carGlobalYindex, newTempCars);
 			}
 		});
@@ -1681,7 +1703,7 @@ public class MainWindow extends GlobalVars {
 					lblNewLabel_26_1_1.setText("End Station "+MyRailRoad.staEndNameTemp);
 					lblNewLabel_27_1_1.setText("Car type "+MyRailRoad.carTypeTemp);
 					lblNewLabel_28_1_1.setText("Car code"+MyRailRoad.carCodeTemp);
-					lblNewLabel_29_1_1.setText("Car weight "+Float.toString(MyRailRoad.carWeightTemp));
+					lblNewLabel_29_1_1.setText("Car weight "+Integer.toString(MyRailRoad.carWeightTemp));
 					lblNewLabel_30_1_1.setText("Status of DELETION: ");
 					panel_31.setVisible(false);
 					panel_32.setVisible(true);
@@ -1936,6 +1958,25 @@ public class MainWindow extends GlobalVars {
 		
 		loadInventory = new JPanel();
 		HomePanel.add(loadInventory, "name_1310157535558300");
+		loadInventory.setLayout(null);
+		
+		btnNewButton_9 = new JButton("Upload Data");
+		btnNewButton_9.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				try {
+					lblNewLabel_11.setText("Status: "+MyRailRoad.saveFile("railSystem.csv"));
+				} catch (Exception e1) {
+					// TODO Auto-generated catch block
+					e1.printStackTrace();
+				}
+			}
+		});
+		btnNewButton_9.setBounds(209, 89, 198, 82);
+		loadInventory.add(btnNewButton_9);
+		
+		lblNewLabel_11 = new JLabel("Status:  ");
+		lblNewLabel_11.setBounds(177, 241, 341, 16);
+		loadInventory.add(lblNewLabel_11);
 		
 		instruction = new JPanel();
 		HomePanel.add(instruction, "name_1310157546043900");
@@ -2475,10 +2516,10 @@ public class MainWindow extends GlobalVars {
 		});
 		Edit.add(ReportSprint);
 		
-		LoadInventory = new JMenuItem("Load Inventory");
+		LoadInventory = new JMenuItem("Upload/ Load Inventory");
 		LoadInventory.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				
+				lblNewLabel_11.setText("Status: ");
 				SetPanelVisible("loadInventory");
 			}
 		});
@@ -2522,7 +2563,7 @@ public class MainWindow extends GlobalVars {
 				//System.out.print("tetsing the print");
 				lineNameTemp = textField.getText();
 				lineAcroTemp = textField_1.getText();
-				lineLengthTemp = Float.parseFloat(textField_2.getText());
+				lineLengthTemp = Integer.parseInt(textField_2.getText());
 				lineTypeTemp = (String) comboBox.getSelectedItem();
 				directionTemp = (String) comboBox_1.getSelectedItem();
 				descripTemp = textArea.getText();
@@ -2763,7 +2804,7 @@ public class MainWindow extends GlobalVars {
 				staEndNameTemp = (String) comboBox_11.getSelectedItem();
 				carTypeTemp = (String) comboBox_12.getSelectedItem();
 				carCodeTemp = textField_30.getText();
-				carWeightTemp = Float.parseFloat(textField_31.getText());
+				carWeightTemp = Integer.parseInt(textField_31.getText());
 				String temp = MyRailRoad.addCar(staLineNameTemp, carTypeTemp, staStartNameTemp, staEndNameTemp, carCodeTemp, carWeightTemp);
 				lblNewLabel_30.setText(temp);
 				//SetPanelVisible("goHome");
@@ -2778,7 +2819,7 @@ public class MainWindow extends GlobalVars {
 				 textArea_2.setText(MyRailRoad.descripTemp) ;
 				 textField_14.setText( MyRailRoad.lineNameTemp); 
 				 textField_15.setText(MyRailRoad.lineAcroTemp) ;
-				 textField_16.setText( Float.toString(MyRailRoad.lineLengthTemp));
+				 textField_16.setText( Integer.toString(MyRailRoad.lineLengthTemp));
 				 comboBox_6.setSelectedIndex(MyRailRoad.getArrayIndex(LineClassType, MyRailRoad.lineTypeTemp));
 				 comboBox_1_1.setSelectedIndex(MyRailRoad.getArrayIndex(Direction, MyRailRoad.directionTemp));
 				}
@@ -2788,7 +2829,7 @@ public class MainWindow extends GlobalVars {
 		});
 		btnNewButton_3.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				MyRailRoad.editLine(MyRailRoad.searchIndexGlobalIntLine,textField_14.getText(), textField_15.getText(), (String) comboBox_6.getSelectedItem(), (String) comboBox_1_1.getSelectedItem(),Float.parseFloat(textField_16.getText()), "nothing", "nothing", 0, 0, textArea_2.getText());
+				MyRailRoad.editLine(MyRailRoad.searchIndexGlobalIntLine,textField_14.getText(), textField_15.getText(), (String) comboBox_6.getSelectedItem(), (String) comboBox_1_1.getSelectedItem(),Integer.parseInt(textField_16.getText()), "nothing", "nothing", 0, 0, textArea_2.getText());
 			}
 		});
 		comboBox_7.addActionListener(new ActionListener() {
@@ -2851,7 +2892,7 @@ public class MainWindow extends GlobalVars {
 				lblNewLabel_18.setText(lblNewLabel_18.getText()+MyRailRoad.descripTemp) ;
 				lblNewLabel_17_1.setText( lblNewLabel_17_1.getText()+MyRailRoad.lineNameTemp); 
 				lblNewLabel_1_1_1.setText(lblNewLabel_1_1_1.getText()+MyRailRoad.lineAcroTemp) ;
-				lblNewLabel_2_1_1.setText( lblNewLabel_2_1_1.getText()+Float.toString(MyRailRoad.lineLengthTemp));
+				lblNewLabel_2_1_1.setText( lblNewLabel_2_1_1.getText()+Integer.toString(MyRailRoad.lineLengthTemp));
 				lblNewLabel_3_1_1.setText(lblNewLabel_3_1_1.getText()+MyRailRoad.lineTypeTemp);
 				lblNewLabel_4_1_1.setText(lblNewLabel_4_1_1.getText()+MyRailRoad.directionTemp);
 				}
@@ -2901,7 +2942,7 @@ public class MainWindow extends GlobalVars {
 					comboBox_11_1.setSelectedIndex(MyRailRoad.getStationIndex(MyRailRoad.staEndNameTemp, MyRailRoad.Lines.get(MyRailRoad.getLineIndex(MyRailRoad.searchLnNameGlobalString))));
 					comboBox_12_1.setSelectedIndex(MyRailRoad.getArrayIndex(CarType, MyRailRoad.carTypeTemp));
 					textField_32.setText(MyRailRoad.carCodeTemp);
-					textField_33.setText(Float.toString(MyRailRoad.carWeightTemp));
+					textField_33.setText(Integer.toString(MyRailRoad.carWeightTemp));
 					panel_28.setVisible(false);
 					panel_29.setVisible(true);
 					
@@ -2919,3 +2960,5 @@ public class MainWindow extends GlobalVars {
 		SetPanelVisible("goHome");
 	}
 }
+
+

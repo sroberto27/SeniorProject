@@ -1,0 +1,17 @@
+line%
+line1,1,Class I,EW,1,s1,s2,2,0,1
+station%
+ClassificationYard,s1,line1,2,EW,NothingYet,Nothing Yet,2,2,4.0,nothing,nothing,nothing,nothing
+cars%
+0,0,InterModal,line1,s1,s2,3,1
+carsEnd%
+stationEnd%
+station%
+IndustrysupportYard,s2,line1,2,EW,NothingYet,Nothing Yet,2,2,4.0,2,222,nothing,nothing
+cars%
+0,0,Tonnage,line1,s2,s1,1,1
+0,1,Tonnage,line1,s2,s1,2,1
+carsEnd%
+stationEnd%
+lineEnd%
+fileEnd%

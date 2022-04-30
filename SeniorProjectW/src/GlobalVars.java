@@ -5,7 +5,7 @@ public class GlobalVars {
 public 	String descripTemp;
 public 	String lineNameTemp;
 public 	String lineAcroTemp;
-public 	float lineLengthTemp;
+public 	int lineLengthTemp;
 public 	String lineTypeTemp;
 public 	String directionTemp;
 public 	String startTemp;
@@ -50,7 +50,7 @@ public 	String staStartNameTemp;
 public 	String staEndNameTemp;
 public 	String carTypeTemp;
 public 	String carCodeTemp;
-public 	float carWeightTemp;
+public 	int carWeightTemp;
 	//Combobox values for line types
 public 	String LineClassType[]= {"Class I", "Class II", "Class III"};
 public 	String ClassType[]= {"ClassificationYard", "InterchangeYard", "IndustrysupportYard"};

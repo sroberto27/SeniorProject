@@ -9,6 +9,7 @@ public class Station {
 	String stationDirection;
 	int numberLines;
 	int carsPerLine;
+	int stIndex;
 	float maxCapacity;
 	Cars LinesArr[][];
 	public Station(String stline, String type, String name, String acro,String direct, String head, String tail, int numLines, int numCars) {
@@ -23,5 +24,8 @@ public class Station {
 		carsPerLine= numCars;
 		maxCapacity = numCars * numCars;
 		LinesArr = new Cars [numLines][numCars];
+	}
+	public void setIndex(int x) {
+		stIndex = x;
 	}
 }
