@@ -359,159 +359,7 @@ public	RailSystem MyRailRoad = new RailSystem();
 	
 	
 	
-	String[] columnNames = {"Line","Type","Code","Line in Station","Direction","Position"};
-	String[][] data = {{"Noting","Noting","Noting","Noting","Noting","Noting"},
-			{"Noting","Noting","Noting","Noting","Noting","Noting"},
-			{"Noting","Noting","Noting","Noting","Noting","Noting"},
-			{"Noting","Noting","Noting","Noting","Noting","Noting"},
-			{"Noting","Noting","Noting","Noting","Noting","Noting"},
-			{"Noting","Noting","Noting","Noting","Noting","Noting"},
-			{"Noting","Noting","Noting","Noting","Noting","Noting"},
-			{"Noting","Noting","Noting","Noting","Noting","Noting"},
-			{"Noting","Noting","Noting","Noting","Noting","Noting"},
-			{"Noting","Noting","Noting","Noting","Noting","Noting"},
-			{"Noting","Noting","Noting","Noting","Noting","Noting"},
-			{"Noting","Noting","Noting","Noting","Noting","Noting"},
-			{"Noting","Noting","Noting","Noting","Noting","Noting"},
-			{"Noting","Noting","Noting","Noting","Noting","Noting"},
-			{"Noting","Noting","Noting","Noting","Noting","Noting"},
-			{"Noting","Noting","Noting","Noting","Noting","Noting"},
-			{"Noting","Noting","Noting","Noting","Noting","Noting"},
-			{"Noting","Noting","Noting","Noting","Noting","Noting"},
-			{"Noting","Noting","Noting","Noting","Noting","Noting"},
-			{"Noting","Noting","Noting","Noting","Noting","Noting"},
-			{"Noting","Noting","Noting","Noting","Noting","Noting"},
-			{"Noting","Noting","Noting","Noting","Noting","Noting"},
-			{"Noting","Noting","Noting","Noting","Noting","Noting"},
-			{"Noting","Noting","Noting","Noting","Noting","Noting"},
-			{"Noting","Noting","Noting","Noting","Noting","Noting"},
-			{"Noting","Noting","Noting","Noting","Noting","Noting"},
-			{"Noting","Noting","Noting","Noting","Noting","Noting"},
-			{"Noting","Noting","Noting","Noting","Noting","Noting"},
-			{"Noting","Noting","Noting","Noting","Noting","Noting"},
-			{"Noting","Noting","Noting","Noting","Noting","Noting"},
-			{"Noting","Noting","Noting","Noting","Noting","Noting"},
-			{"Noting","Noting","Noting","Noting","Noting","Noting"},
-			{"Noting","Noting","Noting","Noting","Noting","Noting"}};	
-	DefaultTableModel model = new DefaultTableModel(data,columnNames);
 	
-	String[] columnNameStation = {"Station name","Type","Acro","Direction","Num of cars"};
-	String[][] dataStation = {{"Noting","Noting","Noting","Noting","Noting"},
-			{"Noting","Noting","Noting","Noting","Noting"},
-			{"Noting","Noting","Noting","Noting","Noting"},
-			{"Noting","Noting","Noting","Noting","Noting"},
-			{"Noting","Noting","Noting","Noting","Noting"},
-			{"Noting","Noting","Noting","Noting","Noting"},
-			{"Noting","Noting","Noting","Noting","Noting"},
-			{"Noting","Noting","Noting","Noting","Noting"},
-			{"Noting","Noting","Noting","Noting","Noting"},
-			{"Noting","Noting","Noting","Noting","Noting"},
-			{"Noting","Noting","Noting","Noting","Noting"},
-			{"Noting","Noting","Noting","Noting","Noting"},
-			{"Noting","Noting","Noting","Noting","Noting"},
-			{"Noting","Noting","Noting","Noting","Noting"},
-			{"Noting","Noting","Noting","Noting","Noting"}};
-	DefaultTableModel modelStation = new DefaultTableModel(dataStation,columnNameStation);
-	String[] columnNameGeneral = {"Line name","Line Acro","Number of station","Number of cars"};
-	String[][] dataGeneral = {{"Noting","Noting","Noting","Noting"},
-			{"Noting","Noting","Noting","Noting"},
-			{"Noting","Noting","Noting","Noting"},
-			{"Noting","Noting","Noting","Noting"},
-			{"Noting","Noting","Noting","Noting"},
-			{"Noting","Noting","Noting","Noting"},
-			{"Noting","Noting","Noting","Noting"},
-			{"Noting","Noting","Noting","Noting"},
-			{"Noting","Noting","Noting","Noting"},
-			{"Noting","Noting","Noting","Noting"},
-			{"Noting","Noting","Noting","Noting"},
-			{"Noting","Noting","Noting","Noting"},
-			{"Noting","Noting","Noting","Noting"},
-			{"Noting","Noting","Noting","Noting"},
-			{"Noting","Noting","Noting","Noting"},
-			{"Noting","Noting","Noting","Noting"},
-			{"Noting","Noting","Noting","Noting"},
-			{"Noting","Noting","Noting","Noting"},
-			{"Noting","Noting","Noting","Noting"},
-			{"Noting","Noting","Noting","Noting"},
-			{"Noting","Noting","Noting","Noting"},
-			{"Noting","Noting","Noting","Noting"},
-			{"Noting","Noting","Noting","Noting"}};
-	DefaultTableModel modelGeneral = new DefaultTableModel(dataGeneral,columnNameGeneral);
-	String Instruction  = "7.7 Writing Instructions\r\n"
-			+ "One of the most common and important uses of technical writing is to provide instructions, those step-by-step explanations of how to assemble, operate, repair, or do routine maintenance on something. Although they may seems intuitive and simple to write, instructions are some of the worst-written documents you can find. Most of us have probably had many infuriating experiences with badly written instructions. This chapter will show you what professionals consider the best techniques in providing instructions.\r\n"
-			+ "\r\n"
-			+ "An effective set of instruction requires the following:\r\n"
-			+ "\r\n"
-			+ "Clear, precise, and simple writing\r\n"
-			+ "A thorough understanding of the procedure in all its technical detail\r\n"
-			+ "The ability to put yourself in the place of the reader, the person trying to use your instructions\r\n"
-			+ "The ability to visualize the procedure in detail and to capture that awareness on paper\r\n"
-			+ "Willingness to test your instructions on the kind of person you wrote them for.\r\n"
-			+ "Preliminary Steps\r\n"
-			+ "At the beginning of a project to write a set of instructions, it is important to determine the structure or characteristics of the particular procedure you are going to write about. Here are some steps to follow:\r\n"
-			+ "\r\n"
-			+ "1. Do a careful audience and task analysis\r\n"
-			+ "Early in the process, define the audience and situation of your instructions. Remember that defining an audience means defining the level of familiarity your readers have with the topic.\r\n"
-			+ "\r\n"
-			+ "2. Determine the number of tasks\r\n"
-			+ "How many tasks are there in the procedure you are writing about? Let�s use the term procedure to refer to the whole set of activities your instructions are intended to discuss. A task is a semi-independent group of actions within the procedure: for example, setting the clock on a microwave oven is one task in the big overall procedure of operating a microwave oven.\r\n"
-			+ "\r\n"
-			+ "A simple procedure like changing the oil in a car contains only one task; there are no semi-independent groupings of activities. A more complex procedure like using a microwave oven contains several semi-independent tasks:  setting the clock; setting the power level; using the timer; cleaning and maintaining the microwave, among others.\r\n"
-			+ "\r\n"
-			+ "Some instructions have only a single task, but have many steps within that single task. For example, imagine a set of instructions for assembling a kids� swing set. In my own experience, there were more than a 130 steps! That can be a bit daunting. A good approach is to group similar and related steps into phases, and start renumbering the steps at each new phase. A phase then is a group of similar steps within a single-task procedure. In the swing-set example, setting up the frame would be a phase; anchoring the thing in the ground would be another; assembling the box swing would be still another.\r\n"
-			+ "\r\n"
-			+ "3.  Determine the best approach to the step-by-step discussion\r\n"
-			+ "For most instructions, you can focus on tasks, or you can focus on tools (or features of tools).  In a task approach (also known as task orientation) to instructions on using a phone-answering service, you�d have these sections:\r\n"
-			+ "\r\n"
-			+ "Recording your greeting\r\n"
-			+ "Playing back your messages\r\n"
-			+ "Saving your messages\r\n"
-			+ "Forwarding your messages\r\n"
-			+ "Deleting your messages, and so on\r\n"
-			+ "These are tasks�the typical things we�d want to do with the machine.\r\n"
-			+ "\r\n"
-			+ "On the other hand, in a tools approach to instructions on using a photocopier, there likely would be sections on how to use specific features:\r\n"
-			+ "\r\n"
-			+ "Copy button\r\n"
-			+ "Cancel button\r\n"
-			+ "Enlarge/reduce button\r\n"
-			+ "Collate/staple button\r\n"
-			+ "Copy-size button, and so on\r\n"
-			+ "If you designed a set of instructions on this plan, you�d write steps for using each button or feature of the photocopier. Instructions using this tools approach are hard to make work. Sometimes, the name of the button doesn�t quite match the task it is associated with; sometimes you have to use more than just the one button to accomplish the task. Still, there can be times when the tools/feature approach may be preferable.\r\n"
-			+ "\r\n"
-			+ "4.  Design groupings of tasks\r\n"
-			+ "Listing tasks may not be all that you need to do. There may be so many tasks that you must group them so that readers can find individual ones more easily. For example, the following are common task groupings in instructions:\r\n"
-			+ "\r\n"
-			+ "Unpacking and setup tasks\r\n"
-			+ "Installing and customizing tasks\r\n"
-			+ "Basic operating tasks\r\n"
-			+ "Routine maintenance tasks\r\n"
-			+ "Troubleshooting tasks.Introduction:  plan the introduction to your instructions carefully. It might include any of the following (but not necessarily in this order):\r\n"
-			+ "\r\n"
-			+ "Indicate the specific tasks or procedure to be explained as well as the scope (what will and will not be covered)\r\n"
-			+ "Indicate what the audience needs in terms of knowledge and background to understand the instructions\r\n"
-			+ "Give a general idea of the procedure and what it accomplishes\r\n"
-			+ "Indicate the conditions when these instructions should (or should not) be used\r\n"
-			+ "Give an overview of the contents of the instructions.\r\n"
-			+ "General warning, caution, danger notices:  instructions often must alert readers to the possibility of ruining their equipment, screwing up the procedure, and hurting themselves. Also, instructions must often emphasize key points or exceptions. For these situations, you use special notices�note, warning, caution, and danger notices. Notice how these special notices are used in the example instructions listed above.\r\n"
-			+ "\r\n"
-			+ "Technical background or theory:  at the beginning of certain kinds of instructions (after the introduction), you may need a discussion of background related to the procedure. For certain instructions, this background is critical�otherwise, the steps in the procedure make no sense. For example, you may have had some experience with those software applets in which you define your own colors by nudging red, green, and blue slider bars around. To really understand what you�re doing, you need to have some background on color. Similarly, you can imagine that, for certain instructions using cameras, some theory might be needed as well.\r\n"
-			+ "\r\n"
-			+ "Equipment and supplies:  notice that most instructions include a list of the things you need to gather before you start the procedure. This includes equipment, the tools you use in the procedure (such as mixing bowls, spoons, bread pans, hammers, drills, and saws) and supplies, the things that are consumed in the procedure (such as wood, paint, oil, flour, and nails). In instructions, these typically are listed either in a simple vertical list or in a two-column list. Use the two-column list if you need to add some specifications to some or all of the items�for example, brand names, sizes, amounts, types, model numbers, and so on.\r\n"
-			+ "\r\n"
-			+ "Discussion of the steps:  when you get to the actual writing of the steps, there are several things to keep in mind: (1) the structure and format of those steps, (2) supplementary information that might be needed, and (3) the point of view and general writing style.\r\n"
-			+ "\r\n"
-			+ "Structure and format:  normally, we imagine a set of instructions as being formatted as vertical numbered lists. And most are in fact. Normally, you format your actual step-by-step instructions this way. There are some variations, however, as well as some other considerations:\r\n"
-			+ "\r\n"
-			+ "Fixed-order steps are steps that must be performed in the order presented. For example, if you are changing the oil in a car, draining the oil is a step that must come before putting the new oil. These are numbered lists (usually, vertical numbered lists).\r\n"
-			+ "Variable-order steps are steps that can be performed in practically any order. Good examples are those troubleshooting guides that tell you to check this, check that where you are trying to fix something. You can do these kinds of steps in practically any order. With this type, the bulleted list is the appropriate format.\r\n"
-			+ "Alternate steps are those in which two or more ways to accomplish the same thing are presented. Alternate steps are also used when various conditions might exist. Use bulleted lists with this type, with OR inserted between the alternatives, or the lead-in indicating that alternatives are about to be presented.\r\n"
-			+ "Nested steps may be used in  cases when individual steps within a procedure are rather complex in their own right and need to be broken down into sub-steps. In this case, you indent further and sequence the sub-steps as a, b, c, and so on.\r\n"
-			+ "�Step-less� instructions. can be used when you really cannot use numbered vertical list or provide straightforward instructional-style directing of the reader. Some situations must be so generalized or so variable that steps cannot be stated.\r\n"
-			+ "Supplementary discussion: often, it is not enough simply to tell readers to do this or to do that. They need additional explanatory information such as how the thing should look before and after the step; why they should care about doing this step; what mechanical principle is behind what they are doing; even more micro-level explanation of the step�discussion of the specific actions that make up the step.\r\n"
-			+ "\r\n"
-			+ "The problem with supplementary discussion, however, is that it can hide the actual step. You want the actual step�the specific actions the reader is to take�to stand out. You don�t want it all buried in a heap of words. There are at least two techniques to avoid this problem: you can split the instruction from the supplement into separate paragraphs; or you can bold the instruction.";
-	String aboutStr = "This Program was Developed by Roberto Salazar in  2022 as a part of his Senior Project to \n fulfill the rquarement to graduate in his BS degree in \n Computer Science";
 	private JFrame frame;
 	private JTextField textField;
 	private JTextField textField_1;
@@ -733,7 +581,7 @@ public	RailSystem MyRailRoad = new RailSystem();
 		textField.setColumns(10);
 		
 		lblNewLabel_1 = new JLabel("Line Acronym");
-		lblNewLabel_1.setBounds(187, 9, 84, 14);
+		lblNewLabel_1.setBounds(187, 9, 96, 14);
 		addLine.add(lblNewLabel_1);
 		
 		textField_1 = new JTextField();
@@ -813,10 +661,11 @@ public	RailSystem MyRailRoad = new RailSystem();
 		panel_9.setLayout(new CardLayout(0, 0));
 		
 		noFound = new JPanel();
-		FlowLayout flowLayout_2 = (FlowLayout) noFound.getLayout();
 		panel_9.add(noFound, "name_1393384886757600");
+		noFound.setLayout(null);
 		
 		lblNewLabel_16 = new JLabel("No Coincidence ...");
+		lblNewLabel_16.setBounds(235, 5, 115, 16);
 		noFound.add(lblNewLabel_16);
 		
 		found = new JPanel();
@@ -833,7 +682,7 @@ public	RailSystem MyRailRoad = new RailSystem();
 		found.add(textField_14);
 		
 		lblNewLabel_1_1 = new JLabel("Line Acronym");
-		lblNewLabel_1_1.setBounds(187, 8, 84, 14);
+		lblNewLabel_1_1.setBounds(187, 8, 96, 14);
 		found.add(lblNewLabel_1_1);
 		
 		textField_15 = new JTextField();
@@ -859,7 +708,7 @@ public	RailSystem MyRailRoad = new RailSystem();
 		found.add(comboBox_6);
 		
 		lblNewLabel_4_1 = new JLabel("Line Direction");
-		lblNewLabel_4_1.setBounds(303, 33, 84, 14);
+		lblNewLabel_4_1.setBounds(299, 33, 88, 14);
 		found.add(lblNewLabel_4_1);
 		
 		comboBox_1_1 = new JComboBox(Direction);
@@ -1134,7 +983,7 @@ public	RailSystem MyRailRoad = new RailSystem();
 		panel_17.setLayout(null);
 		
 		lblNewLabel_15_2 = new JLabel("Enter Name or Acronym of the Station");
-		lblNewLabel_15_2.setBounds(100, 18, 189, 14);
+		lblNewLabel_15_2.setBounds(22, 18, 267, 14);
 		panel_17.add(lblNewLabel_15_2);
 		
 		textField_23 = new JTextField();
@@ -1188,7 +1037,7 @@ public	RailSystem MyRailRoad = new RailSystem();
 		noFound_2.setLayout(null);
 		
 		lblNewLabel_16_2 = new JLabel("No Coincidence ...");
-		lblNewLabel_16_2.setBounds(247, 11, 89, 14);
+		lblNewLabel_16_2.setBounds(212, 11, 124, 14);
 		noFound_2.add(lblNewLabel_16_2);
 		
 		panel_12_1 = new JPanel();
@@ -1196,7 +1045,7 @@ public	RailSystem MyRailRoad = new RailSystem();
 		panel_12_1.setLayout(null);
 		
 		lblNewLabel_5_2_1 = new JLabel("Type of Station");
-		lblNewLabel_5_2_1.setBounds(5, 9, 75, 14);
+		lblNewLabel_5_2_1.setBounds(5, 9, 105, 14);
 		panel_12_1.add(lblNewLabel_5_2_1);
 		
 		label_12_1 = new JLabel("");
@@ -1244,33 +1093,33 @@ public	RailSystem MyRailRoad = new RailSystem();
 		panel_12_1.add(label_10_2_1);
 		
 		comboBox_2_2_1 = new JComboBox(ClassType);
-		comboBox_2_2_1.setBounds(90, 5, 81, 22);
+		comboBox_2_2_1.setBounds(107, 6, 81, 22);
 		panel_12_1.add(comboBox_2_2_1);
 		
 		lblNewLabel_6_2_1 = new JLabel("Station Name");
-		lblNewLabel_6_2_1.setBounds(175, 9, 67, 14);
+		lblNewLabel_6_2_1.setBounds(195, 9, 90, 14);
 		panel_12_1.add(lblNewLabel_6_2_1);
 		
 		textField_24 = new JTextField();
-		textField_24.setBounds(247, 6, 96, 20);
+		textField_24.setBounds(283, 6, 96, 20);
 		textField_24.setColumns(10);
 		panel_12_1.add(textField_24);
 		
 		lblNewLabel_7_2_1 = new JLabel("Station Acronym");
-		lblNewLabel_7_2_1.setBounds(362, 9, 81, 14);
+		lblNewLabel_7_2_1.setBounds(384, 9, 109, 14);
 		panel_12_1.add(lblNewLabel_7_2_1);
 		
 		textField_25 = new JTextField();
-		textField_25.setBounds(453, 6, 96, 20);
+		textField_25.setBounds(492, 6, 96, 20);
 		textField_25.setColumns(10);
 		panel_12_1.add(textField_25);
 		
-		lblNewLabel_8_2_1 = new JLabel("Station Direction");
-		lblNewLabel_8_2_1.setBounds(5, 53, 83, 14);
+		lblNewLabel_8_2_1 = new JLabel("Number of lines");
+		lblNewLabel_8_2_1.setBounds(5, 53, 120, 14);
 		panel_12_1.add(lblNewLabel_8_2_1);
 		
 		comboBox_3_2_1 = new JComboBox(new Object[]{});
-		comboBox_3_2_1.setBounds(623, 5, 30, 22);
+		comboBox_3_2_1.setBounds(372, 89, 96, 22);
 		panel_12_1.add(comboBox_3_2_1);
 		
 		lblNewLabel_9_2_1 = new JLabel("Number of lines");
@@ -1278,30 +1127,34 @@ public	RailSystem MyRailRoad = new RailSystem();
 		panel_12_1.add(lblNewLabel_9_2_1);
 		
 		textField_26 = new JTextField();
-		textField_26.setBounds(100, 50, 96, 20);
+		textField_26.setBounds(117, 50, 96, 20);
 		textField_26.setColumns(10);
 		panel_12_1.add(textField_26);
 		
 		lblNewLabel_10_2_1 = new JLabel("Number of cars per line");
-		lblNewLabel_10_2_1.setBounds(217, 53, 115, 14);
+		lblNewLabel_10_2_1.setBounds(217, 53, 153, 14);
 		panel_12_1.add(lblNewLabel_10_2_1);
 		
 		textField_27 = new JTextField();
-		textField_27.setBounds(342, 50, 96, 20);
+		textField_27.setBounds(372, 50, 96, 20);
 		textField_27.setColumns(10);
 		panel_12_1.add(textField_27);
 		
 		lblNewLabel_19_1 = new JLabel("Tail Station");
-		lblNewLabel_19_1.setBounds(5, 90, 56, 14);
+		lblNewLabel_19_1.setBounds(5, 90, 85, 18);
 		panel_12_1.add(lblNewLabel_19_1);
 		
 		comboBox_7_1 = new JComboBox();
-		comboBox_7_1.setBounds(85, 86, 86, 22);
+		comboBox_7_1.setBounds(110, 89, 96, 22);
 		panel_12_1.add(comboBox_7_1);
 		
 		btnNewButton_4 = new JButton("Edit Station");
-		btnNewButton_4.setBounds(453, 86, 96, 37);
+		btnNewButton_4.setBounds(492, 82, 96, 37);
 		panel_12_1.add(btnNewButton_4);
+		
+		JLabel lblNewLabel_10_2_1_1 = new JLabel("Station direction");
+		lblNewLabel_10_2_1_1.setBounds(217, 91, 153, 14);
+		panel_12_1.add(lblNewLabel_10_2_1_1);
 		
 		panel_20 = new JPanel();
 		panel_18.add(panel_20);
@@ -1312,7 +1165,7 @@ public	RailSystem MyRailRoad = new RailSystem();
 		panel_14_1.setLayout(null);
 		
 		lblNewLabel_12_1_1_1 = new JLabel("line to change");
-		lblNewLabel_12_1_1_1.setBounds(195, 9, 69, 14);
+		lblNewLabel_12_1_1_1.setBounds(175, 9, 89, 14);
 		panel_14_1.add(lblNewLabel_12_1_1_1);
 		
 		comboBox_5_1_1_1 = new JComboBox();
@@ -1324,16 +1177,16 @@ public	RailSystem MyRailRoad = new RailSystem();
 		panel_15_1.setLayout(null);
 		
 		lblNewLabel_13_1_1_1 = new JLabel("Industry Name");
-		lblNewLabel_13_1_1_1.setBounds(10, 60, 73, 14);
+		lblNewLabel_13_1_1_1.setBounds(10, 60, 96, 14);
 		panel_15_1.add(lblNewLabel_13_1_1_1);
 		
 		textField_28 = new JTextField();
-		textField_28.setBounds(92, 57, 96, 20);
+		textField_28.setBounds(111, 57, 116, 20);
 		textField_28.setColumns(10);
 		panel_15_1.add(textField_28);
 		
 		lblNewLabel_14_1_1_1 = new JLabel("Description");
-		lblNewLabel_14_1_1_1.setBounds(198, 60, 56, 14);
+		lblNewLabel_14_1_1_1.setBounds(257, 5, 102, 14);
 		panel_15_1.add(lblNewLabel_14_1_1_1);
 		
 		textArea_1_1_1_1 = new JTextArea();
@@ -1347,7 +1200,7 @@ public	RailSystem MyRailRoad = new RailSystem();
 		noFound_3.setLayout(null);
 		
 		lblNewLabel_16_3 = new JLabel("No Coincidence ...");
-		lblNewLabel_16_3.setBounds(233, 11, 89, 14);
+		lblNewLabel_16_3.setBounds(233, 11, 115, 14);
 		noFound_3.add(lblNewLabel_16_3);
 		btnNewButton_4.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
@@ -1498,53 +1351,53 @@ public	RailSystem MyRailRoad = new RailSystem();
 		addInventory.add(panel_21, gbc_panel_21);
 		
 		lblNewLabel_24 = new JLabel("Station's Line");
-		lblNewLabel_24.setBounds(10, 13, 66, 14);
+		lblNewLabel_24.setBounds(10, 13, 89, 14);
 		panel_21.add(lblNewLabel_24);
 		
 		comboBox_9 = new JComboBox();
 		comboBox_9.removeAllItems();
-		comboBox_9.setBounds(81, 9, 57, 22);
+		comboBox_9.setBounds(102, 10, 96, 22);
 		panel_21.add(comboBox_9);
 		
 		lblNewLabel_25 = new JLabel("Start Station");
-		lblNewLabel_25.setBounds(141, 13, 62, 14);
+		lblNewLabel_25.setBounds(241, 13, 89, 14);
 		panel_21.add(lblNewLabel_25);
 		
 		comboBox_10 = new JComboBox();
-		comboBox_10.setBounds(213, 9, 72, 22);
+		comboBox_10.setBounds(329, 10, 96, 22);
 		panel_21.add(comboBox_10);
 		
 		lblNewLabel_26 = new JLabel("End Station");
-		lblNewLabel_26.setBounds(295, 13, 57, 14);
+		lblNewLabel_26.setBounds(10, 74, 77, 14);
 		panel_21.add(lblNewLabel_26);
 		
 		comboBox_11 = new JComboBox();
-		comboBox_11.setBounds(353, 9, 72, 22);
+		comboBox_11.setBounds(102, 71, 103, 22);
 		panel_21.add(comboBox_11);
 		
 		lblNewLabel_27 = new JLabel("Car type");
-		lblNewLabel_27.setBounds(435, 13, 41, 14);
+		lblNewLabel_27.setBounds(241, 74, 76, 14);
 		panel_21.add(lblNewLabel_27);
 		
 		comboBox_12 = new JComboBox(CarType);
-		comboBox_12.setBounds(486, 9, 90, 22);
+		comboBox_12.setBounds(329, 71, 96, 22);
 		panel_21.add(comboBox_12);
 		
 		lblNewLabel_28 = new JLabel("Car code");
-		lblNewLabel_28.setBounds(10, 72, 43, 14);
+		lblNewLabel_28.setBounds(10, 136, 66, 14);
 		panel_21.add(lblNewLabel_28);
 		
 		textField_30 = new JTextField();
-		textField_30.setBounds(81, 69, 96, 20);
+		textField_30.setBounds(102, 133, 96, 20);
 		panel_21.add(textField_30);
 		textField_30.setColumns(10);
 		
 		lblNewLabel_29 = new JLabel("Car weight");
-		lblNewLabel_29.setBounds(240, 72, 53, 14);
+		lblNewLabel_29.setBounds(241, 136, 72, 14);
 		panel_21.add(lblNewLabel_29);
 		
 		textField_31 = new JTextField();
-		textField_31.setBounds(313, 69, 96, 20);
+		textField_31.setBounds(329, 133, 96, 20);
 		panel_21.add(textField_31);
 		textField_31.setColumns(10);
 		
@@ -1791,6 +1644,7 @@ public	RailSystem MyRailRoad = new RailSystem();
 		printG.setLayout(gbl_printG);
 		
 		panel_27 = new JPanel();
+		panel_27.setLayout(null);
 		GridBagConstraints gbc_panel_27 = new GridBagConstraints();
 		gbc_panel_27.fill = GridBagConstraints.BOTH;
 		gbc_panel_27.insets = new Insets(0, 0, 5, 0);
@@ -1799,9 +1653,11 @@ public	RailSystem MyRailRoad = new RailSystem();
 		printG.add(panel_27, gbc_panel_27);
 		
 		lblNewLabel_32_1_1 = new JLabel("General Report");
+		lblNewLabel_32_1_1.setBounds(64, 10, 92, 16);
 		panel_27.add(lblNewLabel_32_1_1);
 		
 		btnNewButton_6_1_1 = new JButton("General Report");
+		btnNewButton_6_1_1.setBounds(168, 5, 136, 29);
 		btnNewButton_6_1_1.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				DefaultTableModel modelGeneral = new DefaultTableModel(MyRailRoad.createStringsLinesArray(),columnNameGeneral);
@@ -1812,6 +1668,7 @@ public	RailSystem MyRailRoad = new RailSystem();
 		panel_27.add(btnNewButton_6_1_1);
 		
 		btnNewButton_7_1_1 = new JButton("Excel Report");
+		btnNewButton_7_1_1.setBounds(316, 5, 122, 29);
 		panel_27.add(btnNewButton_7_1_1);
 		
 		panel_33 = new JPanel();
@@ -1838,6 +1695,7 @@ public	RailSystem MyRailRoad = new RailSystem();
 		printL.setLayout(gbl_printL);
 		
 		panel_30_1 = new JPanel();
+		panel_30_1.setLayout(null);
 		GridBagConstraints gbc_panel_30_1 = new GridBagConstraints();
 		gbc_panel_30_1.fill = GridBagConstraints.BOTH;
 		gbc_panel_30_1.insets = new Insets(0, 0, 5, 0);
@@ -1846,12 +1704,15 @@ public	RailSystem MyRailRoad = new RailSystem();
 		printL.add(panel_30_1, gbc_panel_30_1);
 		
 		lblNewLabel_32_1 = new JLabel("Station's Line");
+		lblNewLabel_32_1.setBounds(39, 10, 84, 16);
 		panel_30_1.add(lblNewLabel_32_1);
 		
 		comboBox_13_1 = new JComboBox();
+		comboBox_13_1.setBounds(135, 6, 77, 27);
 		panel_30_1.add(comboBox_13_1);
 		
 		btnNewButton_6_1 = new JButton("Line Report");
+		btnNewButton_6_1.setBounds(216, 5, 115, 29);
 		btnNewButton_6_1.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				DefaultTableModel modelGeneral = new DefaultTableModel(MyRailRoad.createStringsStationsArry( (String) comboBox_13_1.getSelectedItem()),columnNameStation);
@@ -1862,6 +1723,7 @@ public	RailSystem MyRailRoad = new RailSystem();
 		panel_30_1.add(btnNewButton_6_1);
 		
 		btnNewButton_7_1 = new JButton("Excel Report");
+		btnNewButton_7_1.setBounds(329, 5, 122, 29);
 		panel_30_1.add(btnNewButton_7_1);
 		
 		scrollPane_1 = new ScrollPane();
@@ -2006,8 +1868,10 @@ public	RailSystem MyRailRoad = new RailSystem();
 		goHome.setVisible(true);
 		goHome.setBackground(Color.blue);
 		HomePanel.add(goHome, "name_1310157565987200");
+		goHome.setLayout(null);
 		
 		lblNewLabel_21 = new JLabel("Senior Profect APP Yard Organization");
+		lblNewLabel_21.setBounds(39, 160, 526, 35);
 		lblNewLabel_21.setFont(new Font("Verdana", Font.PLAIN, 28));
 		goHome.add(lblNewLabel_21);
 		
@@ -2019,7 +1883,7 @@ public	RailSystem MyRailRoad = new RailSystem();
 		nextStrStation.add(panel);
 		
 		lblNewLabel_5 = new JLabel("Type of Station");
-		lblNewLabel_5.setBounds(30, 9, 90, 14);
+		lblNewLabel_5.setBounds(30, 9, 100, 14);
 		
 		comboBox_2 = new JComboBox(ClassType);
 		comboBox_2.setBounds(130, 5, 147, 22);
@@ -2045,7 +1909,7 @@ public	RailSystem MyRailRoad = new RailSystem();
 		comboBox_3.setBounds(410, 5, 131, 22);
 		
 		lblNewLabel_9 = new JLabel("Number of lines");
-		lblNewLabel_9.setBounds(30, 77, 100, 14);
+		lblNewLabel_9.setBounds(30, 77, 115, 14);
 		
 		textField_5 = new JTextField();
 		textField_5.setBounds(150, 74, 96, 20);
@@ -2123,28 +1987,36 @@ public	RailSystem MyRailRoad = new RailSystem();
 		interyard = new JPanel();
 		interyard.setVisible(false);
 		panel_1.add(interyard, "name_1317477883456400");
+		interyard.setLayout(null);
 		
 		lblNewLabel_12 = new JLabel("line to change");
+		lblNewLabel_12.setBounds(227, 10, 89, 16);
 		interyard.add(lblNewLabel_12);
 		
 		comboBox_5 = new JComboBox();
+		comboBox_5.setBounds(321, 5, 74, 27);
 		interyard.add(comboBox_5);
 		
 		industryY = new JPanel();
 		industryY.setVisible(false);
 		panel_1.add(industryY, "name_1317477895157600");
+		industryY.setLayout(null);
 		
 		lblNewLabel_13 = new JLabel("Industry Name");
+		lblNewLabel_13.setBounds(147, 10, 92, 16);
 		industryY.add(lblNewLabel_13);
 		
 		textField_7 = new JTextField();
+		textField_7.setBounds(244, 5, 130, 26);
 		industryY.add(textField_7);
 		textField_7.setColumns(10);
 		
 		lblNewLabel_14 = new JLabel("Description");
+		lblNewLabel_14.setBounds(61, 36, 73, 16);
 		industryY.add(lblNewLabel_14);
 		
 		textArea_1 = new JTextArea();
+		textArea_1.setBounds(61, 53, 480, 64);
 		textArea_1.setColumns(40);
 		textArea_1.setRows(4);
 		industryY.add(textArea_1);
@@ -2270,12 +2142,12 @@ public	RailSystem MyRailRoad = new RailSystem();
 		panel_4.add(lblNewLabel_7_1);
 		
 		textField_9 = new JTextField();
-		textField_9.setBounds(433, 38, 96, 20);
+		textField_9.setBounds(453, 38, 96, 20);
 		textField_9.setColumns(10);
 		panel_4.add(textField_9);
 		
 		lblNewLabel_8_1 = new JLabel("Station Direction");
-		lblNewLabel_8_1.setBounds(312, 9, 105, 14);
+		lblNewLabel_8_1.setBounds(312, 9, 122, 14);
 		panel_4.add(lblNewLabel_8_1);
 		
 		comboBox_3_1 = new JComboBox(Direction);
@@ -2292,11 +2164,11 @@ public	RailSystem MyRailRoad = new RailSystem();
 		panel_4.add(textField_10);
 		
 		lblNewLabel_10_1 = new JLabel("Number of cars per line");
-		lblNewLabel_10_1.setBounds(287, 72, 147, 14);
+		lblNewLabel_10_1.setBounds(287, 72, 154, 14);
 		panel_4.add(lblNewLabel_10_1);
 		
 		textField_11 = new JTextField();
-		textField_11.setBounds(433, 69, 96, 20);
+		textField_11.setBounds(453, 70, 96, 20);
 		textField_11.setColumns(10);
 		panel_4.add(textField_11);
 		
@@ -2306,27 +2178,35 @@ public	RailSystem MyRailRoad = new RailSystem();
 		
 		panel_7 = new JPanel();
 		panel_5.add(panel_7, "name_1389881066264800");
+		panel_7.setLayout(null);
 		
 		lblNewLabel_12_1 = new JLabel("Line to change");
+		lblNewLabel_12_1.setBounds(225, 10, 92, 16);
 		panel_7.add(lblNewLabel_12_1);
 		
 		comboBox_5_1 = new JComboBox();
+		comboBox_5_1.setBounds(322, 5, 72, 27);
 		panel_7.add(comboBox_5_1);
 		
 		panel_8 = new JPanel();
 		panel_5.add(panel_8, "name_1389881087703200");
+		panel_8.setLayout(null);
 		
 		lblNewLabel_13_1 = new JLabel("Industry Name");
+		lblNewLabel_13_1.setBounds(147, 10, 92, 16);
 		panel_8.add(lblNewLabel_13_1);
 		
 		textField_12 = new JTextField();
+		textField_12.setBounds(244, 5, 130, 26);
 		textField_12.setColumns(10);
 		panel_8.add(textField_12);
 		
 		lblNewLabel_14_1 = new JLabel("Description");
+		lblNewLabel_14_1.setBounds(62, 37, 73, 16);
 		panel_8.add(lblNewLabel_14_1);
 		
 		textArea_1_1 = new JTextArea();
+		textArea_1_1.setBounds(60, 53, 480, 64);
 		textArea_1_1.setRows(4);
 		textArea_1_1.setColumns(40);
 		panel_8.add(textArea_1_1);
@@ -2528,7 +2408,7 @@ public	RailSystem MyRailRoad = new RailSystem();
 		Help = new JMenu("Help");
 		menuBar.add(Help);
 		
-		Instructions = new JMenuItem("Intrusctions");
+		Instructions = new JMenuItem("instructions");
 		Instructions.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				
