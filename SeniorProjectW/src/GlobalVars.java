@@ -183,7 +183,7 @@ String Instruction  = "The system simulates a basic railroad system. With the ab
 		+ "fileEnd%\r\n"
 		+ "\r\n"
 		+ "\r\n"
-		+ "Here is an example of a basic rail system with two-line and few stations and cars in the system:\r\n"
+		+ "Here is an example of a basic rail system with One-line and few stations and cars in the system:\r\n"
 		+ "\r\n"
 		+ "line%\r\n"
 		+ "line1,1,Class I,EW,1,s1,s2,2,0,1\r\n"

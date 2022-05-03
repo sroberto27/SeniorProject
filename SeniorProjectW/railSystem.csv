@@ -14,4 +14,26 @@ cars%
 carsEnd%
 stationEnd%
 lineEnd%
+line%
+line2,2,Class II,NS,2,s3,s4,3,0,line 2 descrip
+station%
+InterchangeYard,s3,line2,3,NS,NothingYet,Nothing Yet,3,3,9.0,nothing,nothing,nothing yet,nothing yet
+cars%
+0,0,Local,line2,s3,s4,7,7
+carsEnd%
+stationEnd%
+station%
+InterchangeYard,s5,line2,5,NS,s4,Nothing Yet,5,5,25.0,nothing,nothing,nothing yet,nothing yet
+cars%
+0,0,InterModal,line2,s5,s3,5,5
+0,1,Manisfest,line2,s5,s3,6,6
+0,2,InterModal,line2,s5,s4,4,4
+carsEnd%
+stationEnd%
+station%
+IndustrysupportYard,s4,line2,4,NS,NothingYet,Nothing Yet,4,4,16.0,444,descrip4444,nothing,nothing
+cars%
+carsEnd%
+stationEnd%
+lineEnd%
 fileEnd%

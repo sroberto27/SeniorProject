@@ -547,7 +547,6 @@ public	RailSystem MyRailRoad = new RailSystem();
 		        try {
 					MyRailRoad.saveFile("railSystem.csv");
 				} catch (Exception e1) {
-					// TODO Auto-generated catch block
 					e1.printStackTrace();
 				}
 		    }
@@ -997,11 +996,7 @@ public	RailSystem MyRailRoad = new RailSystem();
 		panel_17.add(btnNewButton_2_2);
 		btnNewButton_2_2.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				System.out.print("Text in text field"+textField_23.getText()+"\n");
-				System.out.print("Bool: "+MyRailRoad.searchStation(textField_23.getText(),serachStation,panel_12_1 , noFound_2, noFound_3, panel_15_1, panel_14_1)+" \n");
 				if (MyRailRoad.searchStation(textField_23.getText(),serachStation,panel_12_1 , noFound_2, noFound_3, panel_15_1, panel_14_1)) {
-					System.out.print("searching station indexGlobal:"+MyRailRoad.searchIndexGlobalIntStation+"\n");
-					System.out.print("search station name:"+MyRailRoad.searchTypeGlobalString+"\n");
 					MyRailRoad.setTempStationData(MyRailRoad.searchTypeGlobalString, 
 							MyRailRoad.searchIndexGlobalIntStation,
 							MyRailRoad.searchStNameGlobalString,
@@ -1244,8 +1239,6 @@ public	RailSystem MyRailRoad = new RailSystem();
 				lblNewLabel_4_1_1_1.setText("Station Direction: ");
 				lblNewLabel_22.setText("Tail Station: ");
 				if (MyRailRoad.searchStationToDelete(textField_29.getText(),serachStation, Found2, Nofound)) {
-					System.out.print("searching station indexGlobal:"+MyRailRoad.searchIndexGlobalIntStation+"\n");
-					System.out.print("search station name:"+MyRailRoad.searchTypeGlobalString+"\n");
 					MyRailRoad.setTempStationData(MyRailRoad.searchTypeGlobalString, 
 							MyRailRoad.searchIndexGlobalIntStation,
 							MyRailRoad.searchStNameGlobalString,
@@ -1561,10 +1554,7 @@ public	RailSystem MyRailRoad = new RailSystem();
 					panel_31.setVisible(false);
 					panel_32.setVisible(true);
 					
-					
-					//System.out.print("pass tru");
 				}else {
-					//System.out.print("NOOOO pass tru");
 					panel_31.setVisible(true);
 					panel_32.setVisible(false);
 				}
@@ -1828,7 +1818,6 @@ public	RailSystem MyRailRoad = new RailSystem();
 				try {
 					lblNewLabel_11.setText("Status: "+MyRailRoad.saveFile("railSystem.csv"));
 				} catch (Exception e1) {
-					// TODO Auto-generated catch block
 					e1.printStackTrace();
 				}
 			}
@@ -2027,30 +2016,17 @@ public	RailSystem MyRailRoad = new RailSystem();
 			public void actionPerformed(ActionEvent e) {
 				JComboBox cb = (JComboBox)e.getSource();
 				classTypeSelected = (String)cb.getSelectedItem();
-		        System.out.print(classTypeSelected);
 		        if (classTypeSelected == "InterchangeYard") {
-		        	//industreNameTemp = "";
-					//descriptionTempStation = "";
-					//station1Temp = "nothing yet"; //to string comboBox_4.getSelectedItem();
-					//station2Temp = "nothing yet";// to string comboBox_5.getSelectedItem();
 		        	panel_1.setVisible(true);
 		        	industryY.setVisible(false);
 					interyard.setVisible(true);
 					
 				}else {
 					if (classTypeSelected == "IndustrysupportYard") {
-						//industreNameTemp = textField_7.getText();
-						//descriptionTempStation = textArea_1.getText();
-						//station1Temp = "nothing";
-						//station2Temp = "nothing";
 						panel_1.setVisible(true);
 						industryY.setVisible(true);
 						interyard.setVisible(false);
 					}else {
-						//industreNameTemp = "nothing";
-						//descriptionTempStation = "nothing";
-						//station1Temp = "nothing";
-						//station2Temp = "nothing";
 						panel_1.setVisible(false);
 						interyard.setVisible(false);
 						industryY.setVisible(false);
@@ -2439,15 +2415,12 @@ public	RailSystem MyRailRoad = new RailSystem();
 		
 		btnNewButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				//Next in add line to add station of start next
-				//System.out.print("tetsing the print");
 				lineNameTemp = textField.getText();
 				lineAcroTemp = textField_1.getText();
 				lineLengthTemp = Integer.parseInt(textField_2.getText());
 				lineTypeTemp = (String) comboBox.getSelectedItem();
 				directionTemp = (String) comboBox_1.getSelectedItem();
 				descripTemp = textArea.getText();
-				//System.out.print(lineNameTemp+" , "+ lineAcroTemp+" , "+lineLengthTemp+" , "+ lineTypeTemp+" , "+ directionTemp +" , "+ descripTemp);
 				
 				SetPanelVisible("nextStrStation");
 				
@@ -2565,12 +2538,11 @@ public	RailSystem MyRailRoad = new RailSystem();
 						
 					}
 				}
-				System.out.print(nameTemp);
 				MyRailRoad.addLine(lineNameTemp, lineAcroTemp, lineTypeTemp, directionTemp, lineLengthTemp, nameTemp, nameTem, 0, 0, descripTemp);
 				MyRailRoad.addStation( stlineTemp,  typeTemp,  nameTemp,  acroTemp, directTemp,  headTemp,  tailTemp,  numLinesTemp,  numCarsTemp,  industreNameTemp,  descriptionTempStation,  station1Temp,  station2Temp);
 				MyRailRoad.addStation( stlineTem,  typeTem,  nameTem,  acroTem, directTem,  headTem,  tailTem,  numLinesTem,  numCarsTem,  industreNameTem,  descriptionTempStation2,  station1Tem,  station2Tem);
 				
-				MyRailRoad.printLineData();
+				//MyRailRoad.printLineData();
 				SetPanelVisible("goHome");
 			}
 		});
@@ -2578,7 +2550,6 @@ public	RailSystem MyRailRoad = new RailSystem();
 			public void actionPerformed(ActionEvent e) {
 				JComboBox cb = (JComboBox)e.getSource();
 		        classTypeSelected2 = (String)cb.getSelectedItem();
-		        System.out.print(classTypeSelected);
 		        if (classTypeSelected2 == "InterchangeYard") {
 					panel_5.setVisible(true);
 		        	panel_7.setVisible(true);
@@ -2601,7 +2572,6 @@ public	RailSystem MyRailRoad = new RailSystem();
 			public void actionPerformed(ActionEvent e) {
 				JComboBox cb = (JComboBox)e.getSource();
 		        String classTypeSelected = (String)cb.getSelectedItem();
-		        System.out.print(classTypeSelected);
 		        if (classTypeSelected == "InterchangeYard") {
 					panel_13.setVisible(true);
 		        	panel_14.setVisible(true);
@@ -2693,7 +2663,6 @@ public	RailSystem MyRailRoad = new RailSystem();
 		});
 		btnNewButton_2.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				System.out.print(textField_13.getText());
 				if (MyRailRoad.searchLine(textField_13.getText(), found, noFound)) {
 				MyRailRoad.setTempLineData();
 				 textArea_2.setText(MyRailRoad.descripTemp) ;
@@ -2760,7 +2729,6 @@ public	RailSystem MyRailRoad = new RailSystem();
 		});
 		btnNewButton_2_1.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				System.out.print(textField_17.getText());
 				lblNewLabel_18.setText("Description: ") ;
 				lblNewLabel_17_1.setText( "Line Name: "); 
 				lblNewLabel_1_1_1.setText("Line Acronym: ") ;
@@ -2827,9 +2795,7 @@ public	RailSystem MyRailRoad = new RailSystem();
 					panel_29.setVisible(true);
 					
 					
-					System.out.print("pass tru");
 				}else {
-					System.out.print("NOOOO pass tru");
 					panel_28.setVisible(true);
 					panel_29.setVisible(false);
 				}
