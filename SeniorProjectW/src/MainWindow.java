@@ -997,18 +997,37 @@ public	RailSystem MyRailRoad = new RailSystem();
 		btnNewButton_2_2.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				if (MyRailRoad.searchStation(textField_23.getText(),serachStation,panel_12_1 , noFound_2, noFound_3, panel_15_1, panel_14_1)) {
-					MyRailRoad.setTempStationData(MyRailRoad.searchTypeGlobalString, 
-							MyRailRoad.searchIndexGlobalIntStation,
-							MyRailRoad.searchStNameGlobalString,
-							MyRailRoad.searchLnNameGlobalString);
+					comboBox_7_1.removeAllItems();
+					
+					for(Object stationObject : MyRailRoad.Lines.get(MyRailRoad.getLineIndex(MyRailRoad.stlineTemp)).Stations) {
+						if (stationObject.getClass() == InterYard.class) {
+							InterYard tempInterYard = (InterYard) stationObject;
+							comboBox_7_1.addItem(tempInterYard.stationName);
+						}
+						if (stationObject.getClass() == IndusYard.class) {
+							IndusYard tempIndusYard= (IndusYard) stationObject;
+							comboBox_7_1.addItem(tempIndusYard.stationName);
+						}
+						if (stationObject.getClass() == ClassifYard.class) {
+							ClassifYard tempClassifYard = (ClassifYard) stationObject;
+							comboBox_7_1.addItem(tempClassifYard.stationName);
+						}
+						
+						
+					}
+//					MyRailRoad.setTempStationData(MyRailRoad.searchTypeGlobalString, 
+//							MyRailRoad.searchIndexGlobalIntStation,
+//							MyRailRoad.searchStNameGlobalString,
+//							MyRailRoad.searchLnNameGlobalString);
 					comboBox_2_2_1.setSelectedIndex(MyRailRoad.getArrayIndex(ClassType,MyRailRoad.searchTypeGlobalString ));
 					textField_24.setText(MyRailRoad.nameTemp);
 					textField_25.setText(MyRailRoad.acroTemp);
 					comboBox_3_2_1.setSelectedIndex(MyRailRoad.getArrayIndex(Direction, classTypeSelected));
 					textField_26.setText(Integer.toString(MyRailRoad.numLinesTemp));
 					textField_27.setText(Integer.toString(MyRailRoad.numCarsTemp));
-					comboBox_7_1.setSelectedIndex(MyRailRoad.getArrayIndex(Direction, MyRailRoad.classTypeSelected)); // tail
-					comboBox_5_1_1_1.setSelectedIndex(MyRailRoad.getArrayIndex(Direction, MyRailRoad.classTypeSelected)); //head
+					comboBox_7_1.setSelectedItem(MyRailRoad.headTemp); 
+					comboBox_3_2_1.setSelectedItem(MyRailRoad.directTemp);
+					comboBox_5_1_1_1.setSelectedItem(MyRailRoad.tailTemp); 
 					textField_28.setText(MyRailRoad.industreNameTemp);
 					textArea_1_1_1_1.setText(MyRailRoad.descriptionTempStation);
 				}
@@ -1113,7 +1132,7 @@ public	RailSystem MyRailRoad = new RailSystem();
 		lblNewLabel_8_2_1.setBounds(5, 53, 120, 14);
 		panel_12_1.add(lblNewLabel_8_2_1);
 		
-		comboBox_3_2_1 = new JComboBox(new Object[]{});
+		comboBox_3_2_1 = new JComboBox(Direction);
 		comboBox_3_2_1.setBounds(372, 89, 96, 22);
 		panel_12_1.add(comboBox_3_2_1);
 		
@@ -1199,7 +1218,7 @@ public	RailSystem MyRailRoad = new RailSystem();
 		noFound_3.add(lblNewLabel_16_3);
 		btnNewButton_4.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				MyRailRoad.editStation( MyRailRoad.searchIndexGlobalIntStation,MyRailRoad.nameTemp,stlineTemp,  (String)comboBox_2_2_1.getSelectedItem(),  textField_24.getText(),  textField_25.getText(), (String)comboBox_3_2_1.getSelectedItem(),  (String)comboBox_7_1.getSelectedItem(),  tailTemp,  Integer.parseInt(textField_26.getText()),  Integer.parseInt(textField_27.getText()),  textField_28.getText(),  textArea_1_1_1_1.getText(),  station1Temp, station2Temp);
+				MyRailRoad.editStation( MyRailRoad.searchIndexGlobalIntStation,MyRailRoad.nameTemp,MyRailRoad.stlineTemp,  (String)comboBox_2_2_1.getSelectedItem(),  textField_24.getText(),  textField_25.getText(), (String)comboBox_3_2_1.getSelectedItem(),  (String)comboBox_7_1.getSelectedItem(), MyRailRoad.tailTemp,  Integer.parseInt(textField_26.getText()),  Integer.parseInt(textField_27.getText()),  textField_28.getText(),  textArea_1_1_1_1.getText(), MyRailRoad.station1Temp,MyRailRoad.station2Temp);
 			}
 		});
 		
@@ -1239,10 +1258,10 @@ public	RailSystem MyRailRoad = new RailSystem();
 				lblNewLabel_4_1_1_1.setText("Station Direction: ");
 				lblNewLabel_22.setText("Tail Station: ");
 				if (MyRailRoad.searchStationToDelete(textField_29.getText(),serachStation, Found2, Nofound)) {
-					MyRailRoad.setTempStationData(MyRailRoad.searchTypeGlobalString, 
-							MyRailRoad.searchIndexGlobalIntStation,
-							MyRailRoad.searchStNameGlobalString,
-							MyRailRoad.searchLnNameGlobalString);
+//					MyRailRoad.setTempStationData(MyRailRoad.searchTypeGlobalString, 
+//							MyRailRoad.searchIndexGlobalIntStation,
+//							MyRailRoad.searchStNameGlobalString,
+//							MyRailRoad.searchLnNameGlobalString);
 					
 				lblNewLabel_17_1_1.setText(lblNewLabel_17_1_1.getText()+MyRailRoad.stlineTemp);
 				lblNewLabel_3_1_1_1.setText(lblNewLabel_3_1_1_1.getText()+MyRailRoad.typeTemp);
@@ -2204,12 +2223,9 @@ public	RailSystem MyRailRoad = new RailSystem();
 		AddLine.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				//HomePanel.setVisible(false);
-				comboBox_5.removeAllItems();
-				comboBox_5_1.removeAllItems();
-				for(Line line : MyRailRoad.Lines) {
-					comboBox_5.addItem(line.lineName);
-						comboBox_5_1.addItem(line.lineName);
-				}
+				comboBox_5.setModel(MyRailRoad.GenerateLineBox());
+				comboBox_5_1.setModel(MyRailRoad.GenerateLineBox());
+				
 				SetPanelVisible("addLine");
 			}
 		});
@@ -2247,13 +2263,9 @@ public	RailSystem MyRailRoad = new RailSystem();
 		AddStation.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				//HomePanel.setVisible(false);
-				comboBox_7.removeAllItems();
-				comboBox_5_1_1.removeAllItems();
-				for(Line line : MyRailRoad.Lines) {
-					
-						comboBox_7.addItem(line.lineName);
-						comboBox_5_1_1.addItem(line.lineName);
-				}
+				comboBox_7.setModel(MyRailRoad.GenerateLineBox());
+				comboBox_5_1_1.setModel(MyRailRoad.GenerateLineBox());
+				
 				
 				SetPanelVisible("addStation");
 			}
@@ -2264,11 +2276,8 @@ public	RailSystem MyRailRoad = new RailSystem();
 		EditStation.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				//HomePanel.setVisible(false);
-				comboBox_5_1_1_1.removeAllItems();
-				for(Line line : MyRailRoad.Lines) {
-					
-					comboBox_5_1_1_1.addItem(line.lineName);
-				}
+				comboBox_5_1_1_1.setModel(MyRailRoad.GenerateLineBox());
+				
 				SetPanelVisible("editStation");
 			}
 		});
@@ -2297,12 +2306,8 @@ public	RailSystem MyRailRoad = new RailSystem();
 		AddInventory = new JMenuItem("Add");
 		AddInventory.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				if(comboBox_9.getItemCount()!=0)
-					comboBox_9.removeAllItems();
-				for(Line line : MyRailRoad.Lines) {
-					
-						comboBox_9.addItem(line.lineName);
-				}
+					comboBox_9.setModel(MyRailRoad.GenerateLineBox());
+				
 				SetPanelVisible("addInventory");
 			}
 		});
@@ -2349,11 +2354,8 @@ public	RailSystem MyRailRoad = new RailSystem();
 		ReportLprint = new JMenuItem("Print Line Report");
 		ReportLprint.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				comboBox_13_1.removeAllItems();
-				for(Line line : MyRailRoad.Lines) {
-					
-						comboBox_13_1.addItem(line.lineName);
-				}
+				comboBox_13_1.setModel(MyRailRoad.GenerateLineBox());
+				
 				SetPanelVisible("printL");
 			}
 		});
@@ -2362,11 +2364,8 @@ public	RailSystem MyRailRoad = new RailSystem();
 		ReportSprint = new JMenuItem("Print Station Report");
 		ReportSprint.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				comboBox_13.removeAllItems();
-				for(Line line : MyRailRoad.Lines) {
-					
-						comboBox_13.addItem(line.lineName);
-				}
+				comboBox_13.setModel(MyRailRoad.GenerateLineBox());
+				
 				SetPanelVisible("printS");
 			}
 		});

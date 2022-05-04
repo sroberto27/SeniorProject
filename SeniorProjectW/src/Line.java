@@ -27,5 +27,8 @@ int Linecapacity;
 		 Linecapacity=capSta;
 		 Stations =  new ArrayList<Object>();
 }
+	public void setStations(List<Object> Stats) {
+		Stations = Stats;
+	}
 
 }
